@@ -1,0 +1,97 @@
+body {
+  padding-left: 10%;
+  padding-right: 10%;
+  font-family: Consolas, courier;
+  background-image: url("../pictures/topography.png");
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: underline;
+  color: #ff0099;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.logo {
+
+  position: absolute;
+  width: 5em;
+  top: 8px;
+}
+
+h1{
+  text-align: center;
+  color: #00BFFF;
+}
+
+
+
+h2{
+  text-align: center;
+}
+
+.images{
+  text-align: center;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+}
+
+.images img{
+  
+  border: 1px solid #ff0099;
+   margin-left: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-right-width: 3px;
+  border-left-width: 3px;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+
+}
+
+.images img:hover {
+
+  border: 3px solid rgb(119, 119, 119);
+}
+
+@media only screen and (max-width: 2000px){
+  .images img{
+  width: 32%;
+  margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 1148px){
+  .images img{
+  width: 30%;
+  margin: 6px 0;
+  }
+}
+
+
+
+
