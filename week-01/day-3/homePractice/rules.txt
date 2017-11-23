@@ -1,0 +1,100 @@
+/*    commment
+/*
+
+..................................................
+
+/* child combinator /*
+# main-style > p{
+  color: red}
+..................................................
+ 
+A <span> element used to color a part of a text:
+
+<p>My mother has <span style="color:blue">blue</span> eyes.</p>
+
+.................................................
+
+attribute selectors
+html:
+<span class:"valami">Hello world!</span>
+
+CSS:
+span[class]{
+	color: purple
+}
+
+.......................................................
+
+
+pseudo classes  (selector::keyword{declaration}  )
+
+Dynamic:
+
+a:hover{color:red;}
+
+a:active{ color: orange;}
+
+a:visited{ color: purple;}
+
+.....
+
+
+Structural:
+
+article p:first-child{
+font-weight: bold;
+}
+
+article p:last-child{
+font-weight: bold;
+}
+
+li:nth-child(1), li:nth-child(7){ font-weight:bold; }
+
+li:nth-child(odd){ color:pink; }, li:nth-child(even){ color:grey; }
+li:nth-child(2n+1){ color:grey; }
+.............................................................
+
+
+
+article.puruttya{background:red;}  
+az az article melynek van egy puruttya classja: (  <article class="featured-content">  )
+
+article .puruttya{background:red;}
+puruttya osztaly melynek az ose article
+
+
+................................................................
+
+universal selector
+minden elemre vonatkozik a html fajlban
+
+*{
+
+
+}
+
+az ertelme: torli minden bongeszonak a sajat defaultjait es ezaltal mindent en tudok beallitani
+
+*{
+margin: 0;
+padding: 0;
+color: black
+}
+
+........................................................
+
+article h2{
+font-family: helvetica, areal, sans-serif;
+}
+
+han nincs telepitve az elso akkor atugrig a kovetkezore.
+
+
+....................................................
+
+#header{
+background: url()  
+}
+
+kepet lehet berakni a szoveg moge
