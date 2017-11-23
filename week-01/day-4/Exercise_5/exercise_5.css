@@ -1,0 +1,29 @@
+h1{
+color: #FF6347;
+
+}
+
+h2{
+  color: #8A2BE2;
+  text-decoration: underline;
+}
+
+li li:nth-child(1){
+  color: #FF20FF;
+  text-decoration: underline;
+}
+
+li li:nth-child(2){
+  color: #FF20FF;
+  text-decoration: underline;
+}
+
+li li:nth-child(3){
+  color: #FF20FF;
+  text-decoration: underline;
+}
+
+li li:nth-child(4){
+  text-decoration: underline;
+  
+}
