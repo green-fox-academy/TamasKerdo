@@ -1,0 +1,37 @@
+div{
+
+box-sizing: border-box;
+border:solid #4285F4 16px;
+width: 328px;
+}
+
+
+div p{
+  
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+div p:nth-child(1){
+  background-color: #E67676;
+  
+ }
+
+div p:nth-child(2){
+  background-color: #F2F062;
+  }
+
+
+div p:nth-child(3){
+  background-color: #A9E6E6;
+}
+
+
+div p:nth-child(4){
+  background-color: #7692E4;
+}
+
