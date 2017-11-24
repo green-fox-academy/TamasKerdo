@@ -19,7 +19,7 @@ main {
 .headline{
   flex: 1 1 100%;
   height: 30px;
-  background-color: pink;
+  background-color: #DCD6CD;
   text-align: left;
   font-size: 20px;
 }
@@ -46,7 +46,7 @@ main {
 }
 
 .data.first{
-  background-color:blue;
+  background-color:#DCD6CD;
   flex: 1 1 100%;
   font-size: 20px;
   color: white;
@@ -61,8 +61,9 @@ main {
     padding-bottom: 10px;
     border: 1px;
     margin: 3px;
-    background-color: grey;
+    background-color: #938C97;
     color: white;
+    border-radius: 5px;
   }
 
 .data.third{
@@ -80,8 +81,24 @@ main {
 
 
 .data.fifth{
-  background-color: brown;
+  background-color: #DCD6CD;
   flex: 1 1 100%;
+  font-size: 20px;
+  color: white;
+  align-items: center;
+  justify-content: center
+}
+
+.data.fifth p{
+  padding-left: 100px;
+  padding-right: 100px;    
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px;
+  margin: 3px;
+  background-color: #938C97;
+  color: white;
+  border-radius: 5px;
 }
 
 .data.sixth{
