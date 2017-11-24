@@ -20,6 +20,8 @@ main {
   flex: 1 1 100%;
   height: 30px;
   background-color: pink;
+  text-align: left;
+  font-size: 20px;
 }
 
 .personaldata{
@@ -28,22 +30,108 @@ main {
   
 }
 
-.personaldata.left{
-  background-color: red;
-}
 
-.personaldata.left{
-  background-color: purple;
-}
 
 .introduction{
   flex: 1 1 100%;
   height: 300px;
-  background-color: blue;
+  v
 }
 
+.data{
+  flex: 1 1 100%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.data.first{
+  background-color:blue;
+  flex: 1 1 100%;
+  font-size: 20px;
+  color: white;
+  align-items: center;
+  justify-content: center
+  }
+
+  .data.first p{
+    padding-left: 100px;
+    padding-right: 100px;    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px;
+    margin: 3px;
+    background-color: grey;
+    color: white;
+  }
+
+.data.third{
+  background-color: yellow;
+  flex: 1 1 100%;
+  height: 100px;
+}
+.data.fourth{
+  background-color: brown;
+  flex: 1 1 100%;
+  height: 300px;
+}
+
+
+
+
+.data.fifth{
+  background-color: brown;
+  flex: 1 1 100%;
+}
+
+.data.sixth{
+  background-color: pink;
+  flex: 1 1 100%;
+}
+.data.seventh{
+  background-color: white;
+  flex: 1 1 100%;
+}
+  .data.eights{
+  background-color: blue;
+  flex: 1 1 100%;
+}
+.data.nineths{
+  background-color: red;
+  flex: 1 1 100%;
+}
+
+.data.tenths{
+  background-color: green;
+  flex: 1 1 100%;
+  }
+
 .button{
+  display: flex;
+  flex-wrap: wrap;
   flex: 1 1 100%;
   height: 300px;
   background-color: yellow;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  height: 100px;
+}
+
+.row.first{
+  background-color: green;
+  flex: 1 1 100%;
+}
+
+.row.second{
+  background-color: red;
+  flex: 1 1 100%;
+}
+
+.row.third{
+  background-color: blue;
+  flex: 1 1 100%;
 }
