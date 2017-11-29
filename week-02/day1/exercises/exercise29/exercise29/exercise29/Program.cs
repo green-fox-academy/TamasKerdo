@@ -11,40 +11,78 @@ namespace exercise28
         static void Main(string[] args)
         {
 
-            // Write a program that reads a number from the standard input, then draws a
-            // triangle like this:
-            //
-            // *
-            // **
-            // ***
-            // ****
-            //
-            // The triangle should have as many lines as the number was
-            Console.WriteLine("number of the triangle rows:");
+
+            Console.WriteLine("number of the rows of the tringle:");
             string input = Console.ReadLine();
             int triangleRow;
             Int32.TryParse(input, out triangleRow);
-            int reactIterator = triangleRow;
-            for (int i = 1; i < triangleRow + 1; i++)
+
+            for (int i = 0; i < triangleRow; i++)
             {
-                reactIterator--;
-                
-                    
-                    for (int k=0; reactIterator>=k;k++)
-                    {
-                        Console.Write(" ");
-                                               
-                    }
-                                  
-                    for (int k = 0; i > k; k++)
+
+                for (int j = 0; j < triangleRow - 1; j++)
+                {
+                    if (i + j >= triangleRow - 1)
                     {
                         Console.Write("*");
+                    }
+                    else
+                    {
                         Console.Write(" ");
                     }
+                }
+                Console.Write("*");
+                for (int j = 0; j < triangleRow - 1; j++)
+                {
+                    if (i + j >= triangleRow - 1)
+                    {
+                        Console.Write("*");
+                    }
+
+
+                }
+                Console.WriteLine();
+
+            }
+
+
+
+            for (int i = 0; i < triangleRow; i++)
+            {
+
+                for (int j = 0; j < triangleRow - 1; j++)
+                {
+                    if (j<i+1)
+                    {
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.Write("*");
+                    }
+                }
+
+
+
+
+                for (int j = 0; j < triangleRow - 1; j++)
+                {
+                    if (triangleRow-j-i-1>0)
+                    {
+                        Console.Write("*");
+                    }
+                    
+                }
                 
                 Console.WriteLine();
             }
+
+
+
             Console.ReadLine();
+
         }
     }
 }
+    
+
