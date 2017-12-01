@@ -14,13 +14,14 @@ namespace JOsephus_problem
             Console.WriteLine("The Josephus problem \nPlease give me the number of the circle");
             int circlePointNumber = Console.Read();
 
-
+            // Initialize the Dictionary list
             var circlePointList = new List<Dictionary<string, object>>();
+            var josephusCircle = new Dictionary<string, object>();
 
             for (int i = 0; i < circlePointNumber; i++)
             {
-                var josephusCircle = new Dictionary<string, object>();
-
+                new Dictionary<string, object>();
+                
                 josephusCircle.Add("position", i);
 
                 if (i + 1 == circlePointNumber)
@@ -35,8 +36,18 @@ namespace JOsephus_problem
 
                 circlePointList.Add(josephusCircle);
             }
+            
+            foreach (var list in circlePointList)
+            {
+                foreach (var dict in josephusCircle)
+                {
+                    Console.WriteLine(josephusCircle["position"]);
+                    Console.WriteLine(josephusCircle["nextPosition"]);
+                    Console.WriteLine(josephusCircle["status"]);
+                    Console.WriteLine();
+                }
 
-
+            }
 
 
         }
