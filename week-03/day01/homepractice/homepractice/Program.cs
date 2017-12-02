@@ -40,8 +40,10 @@ namespace homepractice
                     parameterList.Add(line);
                 }
 
-                Console.ReadLine();
             }
+
+            parameterList.Remove("Amplitude Frequency[Hz]");
+
             float[] frequencyArray = new float[parameterList.Count];
             float[] amplitudeArray = new float[parameterList.Count];
             int i = 0;
@@ -62,9 +64,16 @@ namespace homepractice
                              
                 i++;
             }
-            
-
-
+            foreach (var item in frequencyArray)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            foreach (var item in amplitudeArray)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadLine();
         }
     }
 }
