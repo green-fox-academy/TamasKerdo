@@ -1,0 +1,5 @@
+﻿Amplitude Frequency[Hz]
+10 10
+5 5
+15 3
+20 10
