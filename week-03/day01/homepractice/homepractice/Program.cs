@@ -20,14 +20,10 @@ namespace homepractice
             Console.WriteLine(File.ReadAllText(Filename));
         }
 
-        static void Main(string[] args)
+        
+
+        static List<Array> ReadInParameters()
         {
-            string Filename = @"D:\Greenfox Academy tananyag\repos\greenfox\TamasKerdo\week-03\day01\homepractice\MyFirstFileWrite.txt";
-            WriteFile(Filename);
-            ReadFile(Filename);
-            Console.ReadLine();
-
-
             StreamReader myReader = new StreamReader("Values.txt");
             string line = "";
             List<string> parameterList = new List<string>();
@@ -41,38 +37,49 @@ namespace homepractice
                 }
 
             }
+            myReader.Close();
 
             parameterList.Remove("Amplitude Frequency[Hz]");
 
             float[] frequencyArray = new float[parameterList.Count];
             float[] amplitudeArray = new float[parameterList.Count];
+            
             int i = 0;
-
             foreach (var parameter in parameterList)
             {
                 float amplitude;
                 float frequency;
-                
+
                 Char delimiter = ' ';
                 string[] stringSplitterArray = parameter.Split(delimiter);
-                
+
                 float.TryParse(stringSplitterArray[0], out amplitude);
                 float.TryParse(stringSplitterArray[1], out frequency);
 
                 amplitudeArray[i] = amplitude;
                 frequencyArray[i] = frequency;
-                             
+
                 i++;
             }
-            foreach (var item in frequencyArray)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine();
-            foreach (var item in amplitudeArray)
-            {
-                Console.WriteLine(item);
-            }
+
+            List<Array> returnList = new List<Array>();
+            returnList.Add(amplitudeArray);
+            returnList.Add(frequencyArray);
+
+            return returnList;
+        }
+
+        static void Main(string[] args)
+        {
+            string Filename = @"D:\Greenfox Academy tananyag\repos\greenfox\TamasKerdo\week-03\day01\homepractice\MyFirstFileWrite.txt";
+            WriteFile(Filename);
+            ReadFile(Filename);
+            Console.ReadLine();
+
+            var parameterList = ReadInParameters();
+
+
+            
             Console.ReadLine();
         }
     }
