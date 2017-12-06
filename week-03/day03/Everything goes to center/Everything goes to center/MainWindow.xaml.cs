@@ -36,31 +36,33 @@ namespace Everything_goes_to_center
         public void StarDrawer(int xstart, int ystart)
         {
             var foxDraw = new FoxDraw(canvas);
-            int xcenter = xstart + 100 / 2;
-            int ycenter = ystart + 100 / 2;
+            int halfWidth = 1000 / 2;
+            int resolution = 2;
+            int xcenter = xstart + halfWidth;
+            int ycenter = ystart + halfWidth;
             int xposition = xstart;
             int yposition = ystart;
 
 
-            while (xposition < (xcenter + 100/2))
+            while (xposition < (xcenter + halfWidth))
             {
                 foxDraw.DrawLine(xposition, yposition, xcenter, ycenter);
-                xposition += 20;
+                xposition += resolution;
             }
-            while (yposition < (ycenter + 100/2))
+            while (yposition < (ycenter + halfWidth))
             {
                 foxDraw.DrawLine(xposition, yposition, xcenter, ycenter);
-                yposition += 20;
+                yposition += resolution;
             }
-            while (xposition > (xcenter - 100/2))
+            while (xposition > (xcenter - halfWidth))
             {
                 foxDraw.DrawLine(xposition, yposition, xcenter, ycenter);
-                xposition -= 20;
+                xposition -= resolution;
             }
-            while (yposition > (ycenter - 100/2))
+            while (yposition > (ycenter - halfWidth))
             {
                 foxDraw.DrawLine(xposition, yposition, xcenter, ycenter);
-                yposition -= 20;
+                yposition -= resolution;
             }
         }
     }
