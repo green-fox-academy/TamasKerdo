@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 
-namespace Colored_box
+namespace Diagonals
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,21 +23,16 @@ namespace Colored_box
     {
         public MainWindow()
         {
-
-            // draw a box that has different colored lines on each edge.
-
+            
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-
+            // draw the canvas' diagonals in green.
             foxDraw.StrokeColor(Colors.Green);
-            foxDraw.DrawLine(0,0,30,0);
-            foxDraw.StrokeColor(Colors.Blue);
-            foxDraw.DrawLine(30, 0, 30, 50);
-            foxDraw.StrokeColor(Colors.Yellow);
-            foxDraw.DrawLine(30, 50, 0, 50);
-            foxDraw.StrokeColor(Colors.Red);
-            foxDraw.DrawLine(0, 50, 0, 0);
-            
+            foxDraw.DrawLine(0,0, 525,350);
+
+
+
+          
         }
     }
 }

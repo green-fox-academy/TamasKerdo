@@ -14,30 +14,32 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 
-namespace Colored_box
+namespace To_the_center
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
+            
+            // create a line drawing function that takes 2 parameters:
+            // the x and y coordinates of the line's starting point
+            // and draws a line from that point to the center of the canvas.
+            // draw 3 lines with that function.
+            int x = 10;
+            int y = 10;
+            linedraw(x,y);
+        }
 
-            // draw a box that has different colored lines on each edge.
-
+        public void linedraw(int x, int y)
+        {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-
             foxDraw.StrokeColor(Colors.Green);
-            foxDraw.DrawLine(0,0,30,0);
-            foxDraw.StrokeColor(Colors.Blue);
-            foxDraw.DrawLine(30, 0, 30, 50);
-            foxDraw.StrokeColor(Colors.Yellow);
-            foxDraw.DrawLine(30, 50, 0, 50);
-            foxDraw.StrokeColor(Colors.Red);
-            foxDraw.DrawLine(0, 50, 0, 0);
-            
+            foxDraw.DrawLine(x, y,263, 175);
         }
     }
 }
