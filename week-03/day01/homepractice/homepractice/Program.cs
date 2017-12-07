@@ -43,7 +43,7 @@ namespace homepractice
 
             float[] frequencyArray = new float[parameterList.Count];
             float[] amplitudeArray = new float[parameterList.Count];
-            
+            float[] nullArray = new float[parameterList.Count];
             int i = 0;
             foreach (var parameter in parameterList)
             {
@@ -61,12 +61,30 @@ namespace homepractice
 
                 i++;
             }
-
+            
             List<Array> returnList = new List<Array>();
             returnList.Add(amplitudeArray);
             returnList.Add(frequencyArray);
+            returnList.Add(nullArray);
+            returnList.Add(nullArray);
+            returnList.Add(nullArray);
+
+            int amplitude = returnList;
 
             return returnList;
+        }
+
+        public void CircleDrawer(List<Array> parameterList, int angleResolution)
+        {
+            int amplitude = parameterList[0][0];
+            
+            
+                
+
+            while (angleResolution < 360)
+            {
+
+            }
         }
 
         static void Main(string[] args)
@@ -77,7 +95,9 @@ namespace homepractice
             Console.ReadLine();
 
             var parameterList = ReadInParameters();
+            int angleResolution = 1;
 
+            CircleDrawer(parameterList, angleResolution);
 
             
             Console.ReadLine();
