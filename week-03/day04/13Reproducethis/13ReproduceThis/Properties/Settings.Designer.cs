@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _12Reproduce_This.Properties
+namespace _13ReproduceThis.Properties
 {
 
 

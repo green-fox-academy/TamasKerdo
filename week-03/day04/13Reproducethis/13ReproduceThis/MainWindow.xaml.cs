@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 
-namespace _11ReproduceThis
+namespace _13ReproduceThis
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,13 +24,13 @@ namespace _11ReproduceThis
         public MainWindow()
         {
             InitializeComponent();
-            
 
 
-            int xStartpoint = 200;
+
+            int xStartpoint = 500;
             int yStartpoint = 0;
-            int size = 400;
-            int cycle = 6;
+            int size = 500;
+            int cycle = 5;
             DrawPlease(xStartpoint, yStartpoint, size, cycle);
 
 
@@ -47,8 +47,8 @@ namespace _11ReproduceThis
             double cosAngle = Math.Cos(angle);
 
             int pointLenght = size / 2;
-            int xLenght = Convert.ToInt32(pointLenght / cosAngle);
-            int yLenght = Convert.ToInt32(pointLenght / sinAngle);
+            int xLenght = Convert.ToInt32((pointLenght/2) / sinAngle);
+            int yLenght = Convert.ToInt32((pointLenght / 2)/ cosAngle);
 
 
             int[] Point1 = new int[2];
@@ -60,18 +60,18 @@ namespace _11ReproduceThis
             Point2[1] = yStartpoint;
 
             int[] Point3 = new int[2];
-            Point3[0] = xStartpoint + 2*pointLenght;
+            Point3[0] = xStartpoint + 2 * pointLenght;
             Point3[1] = yStartpoint;                    //1sor
 
 
 
             int[] Point4 = new int[2];
             Point4[0] = xStartpoint + 2 * pointLenght + xLenght;
-            Point4[1] = yStartpoint +yLenght;                              //ok  
+            Point4[1] = yStartpoint + yLenght;                              //ok  
 
             int[] Point5 = new int[2];
-            Point5[0] = xStartpoint + 2 * pointLenght + 2*xLenght;
-            Point5[1] = yStartpoint + 2*yLenght;
+            Point5[0] = xStartpoint + 2 * pointLenght + 2 * xLenght;
+            Point5[1] = yStartpoint + 2 * yLenght;
 
             int[] Point6 = new int[2];
             Point6[0] = xStartpoint + 2 * pointLenght + xLenght;
@@ -98,7 +98,7 @@ namespace _11ReproduceThis
             Point10[1] = yStartpoint + 3 * yLenght;               //ok
 
             int[] Point11 = new int[2];
-            Point11[0] = xStartpoint - 2*xLenght;
+            Point11[0] = xStartpoint - 2 * xLenght;
             Point11[1] = yStartpoint + 2 * yLenght;        //ok
 
             int[] Point12 = new int[2];
@@ -107,7 +107,7 @@ namespace _11ReproduceThis
 
             int[] Point13 = new int[2];
             Point13[0] = xStartpoint + 1 * pointLenght;
-            Point13[1] = yStartpoint + 2* yLenght;      //center ok
+            Point13[1] = yStartpoint + 2 * yLenght;      //center ok
 
 
             int[] Point14 = new int[2];
@@ -119,12 +119,12 @@ namespace _11ReproduceThis
             Point15[1] = yStartpoint + 2 * yLenght - yLenght;
 
             int[] Point16 = new int[2];
-            Point16[0] = xStartpoint + 1 * pointLenght +xLenght;
-            Point16[1] = yStartpoint + 2 * yLenght+ yLenght;             //5sor
+            Point16[0] = xStartpoint + 1 * pointLenght + xLenght;
+            Point16[1] = yStartpoint + 2 * yLenght + yLenght;             //5sor
 
 
 
-            
+
             foxDraw.DrawLine(Point1[0], Point1[1], Point3[0], Point3[1]);
             foxDraw.DrawLine(Point3[0], Point3[1], Point5[0], Point5[1]);
             foxDraw.DrawLine(Point5[0], Point5[1], Point7[0], Point7[1]);
@@ -142,16 +142,16 @@ namespace _11ReproduceThis
             foxDraw.DrawLine(Point16[0], Point16[1], Point6[0], Point6[1]);
             foxDraw.DrawLine(Point16[0], Point16[1], Point8[0], Point8[1]);
 
-            
-
+            size = size / 2; 
             if (cycle > 0)
             {
-                DrawPlease(Point1[0], Point1[1], size / 2, --cycle);
-                DrawPlease(Point14[0], Point14[1], size / 2, cycle);
-                DrawPlease(Point15[0], Point15[1], size / 2, cycle);
-                
+                DrawPlease(Point1[0], Point1[1], size, --cycle);
+                DrawPlease(Point14[0], Point14[1], size, cycle);
+                DrawPlease(Point15[0], Point15[1], size, cycle);
+
             }
 
         }
     }
 }
+
