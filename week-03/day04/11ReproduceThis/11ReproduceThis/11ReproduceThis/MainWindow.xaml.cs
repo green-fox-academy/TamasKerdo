@@ -110,8 +110,7 @@ namespace _11ReproduceThis
             foxDraw.DrawLine(Point01[0], Point01[1], Point31[0], Point31[1]);
             foxDraw.DrawLine(Point02[0], Point02[1], Point32[0], Point32[1]);
             foxDraw.DrawLine(Point10[0], Point10[1], Point13[0], Point13[1]);
-            foxDraw.DrawLine(Point20[0], Point20[1], Point23[0], Point23[1]);
-            
+            foxDraw.DrawLine(Point20[0], Point20[1], Point23[0], Point23[1]);            
 
             if (cycle > 0)
             {
@@ -119,8 +118,6 @@ namespace _11ReproduceThis
                 DrawPlease(Point10[0], Point10[1], size/3,cycle);
                 DrawPlease(Point21[0], Point21[1], size/3,cycle);
                 DrawPlease(Point12[0], Point12[1], size/3,cycle);
-                
-
             }
 
         }
