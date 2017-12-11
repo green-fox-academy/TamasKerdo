@@ -10,25 +10,78 @@ namespace Pirates
     {
         public List<Pirates> CrewList  { get; private set; }
         public Pirates Captain { get; private set; }
-
-        public Ship()
-        {
-
-        }
+        public bool isAlive { get; private set; }
 
         public void FillShip()
         {
-            
-            Captain = new Pirates(0);
-
+            isAlive = true;
             var rn = new Random();
+            Captain = new Pirates(0,rn.Next(1,3));
+
+            
             for (int i = 1; i < rn.Next(1,101); i++)
             {
                 
-                CrewList[i] = new Pirates(i);
-            }
-            
+                CrewList[i] = new Pirates(i, rn.Next(2, 4));
+            }           
+        }
+        public int[] getShipStatus()
+        {
+            var returnStatusArray = new int[3];
+            returnStatusArray[0] = Captain.IntoxicateState;
 
+            foreach (var PirateMember in CrewList)
+            {
+                if (PirateMember.IsThePirateDead == true)
+                {
+                    returnStatusArray[1] = returnStatusArray[1]++;
+                }                
+            }
+
+            if (Captain.IsThePirateDead == true)
+            {
+                returnStatusArray[2] = 1;
+            }
+
+            return returnStatusArray;
+        }
+
+        public int CalculateBattleScore()
+        {
+            int score = 0;
+            foreach (var PirateMember in CrewList)
+            {
+                if (PirateMember.IsThePirateDead == true)
+                {
+                    score++;
+                }
+                
+            }
+            return score + Captain.IntoxicateState;
+        }
+
+        public void Battle(int theOtherShipScore)
+        {
+            var rn = new Random();
+            if (theOtherShipScore > CalculateBattleScore())
+            {
+                if (CrewList.Count - 1 == 0)
+                {
+                    isAlive = false;
+                    CrewList.RemoveRange(0, rn.Next(1, CrewList.Count - 1));
+                }
+                else
+                {
+                    CrewList.RemoveRange(0, rn.Next(1, CrewList.Count - 1));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < rn.Next(1, CrewList.Count - 1); i++)
+                {
+                    CrewList[i].DrinkSomeRum();
+                }
+            }
         }
 
     }

@@ -54,8 +54,7 @@ namespace Pirates
                 if (DamageOfTheOtherPirate >= damage)
                 {
                     Die();
-                }
-                
+                }                
             }
             else
             {
@@ -63,8 +62,7 @@ namespace Pirates
                 if (DamageOfTheOtherPirate >= damage)
                 {
                     Die();
-                }
-                
+                }                
             }
             return damage;
 
