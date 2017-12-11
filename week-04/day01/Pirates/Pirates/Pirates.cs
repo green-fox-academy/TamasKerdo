@@ -12,9 +12,9 @@ namespace Pirates
         public int IntoxicateState { get; private set; }
         public bool IsThePirateDead { get; private set; }
 
-        public Pirates(int id)
+        public Pirates(int id, int IntoxicateState)
         {
-            IntoxicateState = 0;
+            this.IntoxicateState = IntoxicateState;
             IsThePirateDead = false;
             pirateId = id;
         }
@@ -47,12 +47,28 @@ namespace Pirates
         public int Brawl(int DamageOfTheOtherPirate)
         {
             var rn = new Random();
-            int damage = rn.Next(1, 4);
-            if (DamageOfTheOtherPirate >= damage)
+            int damage;
+            if (IntoxicateState < 3)
             {
-                Die();
+                damage = rn.Next(1, 4);
+                if (DamageOfTheOtherPirate >= damage)
+                {
+                    Die();
+                }
+                
+            }
+            else
+            {
+                damage = rn.Next(1, 3);
+                if (DamageOfTheOtherPirate >= damage)
+                {
+                    Die();
+                }
+                
             }
             return damage;
+
+        }
         }
     }
 }

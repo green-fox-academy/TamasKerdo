@@ -18,7 +18,16 @@ namespace Pirates
 
         public void FillShip()
         {
+            
+            Captain = new Pirates(0);
+
             var rn = new Random();
+            for (int i = 1; i < rn.Next(1,101); i++)
+            {
+                
+                CrewList[i] = new Pirates(i);
+            }
+            
 
         }
 
