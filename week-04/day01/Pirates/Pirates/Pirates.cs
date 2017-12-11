@@ -67,6 +67,6 @@ namespace Pirates
             return damage;
 
         }
-        }
+        
     }
 }

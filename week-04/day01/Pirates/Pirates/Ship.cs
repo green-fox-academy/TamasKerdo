@@ -17,12 +17,13 @@ namespace Pirates
             isAlive = true;
             var rn = new Random();
             Captain = new Pirates(0,rn.Next(1,3));
-
+            CrewList = new List<Pirates>();
+            CrewList.Add(Captain);
             
             for (int i = 1; i < rn.Next(1,101); i++)
             {
                 
-                CrewList[i] = new Pirates(i, rn.Next(2, 4));
+                CrewList.Add(new Pirates(i, rn.Next(2, 4)));
             }           
         }
         public int[] getShipStatus()
@@ -77,7 +78,7 @@ namespace Pirates
             }
             else
             {
-                for (int i = 0; i < rn.Next(1, CrewList.Count - 1); i++)
+                for (int i = 0; i < rn.Next(1, CrewList.Count); i++)
                 {
                     CrewList[i].DrinkSomeRum();
                 }
