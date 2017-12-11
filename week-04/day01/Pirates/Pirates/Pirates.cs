@@ -8,13 +8,15 @@ namespace Pirates
 {
     class Pirates
     {
+        public int pirateId { get; private set; }
         public int IntoxicateState { get; private set; }
         public bool IsThePirateDead { get; private set; }
 
-        public Pirates()
+        public Pirates(int id)
         {
             IntoxicateState = 0;
             IsThePirateDead = false;
+            pirateId = id;
         }
 
         public void DrinkSomeRum()
