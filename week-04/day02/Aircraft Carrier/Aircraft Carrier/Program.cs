@@ -10,6 +10,10 @@ namespace Aircraft_Carrier
     {
         static void Main(string[] args)
         {
+            Carrier Nimitz = new Carrier();
+            
+            Nimitz.AddAircraft();
+
         }
     }
 }

@@ -8,5 +8,11 @@ namespace Aircraft_Carrier
 {
     class F35 : Aircraft
     {
+        public F35()
+        {
+            BaseDamage = 50;
+            MaxAmmo = 12;
+            AircraftType = "Type F35";
+        }            
     }
 }
