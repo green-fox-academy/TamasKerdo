@@ -40,7 +40,7 @@ namespace Green_Fox_inheritance_exercise
 
         public new void Introduce()
         {
-            Console.WriteLine("Hi, I'm name, a age year old gender who represents company and hired hiredStudents students so far.");
+            Console.WriteLine("Hi, I'm " + Name + ", a " + Age + " year old " + Gender + " who represents " + Company + " and hired " + HiredStudents + " students so far.");
         }
 
         public new void Hire()

@@ -29,9 +29,7 @@ namespace Green_Fox_inheritance_exercise
 
         public Mentor()
         {
-            Name = "Jane Doe";
-            Age = 30;
-            Gender = "female";
+           
         }
 
         public new void GetGoal()
@@ -41,7 +39,7 @@ namespace Green_Fox_inheritance_exercise
 
         public new void Introduce()
         {
-            Console.WriteLine("Hi, I'm name, a age year old gender level mentor.");
+            Console.WriteLine("Hi, I'm " + Name + ", a " + Age + " year old " + Gender + " " + Level + " mentor.");
         }
     }
 }
