@@ -24,22 +24,15 @@ namespace _13ReproduceThis
         public MainWindow()
         {
             InitializeComponent();
-
-
-
             int xStartpoint = 500;
             int yStartpoint = 0;
             int size = 500;
-            int cycle = 5;
+            int cycle = 6;
             DrawPlease(xStartpoint, yStartpoint, size, cycle);
-
-
         }
-
 
         public void DrawPlease(int xStartpoint, int yStartpoint, int size, int cycle)
         {
-
             var foxDraw = new FoxDraw(canvas);
             int degrees = 60;
             double angle = Math.PI * degrees / 180.0;
@@ -61,13 +54,11 @@ namespace _13ReproduceThis
 
             int[] Point3 = new int[2];
             Point3[0] = xStartpoint + 2 * pointLenght;
-            Point3[1] = yStartpoint;                    //1sor
-
-
-
+            Point3[1] = yStartpoint;                
+            
             int[] Point4 = new int[2];
             Point4[0] = xStartpoint + 2 * pointLenght + xLenght;
-            Point4[1] = yStartpoint + yLenght;                              //ok  
+            Point4[1] = yStartpoint + yLenght;                               
 
             int[] Point5 = new int[2];
             Point5[0] = xStartpoint + 2 * pointLenght + 2 * xLenght;
@@ -75,31 +66,27 @@ namespace _13ReproduceThis
 
             int[] Point6 = new int[2];
             Point6[0] = xStartpoint + 2 * pointLenght + xLenght;
-            Point6[1] = yStartpoint + 3 * yLenght;                    //ok
-
-
-
-
+            Point6[1] = yStartpoint + 3 * yLenght;                    
+            
             int[] Point7 = new int[2];
             Point7[0] = xStartpoint + 2 * pointLenght;
-            Point7[1] = yStartpoint + 4 * yLenght;              //ok
+            Point7[1] = yStartpoint + 4 * yLenght;              
 
             int[] Point8 = new int[2];
             Point8[0] = xStartpoint + pointLenght;
-            Point8[1] = yStartpoint + 4 * yLenght;          //ok
+            Point8[1] = yStartpoint + 4 * yLenght;          
 
             int[] Point9 = new int[2];
             Point9[0] = xStartpoint;
-            Point9[1] = yStartpoint + 4 * yLenght;             //ok
-
-
+            Point9[1] = yStartpoint + 4 * yLenght;             
+            
             int[] Point10 = new int[2];
             Point10[0] = xStartpoint - xLenght;
-            Point10[1] = yStartpoint + 3 * yLenght;               //ok
+            Point10[1] = yStartpoint + 3 * yLenght;              
 
             int[] Point11 = new int[2];
             Point11[0] = xStartpoint - 2 * xLenght;
-            Point11[1] = yStartpoint + 2 * yLenght;        //ok
+            Point11[1] = yStartpoint + 2 * yLenght;        
 
             int[] Point12 = new int[2];
             Point12[0] = xStartpoint - xLenght;
@@ -107,12 +94,11 @@ namespace _13ReproduceThis
 
             int[] Point13 = new int[2];
             Point13[0] = xStartpoint + 1 * pointLenght;
-            Point13[1] = yStartpoint + 2 * yLenght;      //center ok
-
-
+            Point13[1] = yStartpoint + 2 * yLenght;      
+            
             int[] Point14 = new int[2];
             Point14[0] = xStartpoint;
-            Point14[1] = yStartpoint + 2 * yLenght;       //ok
+            Point14[1] = yStartpoint + 2 * yLenght;       
 
             int[] Point15 = new int[2];
             Point15[0] = xStartpoint + 1 * pointLenght + xLenght;
@@ -120,10 +106,8 @@ namespace _13ReproduceThis
 
             int[] Point16 = new int[2];
             Point16[0] = xStartpoint + 1 * pointLenght + xLenght;
-            Point16[1] = yStartpoint + 2 * yLenght + yLenght;             //5sor
-
-
-
+            Point16[1] = yStartpoint + 2 * yLenght + yLenght;          
+            
 
             foxDraw.DrawLine(Point1[0], Point1[1], Point3[0], Point3[1]);
             foxDraw.DrawLine(Point3[0], Point3[1], Point5[0], Point5[1]);
@@ -131,7 +115,6 @@ namespace _13ReproduceThis
             foxDraw.DrawLine(Point7[0], Point7[1], Point9[0], Point9[1]);
             foxDraw.DrawLine(Point9[0], Point9[1], Point11[0], Point11[1]);
             foxDraw.DrawLine(Point11[0], Point11[1], Point1[0], Point1[1]);
-
             foxDraw.DrawLine(Point2[0], Point2[1], Point15[0], Point15[1]);
             foxDraw.DrawLine(Point12[0], Point12[1], Point14[0], Point14[1]);
             foxDraw.DrawLine(Point10[0], Point10[1], Point14[0], Point14[1]);
@@ -148,7 +131,7 @@ namespace _13ReproduceThis
                 DrawPlease(Point1[0], Point1[1], size, --cycle);
                 DrawPlease(Point14[0], Point14[1], size, cycle);
                 DrawPlease(Point15[0], Point15[1], size, cycle);
-
+                DrawPlease(Point15[0], Point15[1], size, cycle);
             }
 
         }

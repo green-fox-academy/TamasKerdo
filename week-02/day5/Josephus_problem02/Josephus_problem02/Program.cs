@@ -37,10 +37,8 @@ namespace Josephus_problem02
             while (circlePointNumber != 1)
             {
                            
-             josephusCircle[pointer] = josephusCircle[josephusCircle[pointer]];
-             
-             //josephusCircle[josephusCircle[pointer]] = 0;
-             
+             josephusCircle[pointer] = josephusCircle[josephusCircle[pointer]];             
+                    
              pointer = josephusCircle[pointer];
              
              circlePointNumber--;
