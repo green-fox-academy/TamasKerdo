@@ -16,10 +16,37 @@ namespace Green_Fox_inheritance_exercise
         //mentors: a list of Mentors
         //methods:
         //AddStudent(Student): adds the given Student to students list
-        //AddMentor(Mentor): adds the given Mentor to mentors list
+        //AddStudent(Student): adds the given Mentor to mentors list
         //Info(): prints out "Pallida className class has students.size students and mentors.size mentors."
         //The PallidaClass class has the following constructors:
 
         //PallidaClass(className) : beside the given parameter, it sets students and mentors as empty lists
+
+        public string className { get; set; }
+        public List<Student> StudentList { get; set; }
+        public List<Mentor> MentorList  { get; set; }
+
+        public PallidaClass(string className)
+        {
+            this.className = className;
+            StudentList.Clear();
+            MentorList.Clear();
+        }
+
+        public void AddStudent(Student OneStudent)
+        {
+            StudentList.Add(OneStudent);
+        }
+
+        public void AddStudent(Mentor OneMentor)
+        {
+            MentorList.Add(OneMentor);
+        }
+
+        public void Info()
+        {
+            Console.WriteLine("Pallida" + className + "class has " + StudentList.Count + " students and " + MentorList.Count + " mentors.");
+        }
+
     }
 }
