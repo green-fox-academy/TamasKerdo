@@ -37,7 +37,7 @@ namespace Green_Fox_inheritance_exercise
 
         public void Introduce()
         {
-            Console.WriteLine("Hi, I'm name, a age year old gender.");
+            Console.WriteLine("Hi, I'm " + Name + ", a " + Age + " year old " + Gender + ".");
         }
 
         public void GetGoal()

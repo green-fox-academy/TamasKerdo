@@ -29,7 +29,7 @@ namespace Green_Fox_inheritance_exercise
 
         public Mentor()
         {
-           
+            
         }
 
         public new void GetGoal()

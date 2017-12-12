@@ -32,6 +32,10 @@ namespace Green_Fox_inheritance_exercise
             skippedDays = 0;
         }
 
+        public Student()
+        {
+            
+        }
 
 
         public new void GetGoal()

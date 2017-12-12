@@ -29,8 +29,8 @@ namespace Green_Fox_inheritance_exercise
         public PallidaClass(string className)
         {
             this.className = className;
-            StudentList.Clear();
-            MentorList.Clear();
+            
+
         }
 
         public void AddStudent(Student OneStudent)
@@ -38,7 +38,7 @@ namespace Green_Fox_inheritance_exercise
             StudentList.Add(OneStudent);
         }
 
-        public void AddStudent(Mentor OneMentor)
+        public void AddMentor(Mentor OneMentor)
         {
             MentorList.Add(OneMentor);
         }

@@ -36,6 +36,7 @@ namespace Green_Fox_inheritance_exercise
         {
             HiredStudents = 0;
             Company = "Google";
+            
         }
 
         public new void Introduce()
