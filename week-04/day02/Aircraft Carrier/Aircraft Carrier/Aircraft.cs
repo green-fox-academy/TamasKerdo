@@ -54,7 +54,6 @@ namespace Aircraft_Carrier
                 CurrentAmmo +=InputAmmo;
                 return 0;
             }
-        }
-                
+        }                
     }
 }
