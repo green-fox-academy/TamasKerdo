@@ -27,17 +27,19 @@ namespace RPG_Game
         {
             InitializeComponent();
             FoxDraw = new FoxDraw(canvas);
-            FoxDraw.AddImage("Assets/boss.png", 0, 0);
+            //FoxDraw.AddImage("Assets/boss.png", 0, 0);
+            var gameMap = new Map(FoxDraw);
+            gameMap.GenerateMap();
         }
 
-        private new void KeyDownEvent(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F)
-            {
-                double x = FoxDraw.GetLeft(FoxDraw.Tiles[0]) + 10;
-                double y = FoxDraw.GetTop(FoxDraw.Tiles[0]) + 10;
-                FoxDraw.SetPosition(FoxDraw.Tiles[0], x, y);
-            }
-        }
+        //private new void KeyDownEvent(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.F)
+        //    {
+        //        double x = FoxDraw.GetLeft(FoxDraw.Tiles[0]) + 10;
+        //        double y = FoxDraw.GetTop(FoxDraw.Tiles[0]) + 10;
+        //        FoxDraw.SetPosition(FoxDraw.Tiles[0], x, y);
+        //    }
+        //}
     }
 }
