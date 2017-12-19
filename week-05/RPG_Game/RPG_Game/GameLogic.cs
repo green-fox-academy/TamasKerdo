@@ -26,10 +26,10 @@ namespace RPG_Game
                                      {0 ,1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0 },
                                      {0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0 },
                                      {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
-                                     {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
+                                     {0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0 },
                                      {0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
-                                     {0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0 },
-                                     {0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0 },
+                                     {0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0 },
+                                     {0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0 },
                                      {0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0 },
                                      {0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0 },
                                      {0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
@@ -107,8 +107,8 @@ namespace RPG_Game
 
         public void PlaceTheCharacters(FoxDraw FoxCharacter)
         {
-            int x = 1;
-            int y = 1;
+            int x = 0;
+            int y = 0;
             var hero = new Hero(x,y);
             FoxCharacter.AddImage(hero.basicLookout, hero.position[0], hero.position[1]);
             var rn = new Random();
@@ -214,31 +214,52 @@ namespace RPG_Game
                     break;
             }
         }
+
+        
         public void MoveEnemies(FoxDraw FoxCharacter)
         {
             int x = 0;
             int y = 0;
-            for (int i = 1; i < 8; i++)
+            var rn = new Random();
+            
+            for (int i = 1; i < FoxCharacter.Tiles.Count; i++)
             {
                 x = FoxCharacter.GetLeft(FoxCharacter.Tiles[i]);
                 y = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
-
-                if (CanTheCharacterStepThere(x,y,0))
+                
+                switch (rn.Next(0, 4))
                 {
-
+                    case 0:
+                        if (CanTheCharacterStepThere(x, y - 50, 0))
+                        {
+                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - 50);
+                        }
+                        break;
+                    case 1:
+                        if (CanTheCharacterStepThere(x + 50, y, 1))
+                        {
+                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + 50, y);
+                        }
+                        break;
+                    case 2:
+                        if (CanTheCharacterStepThere(x, y + 50, 2))
+                        {
+                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + 50);
+                        }
+                        break;
+                    case 3:
+                        if (CanTheCharacterStepThere(x - 50, y, 3))
+                        {
+                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - 50, y);
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                else if (CanTheCharacterStepThere(x, y, 1))
-                {
-
-                }
-                else if (CanTheCharacterStepThere(x, y, 2))
-                {
-
-                }
-                else if (CanTheCharacterStepThere(x, y, 3))
-                {
-
-                }
+                
+                
+                
+                
             }
         }
     }

@@ -57,7 +57,7 @@ namespace RPG_Game
             {
                 GameLogic.MoveHero(3, FoxCharacter);
             }
-
+            GameLogic.MoveEnemies(FoxCharacter);
         }
     }
 }
