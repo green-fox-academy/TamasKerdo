@@ -212,7 +212,34 @@ namespace RPG_Game
                     break;
                 default:
                     break;
-            }            
+            }
+        }
+        public void MoveEnemies(FoxDraw FoxCharacter)
+        {
+            int x = 0;
+            int y = 0;
+            for (int i = 1; i < 8; i++)
+            {
+                x = FoxCharacter.GetLeft(FoxCharacter.Tiles[i]);
+                y = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
+
+                if (CanTheCharacterStepThere(x,y,0))
+                {
+
+                }
+                else if (CanTheCharacterStepThere(x, y, 1))
+                {
+
+                }
+                else if (CanTheCharacterStepThere(x, y, 2))
+                {
+
+                }
+                else if (CanTheCharacterStepThere(x, y, 3))
+                {
+
+                }
+            }
         }
     }
 }
