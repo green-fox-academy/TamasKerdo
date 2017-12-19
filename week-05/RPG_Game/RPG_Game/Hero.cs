@@ -35,6 +35,7 @@ namespace RPG_Game
             HP = HP + rn.Next(1, 7);
             DP = DP + rn.Next(1, 7);
             SP = SP + rn.Next(1, 7);
-        }        
+        }
+                
     }
 }

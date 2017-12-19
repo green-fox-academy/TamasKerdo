@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using GreenFox;
+using System.Windows.Media.Imaging;
 
 namespace RPG_Game
 {
@@ -148,6 +149,69 @@ namespace RPG_Game
                     y = rn.Next(1, 11);
                     x = rn.Next(1, 12);
                 }
+            }            
+        }
+
+        public void MoveHero(int direction, FoxDraw FoxCharacter)
+        {
+            int x = 0;
+            int y = 0;
+            switch (direction)
+            {
+                case 0:
+                    x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
+                    y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - 50;
+                    if (CanTheCharacterStepThere(x, y, 2))
+                    {
+                        FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-up.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-up.png", UriKind.Relative));
+                    }
+                    break;
+                case 1:
+                    x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
+                    y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + 50;
+                    if (CanTheCharacterStepThere(x, y, 0))
+                    {
+                        FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-down.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-down.png", UriKind.Relative));
+                    }
+                    break;
+                case 2:
+                    x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + 50;
+                    y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+                    if (CanTheCharacterStepThere(x, y, 1))
+                    {
+                        FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-right.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-right.png", UriKind.Relative));
+                    }
+                    break;
+                case 3:
+                    x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - 50;
+                    y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+                    if (CanTheCharacterStepThere(x, y, 3))
+                    {
+                        FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
+                    }
+                    break;
+                default:
+                    break;
             }            
         }
     }
