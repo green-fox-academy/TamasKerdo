@@ -171,8 +171,10 @@ namespace RPG_Game
             switch (direction)
             {
                 case 0:
+
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - 50;
+
                     if (CanTheCharacterStepThere(x, y, 2))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
@@ -184,8 +186,10 @@ namespace RPG_Game
                     }
                     break;
                 case 1:
+
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + 50;
+
                     if (CanTheCharacterStepThere(x, y, 0))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
@@ -197,8 +201,10 @@ namespace RPG_Game
                     }
                     break;
                 case 2:
+
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + 50;
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+
                     if (CanTheCharacterStepThere(x, y, 1))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
@@ -210,8 +216,10 @@ namespace RPG_Game
                     }
                     break;
                 case 3:
+
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - 50;
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+
                     if (CanTheCharacterStepThere(x, y, 3))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
@@ -226,7 +234,6 @@ namespace RPG_Game
                     break;
             }
         }
-
         
         public void MoveEnemies(FoxDraw FoxCharacter)
         {
@@ -298,8 +305,7 @@ namespace RPG_Game
                         FoxCharacter.Tiles.RemoveAt(i);
                     }
                 }
-            }
-            
+            }            
         }
     }
 }

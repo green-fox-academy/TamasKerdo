@@ -12,6 +12,7 @@ namespace RPG_Game
         public string UpLookout { get; set; }
         public string LeftLookout { get; set; }
         public string RightLookout { get; set; }
+        public bool key { get; set; }
 
         public Hero(int xPosition, int yPosition)
         {            
@@ -19,6 +20,7 @@ namespace RPG_Game
             UpLookout = "Images/hero-up.png";
             RightLookout = "Images/hero-right.png";
             basicLookout = "Images/hero-down.png";
+            key = false;
             var rn = new Random();
             rn.Next(1, 7);
             HP = 20 + 3 * rn.Next(1, 7);
@@ -26,6 +28,7 @@ namespace RPG_Game
             SP = 5 + rn.Next(1, 7);
             position[0] = xPosition;
             position[1] = yPosition;
+            
         }
 
         public void Leveling()
@@ -34,7 +37,7 @@ namespace RPG_Game
             rn.Next(1, 7);
             HP = HP + rn.Next(1, 7);
             DP = DP + rn.Next(1, 7);
-            SP = SP + rn.Next(1, 7);
+            SP = SP + rn.Next(1, 7);            
         }
                 
     }

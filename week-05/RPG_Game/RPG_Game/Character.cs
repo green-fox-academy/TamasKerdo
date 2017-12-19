@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace RPG_Game
 {
-    abstract class Character
+    public class Character
     {
         public int HP { get; set; }
         public int DP { get; set; }
         public int SP { get; set; }
         public int[] position { get; set; }
-        public string basicLookout { get; set; }
+        public string basicLookout { get; set; }        
 
         public Character()
         {
