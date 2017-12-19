@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GreenFox;
 
 namespace RPG_Game
 {
@@ -12,6 +13,7 @@ namespace RPG_Game
 
         public Monster(int xPosition, int yPosition, bool key, int Level)
         {
+            basicLookout = "Images/skeleton.png";
             var rn = new Random();
             this.key = key;
             switch (Level)

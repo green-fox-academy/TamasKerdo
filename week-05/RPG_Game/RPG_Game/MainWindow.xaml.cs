@@ -28,12 +28,12 @@ namespace RPG_Game
         {
             InitializeComponent();
             var FoxMap = new FoxDraw(canvas);
-            GameLogic = new GameLogic(FoxMap);
-            GameLogic.GenerateMap();
-
             FoxCharacter = new FoxDraw(canvas);
+
+            GameLogic = new GameLogic(FoxMap);
+            GameLogic.GenerateMap();           
+            GameLogic.PlaceTheCharacters(FoxCharacter);
             
-            FoxCharacter.AddImage("Images/hero-down.png", 0,0);
         }
 
         private void KeyEvent(object sender, KeyEventArgs e)

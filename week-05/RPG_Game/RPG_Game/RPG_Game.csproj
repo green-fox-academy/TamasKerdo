@@ -62,6 +62,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Boss.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="FoxDraw.cs" />
     <Compile Include="GameLogic.cs" />
@@ -111,6 +112,10 @@
   <ItemGroup>
     <Resource Include="Images\hero-left.png" />
     <Resource Include="Images\hero-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\boss.png" />
+    <Resource Include="Images\skeleton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

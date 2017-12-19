@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GreenFox;
 
 namespace RPG_Game
 {
@@ -12,6 +13,7 @@ namespace RPG_Game
 
         public Boss(int xPosition, int yPosition, int Level)
         {
+            basicLookout = "Images/boss.png";
             alive = true;
             var rn = new Random();            
             switch (Level)
@@ -33,6 +35,7 @@ namespace RPG_Game
                     position[1] = yPosition;
                     break;
             }
-        }
+            
+        }        
     }
 }

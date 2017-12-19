@@ -103,9 +103,53 @@ namespace RPG_Game
             }
             return returnValue;
         }
-        public void PlaceTheEnemies()
-        {
 
+
+        public void PlaceTheCharacters(FoxDraw FoxCharacter)
+        {
+            int x = 1;
+            int y = 1;
+            var hero = new Hero(x,y);
+            FoxCharacter.AddImage(hero.basicLookout, hero.position[0], hero.position[1]);
+            var rn = new Random();
+
+            x = rn.Next(1, 12);
+            y = rn.Next(1, 11);
+            while (FoxCharacter.Tiles.Count<2)
+            {
+                if (mapPoints[x, y] == 1)
+                {                   
+                    var boss = new Boss(x*50,y*50,1);
+                    FoxCharacter.AddImage(boss.basicLookout, boss.position[0], boss.position[1]);
+                    
+                }
+                x = rn.Next(1, 11);
+                y = rn.Next(1, 10);
+            }
+            int keyPosition = rn.Next(2, 10);
+            x = rn.Next(1, 11);
+            y = rn.Next(1, 10);
+            for (int i = 2; i < 9; i++)
+            {
+                while (FoxCharacter.Tiles.Count < i+1)
+                {
+                    if (mapPoints[x, y] == 1)
+                    {                        
+                        if (keyPosition == i)
+                        {
+                            var monster = new Monster(x*50, y * 50, true, 1);
+                            FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
+                        }
+                        else
+                        {
+                            var monster = new Monster(x * 50, y * 50, false, 1);
+                            FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
+                        }                        
+                    }
+                    x = rn.Next(1, 11);
+                    y = rn.Next(1, 10);
+                }
+            }            
         }
     }
 }
