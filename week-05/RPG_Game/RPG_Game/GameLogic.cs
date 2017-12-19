@@ -277,6 +277,7 @@ namespace RPG_Game
             int yHero = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
             int xEnemy = 0;
             int yEnemy = 0;
+            
 
             for (int i = 1; i < FoxCharacter.Tiles.Count; i++)
             {
@@ -284,10 +285,21 @@ namespace RPG_Game
                 yEnemy = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
                 if ((xHero == xEnemy)&&(yHero ==yEnemy))
                 {
-                    CharacterList[i].HP = CharacterList[0].DP - CharacterList[0].SP;
+                    CharacterList[i].HP = CharacterList[i].HP -( CharacterList[i].DP - CharacterList[0].SP);
+
+                    if (CharacterList[i].HP > 0)
+                    {
+                        CharacterList[0].HP = CharacterList[0].HP - (CharacterList[0].DP - CharacterList[i].SP);
+                    }
+                    else
+                    {
+                        CharacterList.RemoveAt(i);
+                        FoxCharacter.Canvas.Children.Remove(FoxCharacter.Tiles[i]);
+                        FoxCharacter.Tiles.RemoveAt(i);
+                    }
                 }
             }
-
+            
         }
     }
 }
