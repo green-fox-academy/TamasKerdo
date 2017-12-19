@@ -20,7 +20,7 @@ namespace GreenFox
             Tiles = new List<Image>();
         }
 
-        public void AddImage(string source, double x, double y)
+        public void AddImage(string source, int x, int y)
         {
             var image = new Image()
             {
@@ -34,26 +34,26 @@ namespace GreenFox
             SetPosition(image, x, y);
         }
 
-        public void AddImage(Canvas canvas, double x, double y)
+        public void AddImage(Canvas canvas, int x, int y)
         {
             Canvas.Children.Add(canvas);
             SetPosition(canvas, x, y);
         }
 
-        public void SetPosition(UIElement uIElement, double x, double y)
+        public void SetPosition(UIElement uIElement, int x, int y)
         {
             Canvas.SetLeft(uIElement, x);
             Canvas.SetTop(uIElement, y);
         }
 
-        public double GetLeft(UIElement uIElement)
+        public int GetLeft(UIElement uIElement)
         {
-            return Canvas.GetLeft(uIElement);
+            return Convert.ToInt32(Canvas.GetLeft(uIElement)) ;
         }
 
-        public double GetTop(UIElement uIElement)
+        public int GetTop(UIElement uIElement)
         {
-            return Canvas.GetTop(uIElement);
+            return Convert.ToInt32(Canvas.GetTop(uIElement));
         }
 
         public void ClearCanvas()

@@ -20,26 +20,83 @@ namespace RPG_Game
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        private FoxDraw FoxDraw;
+    {        
+        private FoxDraw FoxCharacter;
+        private GameLogic GameLogic;
 
         public MainWindow()
         {
             InitializeComponent();
-            FoxDraw = new FoxDraw(canvas);
-            //FoxDraw.AddImage("Assets/boss.png", 0, 0);
-            var gameMap = new Map(FoxDraw);
-            gameMap.GenerateMap();
+            var FoxMap = new FoxDraw(canvas);
+            GameLogic = new GameLogic(FoxMap);
+            GameLogic.GenerateMap();
+
+            FoxCharacter = new FoxDraw(canvas);
+            
+            FoxCharacter.AddImage("Images/hero-down.png", 0,0);
         }
 
-        //private new void KeyDownEvent(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.F)
-        //    {
-        //        double x = FoxDraw.GetLeft(FoxDraw.Tiles[0]) + 10;
-        //        double y = FoxDraw.GetTop(FoxDraw.Tiles[0]) + 10;
-        //        FoxDraw.SetPosition(FoxDraw.Tiles[0], x, y);
-        //    }
-        //}
+        private void KeyEvent(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.W)
+            {
+                int x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
+                int y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - 50;
+                if (GameLogic.CanTheCharacterStepThere(x, y, 2))
+                {                    
+                    FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-up.png", UriKind.Relative));
+                }
+                else
+                {
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-up.png", UriKind.Relative));
+                }                
+            }
+
+            if (e.Key == Key.S)
+            {
+                int x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
+                int y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + 50;
+                if (GameLogic.CanTheCharacterStepThere(x, y, 0))
+                {                    
+                    FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-down.png", UriKind.Relative));
+                }
+                else
+                {
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-down.png", UriKind.Relative));
+                }
+            }
+
+            if (e.Key == Key.D)
+            {
+                int x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + 50;
+                int y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) ;
+                if (GameLogic.CanTheCharacterStepThere(x, y, 1))
+                {                    
+                    FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-right.png", UriKind.Relative));
+                }
+                else
+                {
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-right.png", UriKind.Relative));
+                }
+            }
+
+            if (e.Key == Key.A)
+            {
+                int x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - 50;
+                int y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+                if (GameLogic.CanTheCharacterStepThere(x, y, 3))
+                {                    
+                    FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
+                }
+                else
+                {
+                    FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
+                }
+            }
+        }
     }
 }
