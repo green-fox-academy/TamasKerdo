@@ -97,6 +97,7 @@ namespace RPG_Game
                     FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
                 }
             }
+
         }
     }
 }

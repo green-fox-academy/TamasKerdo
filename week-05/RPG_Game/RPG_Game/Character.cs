@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace RPG_Game
 {
-    class Character
+    abstract class Character
     {
-        public int HP { get; private set; }
-        public int DP { get; private set; }
-        public int SP { get; private set; }
+        public int HP { get; set; }
+        public int DP { get; set; }
+        public int SP { get; set; }
+        public int[] position { get; set; }
 
-        public Character()
-            {
-
-            }
-
+        public void GetHit(int HitAmount) => HP = HP - HitAmount;
     }
 }

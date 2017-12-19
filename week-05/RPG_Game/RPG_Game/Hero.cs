@@ -9,13 +9,15 @@ namespace RPG_Game
     class Hero : Character
     {
         
-        public Hero()
+        public Hero(int xPosition, int yPosition)
         {
             var rn = new Random();
             rn.Next(1, 7);
             HP = 20 + 3 * rn.Next(1, 7);
             DP = 2 * rn.Next(1, 7);
             SP = 5 + rn.Next(1, 7);
+            position[0] = xPosition;
+            position[1] = yPosition;
         }
 
         public void Leveling()
@@ -27,9 +29,6 @@ namespace RPG_Game
             SP = SP + rn.Next(1, 7);
         }
 
-        public void getHit(int HitAmount)
-        {
-            HP = HP - HitAmount;
-        }
+        
     }
 }
