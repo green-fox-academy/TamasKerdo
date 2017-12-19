@@ -57,6 +57,10 @@ namespace RPG_Game
             {
                 GameLogic.MoveHero(3, FoxCharacter);
             }
+            if (e.Key == Key.Space)
+            {
+                GameLogic.Battle(FoxCharacter);
+            }
             GameLogic.MoveEnemies(FoxCharacter);
         }
     }

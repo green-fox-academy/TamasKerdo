@@ -15,6 +15,7 @@ namespace RPG_Game
         public string wallImage { get; set; }
         public string FloorImage { get; set; }
         private FoxDraw FoxMap;
+        private List<Character> CharacterList;
 
         public GameLogic(FoxDraw FoxMap)
         {
@@ -34,6 +35,13 @@ namespace RPG_Game
                                      {0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0 },
                                      {0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
                                      {0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
+            CharacterList = new List<Character>();
+        }
+
+        public void AddToCharacterList(Character character)
+        {
+            CharacterList.Add(character);
         }
 
         public void GenerateMap()
@@ -112,6 +120,7 @@ namespace RPG_Game
             var hero = new Hero(x,y);
             FoxCharacter.AddImage(hero.basicLookout, hero.position[0], hero.position[1]);
             var rn = new Random();
+            AddToCharacterList(hero);
 
             y = rn.Next(1, 11);
             x = rn.Next(1, 12);
@@ -121,7 +130,8 @@ namespace RPG_Game
                 {                   
                     var boss = new Boss((x - 1) * 50, (y - 1) * 50, 1);
                     FoxCharacter.AddImage(boss.basicLookout, boss.position[0], boss.position[1]);
-                    
+                    AddToCharacterList(boss);
+
                 }
                 y = rn.Next(1, 11);
                 x = rn.Next(1, 12);
@@ -139,11 +149,13 @@ namespace RPG_Game
                         {
                             var monster = new Monster((x - 1) * 50, (y - 1) * 50, true, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
+                            AddToCharacterList(monster);
                         }
                         else
                         {
                             var monster = new Monster((x - 1) * 50, (y - 1) * 50, false, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
+                            AddToCharacterList(monster);
                         }                        
                     }
                     y = rn.Next(1, 11);
@@ -255,12 +267,27 @@ namespace RPG_Game
                         break;
                     default:
                         break;
+                }                
+            }            
+        }
+
+        public void Battle(FoxDraw FoxCharacter)
+        {
+            int xHero = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
+            int yHero = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
+            int xEnemy = 0;
+            int yEnemy = 0;
+
+            for (int i = 1; i < FoxCharacter.Tiles.Count; i++)
+            {
+                xEnemy = FoxCharacter.GetLeft(FoxCharacter.Tiles[i]);
+                yEnemy = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
+                if ((xHero == xEnemy)&&(yHero ==yEnemy))
+                {
+                    CharacterList[i].HP = CharacterList[0].DP - CharacterList[0].SP;
                 }
-                
-                
-                
-                
             }
+
         }
     }
 }
