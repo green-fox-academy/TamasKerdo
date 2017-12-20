@@ -60,7 +60,7 @@ namespace RPG_Game
             }
         }
 
-        public bool CanTheCharacterStepThere(int x, int y, int whereToStep)
+        public bool CanTheCharacterStepThere(int x, int y)
         {
             x = x / 50;
             y = y / 50;
@@ -138,7 +138,7 @@ namespace RPG_Game
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - 50;
 
-                    if (CanTheCharacterStepThere(x, y, 2))
+                    if (CanTheCharacterStepThere(x, y))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
                         FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-up.png", UriKind.Relative));
@@ -153,7 +153,7 @@ namespace RPG_Game
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + 50;
 
-                    if (CanTheCharacterStepThere(x, y, 0))
+                    if (CanTheCharacterStepThere(x, y))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
                         FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-down.png", UriKind.Relative));
@@ -168,7 +168,7 @@ namespace RPG_Game
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + 50;
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
 
-                    if (CanTheCharacterStepThere(x, y, 1))
+                    if (CanTheCharacterStepThere(x, y))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
                         FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-right.png", UriKind.Relative));
@@ -183,7 +183,7 @@ namespace RPG_Game
                     x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - 50;
                     y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
 
-                    if (CanTheCharacterStepThere(x, y, 3))
+                    if (CanTheCharacterStepThere(x, y))
                     {
                         FoxCharacter.SetPosition(FoxCharacter.Tiles[0], x, y);
                         FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/hero-left.png", UriKind.Relative));
@@ -212,25 +212,25 @@ namespace RPG_Game
                 switch (rn.Next(0, 4))
                 {
                     case 0:
-                        if (CanTheCharacterStepThere(x, y - 50, 0))
+                        if (CanTheCharacterStepThere(x, y - 50))
                         {
                             FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - 50);
                         }
                         break;
                     case 1:
-                        if (CanTheCharacterStepThere(x + 50, y, 1))
+                        if (CanTheCharacterStepThere(x + 50, y))
                         {
                             FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + 50, y);
                         }
                         break;
                     case 2:
-                        if (CanTheCharacterStepThere(x, y + 50, 2))
+                        if (CanTheCharacterStepThere(x, y + 50))
                         {
                             FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + 50);
                         }
                         break;
                     case 3:
-                        if (CanTheCharacterStepThere(x - 50, y, 3))
+                        if (CanTheCharacterStepThere(x - 50, y))
                         {
                             FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - 50, y);
                         }
