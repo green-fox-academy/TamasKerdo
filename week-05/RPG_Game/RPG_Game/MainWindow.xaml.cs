@@ -66,9 +66,7 @@ namespace RPG_Game
                 heroStatusArray = GameLogic.GetHeroStatus();
                 HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
             }
-
-            GameLogic.MoveEnemies(FoxCharacter);
-           
+            GameLogic.MoveEnemies(FoxCharacter);           
         }
     }
 }

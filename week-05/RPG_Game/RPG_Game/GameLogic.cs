@@ -273,14 +273,14 @@ namespace RPG_Game
                 yEnemy = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
                 if ((xHero == xEnemy)&&(yHero ==yEnemy))
                 {
-                    CharacterList[i].HP = CharacterList[i].HP - 20;                    
+                    CharacterList[i].HP = CharacterList[i].HP - 10;                    
 
                     if (CharacterList[i].HP > 0)
                     {
                         CharacterList[0].HP = CharacterList[0].HP - Math.Abs(CharacterList[0].DP - CharacterList[i].SP);
                         if (CharacterList[0].HP<0)
                         {
-                            CharacterList[i].alive = false;
+                            CharacterList[0].alive = false;
                             FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/ash.png", UriKind.Relative));
                             MessageBox.Show("Game Over");
                         }
