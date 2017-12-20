@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
+using System.Media;
 
 namespace RPG_Game
 {
@@ -32,8 +33,7 @@ namespace RPG_Game
 
             GameLogic = new GameLogic(FoxMap);
             GameLogic.GenerateMap();           
-            GameLogic.PlaceTheCharacters(FoxCharacter);
-            
+            GameLogic.PlaceTheCharacters(FoxCharacter); 
         }
 
         private void KeyEvent(object sender, KeyEventArgs e)

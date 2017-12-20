@@ -22,19 +22,17 @@ namespace RPG_Game
             wallImage = "Images/wall.png";
             FloorImage = "Images/floor.png";
             this.FoxMap = FoxMap;
-            mapPoints = new int[,] { {0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                     {0 ,1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
-                                     {0 ,1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0 },
-                                     {0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0 },
-                                     {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
-                                     {0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0 },
-                                     {0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
-                                     {0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0 },
-                                     {0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0 },
-                                     {0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0 },
-                                     {0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0 },
-                                     {0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
-                                     {0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+            mapPoints = new int[,] { {1, 1, 1, 0, 1, 0, 1, 1, 1, 1},
+                                     {1, 1, 1, 0, 1, 0, 1, 0, 0, 1},
+                                     {1, 0, 0, 0, 1, 0, 1, 0, 0, 1},
+                                     {1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
+                                     {0, 0, 0, 0, 1, 0, 1, 1, 0, 1},
+                                     {1, 0, 1, 0, 1, 1, 1, 1, 0, 1},
+                                     {1, 0, 1, 0, 1, 0, 1, 1, 0, 1},
+                                     {1, 1, 1, 1, 1, 0, 1, 1, 0, 0},
+                                     {1, 0, 0, 0, 1, 1, 1, 1, 0, 1},
+                                     {1, 1, 1, 0, 1, 0, 0, 1, 0, 1},};
+
 
             CharacterList = new List<Character>();
         }
@@ -46,17 +44,17 @@ namespace RPG_Game
 
         public void GenerateMap()
         {
-            for (int row = 1; row < mapPoints.GetLength(0) - 1; row++)
+            for (int row = 0; row < mapPoints.GetLength(0); row++)
             {
-                for (int col = 1; col < mapPoints.GetLength(1) - 1; col++)
+                for (int col = 0; col < mapPoints.GetLength(1); col++)
                 {
                     if (mapPoints[row, col] == 1)
                     {
-                        FoxMap.AddImage("Images/floor.png", (col - 1) * 50, (row - 1) * 50);
+                        FoxMap.AddImage("Images/floor.png", col * 50, row * 50);
                     }
                     else
                     {
-                        FoxMap.AddImage("Images/wall.png", (col - 1) * 50, (row - 1) * 50);
+                        FoxMap.AddImage("Images/wall.png", col * 50, row * 50);
                     }
                 }
             }
@@ -64,51 +62,16 @@ namespace RPG_Game
 
         public bool CanTheCharacterStepThere(int x, int y, int whereToStep)
         {
-            x = (x / 50) + 1;
-            y = (y / 50) + 1;
-            bool returnValue = true;
-            switch (whereToStep)
+            x = x / 50;
+            y = y / 50;
+            bool returnValue = false;
+
+            if (((x < 10) && (x >= 0)) && ((y < 10) && (y >= 0)))
             {
-                case 0:
-                    if (mapPoints[y, x] == 1)
-                    {
-                        returnValue = true;
-                    }
-                    else
-                    {
-                        returnValue = false;
-                    }
-                    break;
-                case 1:
-                    if (mapPoints[y, x] == 1)
-                    {
-                        returnValue = true;
-                    }
-                    else
-                    {
-                        returnValue = false;
-                    }
-                    break;
-                case 2:
-                    if (mapPoints[y, x] == 1)
-                    {
-                        returnValue = true;
-                    }
-                    else
-                    {
-                        returnValue = false;
-                    }
-                    break;
-                case 3:
-                    if (mapPoints[y, x] == 1)
-                    {
-                        returnValue = true;
-                    }
-                    else
-                    {
-                        returnValue = false;
-                    }
-                    break;
+                if (mapPoints[y, x] == 1)
+                {
+                    returnValue = true;
+                }                
             }
             return returnValue;
         }
@@ -117,49 +80,49 @@ namespace RPG_Game
         {
             int x = 0;
             int y = 0;
-            var hero = new Hero(x,y);
+            var hero = new Hero(y,x);
             FoxCharacter.AddImage(hero.basicLookout, hero.position[0], hero.position[1]);
             var rn = new Random();
             AddToCharacterList(hero);
 
-            y = rn.Next(1, 11);
-            x = rn.Next(1, 12);
+            y = rn.Next(0, 10);
+            x = rn.Next(0, 10);
             while (FoxCharacter.Tiles.Count<2)
             {
                 if (mapPoints[y, x] == 1)
                 {                   
-                    var boss = new Boss((x - 1) * 50, (y - 1) * 50, 1);
+                    var boss = new Boss(x * 50, y * 50, 1);
                     FoxCharacter.AddImage(boss.basicLookout, boss.position[0], boss.position[1]);
                     AddToCharacterList(boss);
 
                 }
-                y = rn.Next(1, 11);
-                x = rn.Next(1, 12);
+                y = rn.Next(0, 10);
+                x = rn.Next(0, 10);
             }
             int keyPosition = rn.Next(2, 10);
-            y = rn.Next(1, 11);
-            x = rn.Next(1, 12);
+            y = rn.Next(0, 10);
+            x = rn.Next(0, 10);
             for (int i = 2; i < 9; i++)
             {
-                while (FoxCharacter.Tiles.Count < i+1)
+                while (FoxCharacter.Tiles.Count < i)
                 {
                     if (mapPoints[y, x] == 1)
                     {                        
                         if (keyPosition == i)
                         {
-                            var monster = new Monster((x - 1) * 50, (y - 1) * 50, true, 1);
+                            var monster = new Monster(x * 50, y * 50, true, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
                             AddToCharacterList(monster);
                         }
                         else
                         {
-                            var monster = new Monster((x - 1) * 50, (y - 1) * 50, false, 1);
+                            var monster = new Monster(x * 50, y * 50, false, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
                             AddToCharacterList(monster);
                         }                        
                     }
-                    y = rn.Next(1, 11);
-                    x = rn.Next(1, 12);
+                    y = rn.Next(0, 10);
+                    x = rn.Next(0, 10);
                 }
             }            
         }

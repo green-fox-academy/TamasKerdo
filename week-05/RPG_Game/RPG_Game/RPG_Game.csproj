@@ -117,5 +117,9 @@
     <Resource Include="Images\boss.png" />
     <Resource Include="Images\skeleton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fireball.png" />
+    <Content Include="Sounds\rebel.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
