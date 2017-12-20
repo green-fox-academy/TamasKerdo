@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using GreenFox;
 using System.Media;
 
-
 namespace RPG_Game
 {
     /// <summary>
@@ -29,14 +28,16 @@ namespace RPG_Game
 
         public MainWindow()
         {
-            int MapElementSize = 70;
             InitializeComponent();
+            int MapElementSize = 70;
+            
             var FoxMap = new FoxDraw(canvas, MapElementSize);
             FoxCharacter = new FoxDraw(canvas, MapElementSize);
-
             GameLogic = new GameLogic(FoxMap, MapElementSize);
+
             GameLogic.GenerateMap();           
             GameLogic.PlaceTheCharacters(FoxCharacter);
+
             heroStatusArray = GameLogic.GetHeroStatus();
             HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
         }
@@ -62,12 +63,14 @@ namespace RPG_Game
             {
                 GameLogic.MoveHero(3, FoxCharacter);
             }
+
             if (e.Key == Key.Space)
             {
                 GameLogic.Battle(FoxCharacter);
                 heroStatusArray = GameLogic.GetHeroStatus();
                 HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
             }
+
             GameLogic.MoveEnemies(FoxCharacter);           
         }
     }
