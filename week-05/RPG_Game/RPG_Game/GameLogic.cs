@@ -281,7 +281,7 @@ namespace RPG_Game
                         if (CharacterList[0].HP<0)
                         {
                             CharacterList[0].alive = false;
-                            FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/ash.png", UriKind.Relative));
+                            FoxCharacter.Tiles[0].Source = new BitmapImage(new Uri("Images/fireball.png", UriKind.Relative));
                             MessageBox.Show("Game Over");
                         }
                     }
