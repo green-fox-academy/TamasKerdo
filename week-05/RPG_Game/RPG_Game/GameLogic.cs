@@ -18,8 +18,9 @@ namespace RPG_Game
         private FoxDraw FoxMap;
         private List<Character> CharacterList;
         public int MapElementSize { get; set; } = 80;
+        public int NumberOfTheEnemies { get; set; }
 
-        public GameLogic(FoxDraw FoxMap, int MapElementSize)
+        public GameLogic(FoxDraw FoxMap, int MapElementSize, int NumberOfTheEnemies)
         {
             this.MapElementSize = MapElementSize;
             wallImage = "Images/wall.png";
@@ -37,6 +38,7 @@ namespace RPG_Game
                                      {1, 1, 1, 0, 1, 0, 0, 1, 0, 1},};
 
             CharacterList = new List<Character>();
+            this.NumberOfTheEnemies = NumberOfTheEnemies;
         }
 
         public void AddToCharacterList(Character character)
@@ -104,7 +106,7 @@ namespace RPG_Game
             int keyPosition = rn.Next(2, 10);
             y = rn.Next(0, 10);
             x = rn.Next(0, 10);
-            for (int i = 2; i < 9; i++)
+            for (int i = 2; i < NumberOfTheEnemies + 2; i++)
             {
                 while (FoxCharacter.Tiles.Count < i)
                 {

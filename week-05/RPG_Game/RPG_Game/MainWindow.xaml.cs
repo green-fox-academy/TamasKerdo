@@ -30,10 +30,11 @@ namespace RPG_Game
         {
             InitializeComponent();
             int MapElementSize = 70;
-            
+            int NumberOfTheEnemies = 7;
+
             var FoxMap = new FoxDraw(canvas, MapElementSize);
             FoxCharacter = new FoxDraw(canvas, MapElementSize);
-            GameLogic = new GameLogic(FoxMap, MapElementSize);
+            GameLogic = new GameLogic(FoxMap, MapElementSize, NumberOfTheEnemies);
 
             GameLogic.GenerateMap();           
             GameLogic.PlaceTheCharacters(FoxCharacter);
