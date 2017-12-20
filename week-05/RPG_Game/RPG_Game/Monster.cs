@@ -23,6 +23,7 @@ namespace RPG_Game
                     HP = 20 + 3 * rn.Next(1, 7);
                     DP = 2 * rn.Next(1, 7);
                     SP = 5 + rn.Next(1, 7);
+
                     position[0] = xPosition;
                     position[1] = yPosition;
                     break;
@@ -31,6 +32,7 @@ namespace RPG_Game
                     HP = 20 + 3 * rn.Next(1, 7) + 2 * Level * rn.Next(1, 7);
                     DP = 2 * rn.Next(1, 7) + (Level / 2) * rn.Next(1, 7);
                     SP = 5 + rn.Next(1, 7) + Level * rn.Next(1, 7);
+
                     position[0] = xPosition;
                     position[1] = yPosition;
                     break;

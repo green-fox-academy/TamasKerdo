@@ -17,9 +17,11 @@ namespace RPG_Game
         public string FloorImage { get; set; }
         private FoxDraw FoxMap;
         private List<Character> CharacterList;
+        public int MapElementSize { get; set; } = 80;
 
-        public GameLogic(FoxDraw FoxMap)
+        public GameLogic(FoxDraw FoxMap, int MapElementSize)
         {
+            this.MapElementSize = MapElementSize;
             wallImage = "Images/wall.png";
             FloorImage = "Images/floor.png";
             this.FoxMap = FoxMap;
@@ -51,11 +53,11 @@ namespace RPG_Game
                 {
                     if (mapPoints[row, col] == 1)
                     {
-                        FoxMap.AddImage("Images/floor.png", col * 50, row * 50);
+                        FoxMap.AddImage("Images/floor.png", col * MapElementSize, row * MapElementSize);
                     }
                     else
                     {
-                        FoxMap.AddImage("Images/wall.png", col * 50, row * 50);
+                        FoxMap.AddImage("Images/wall.png", col * MapElementSize, row * MapElementSize);
                     }
                 }
             }
@@ -63,8 +65,8 @@ namespace RPG_Game
 
         public bool CanTheCharacterStepThere(int x, int y)
         {
-            x = x / 50;
-            y = y / 50;
+            x = x / MapElementSize;
+            y = y / MapElementSize;
             bool returnValue = false;
 
             if (((x < 10) && (x >= 0)) && ((y < 10) && (y >= 0)))
@@ -92,7 +94,7 @@ namespace RPG_Game
             {
                 if (mapPoints[y, x] == 1)
                 {                   
-                    var boss = new Boss(x * 50, y * 50, 1);
+                    var boss = new Boss(x * MapElementSize, y * MapElementSize, 1);
                     FoxCharacter.AddImage(boss.basicLookout, boss.position[0], boss.position[1]);
                     AddToCharacterList(boss);
 
@@ -111,13 +113,13 @@ namespace RPG_Game
                     {                        
                         if (keyPosition == i)
                         {
-                            var monster = new Monster(x * 50, y * 50, true, 1);
+                            var monster = new Monster(x * MapElementSize, y * MapElementSize, true, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
                             AddToCharacterList(monster);
                         }
                         else
                         {
-                            var monster = new Monster(x * 50, y * 50, false, 1);
+                            var monster = new Monster(x * MapElementSize, y * MapElementSize, false, 1);
                             FoxCharacter.AddImage(monster.basicLookout, monster.position[0], monster.position[1]);
                             AddToCharacterList(monster);
                         }                        
@@ -139,7 +141,7 @@ namespace RPG_Game
                     case 0:
 
                         x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
-                        y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - 50;
+                        y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) - MapElementSize;
 
                         if (CanTheCharacterStepThere(x, y))
                         {
@@ -154,7 +156,7 @@ namespace RPG_Game
                     case 1:
 
                         x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
-                        y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + 50;
+                        y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]) + MapElementSize;
 
                         if (CanTheCharacterStepThere(x, y))
                         {
@@ -168,7 +170,7 @@ namespace RPG_Game
                         break;
                     case 2:
 
-                        x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + 50;
+                        x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) + MapElementSize;
                         y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
 
                         if (CanTheCharacterStepThere(x, y))
@@ -183,7 +185,7 @@ namespace RPG_Game
                         break;
                     case 3:
 
-                        x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - 50;
+                        x = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]) - MapElementSize;
                         y = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
 
                         if (CanTheCharacterStepThere(x, y))
@@ -199,8 +201,7 @@ namespace RPG_Game
                     default:
                         break;
                 }
-            }
-            
+            }            
         }
         
         public void MoveEnemies(FoxDraw FoxCharacter)
@@ -218,34 +219,33 @@ namespace RPG_Game
                     switch (rn.Next(0, 4))
                     {
                         case 0:
-                            if (CanTheCharacterStepThere(x, y - 50))
+                            if (CanTheCharacterStepThere(x, y - MapElementSize))
                             {
-                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - 50);
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - MapElementSize);
                             }
                             break;
                         case 1:
-                            if (CanTheCharacterStepThere(x + 50, y))
+                            if (CanTheCharacterStepThere(x + MapElementSize, y))
                             {
-                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + 50, y);
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + MapElementSize, y);
                             }
                             break;
                         case 2:
-                            if (CanTheCharacterStepThere(x, y + 50))
+                            if (CanTheCharacterStepThere(x, y + MapElementSize))
                             {
-                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + 50);
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + MapElementSize);
                             }
                             break;
                         case 3:
-                            if (CanTheCharacterStepThere(x - 50, y))
+                            if (CanTheCharacterStepThere(x - MapElementSize, y))
                             {
-                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - 50, y);
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - MapElementSize, y);
                             }
                             break;
                         default:
                             break;
                     }
-                }
-               
+                }               
             }            
         }
 
@@ -255,17 +255,15 @@ namespace RPG_Game
             heroData[0] = CharacterList[0].HP;
             heroData[1] = CharacterList[0].DP;
             heroData[2] = CharacterList[0].SP;
-
             return heroData;
-        }
+        }        
 
         public void Battle(FoxDraw FoxCharacter)
         {
             int xHero = FoxCharacter.GetLeft(FoxCharacter.Tiles[0]);
             int yHero = FoxCharacter.GetTop(FoxCharacter.Tiles[0]);
             int xEnemy = 0;
-            int yEnemy = 0;
-            
+            int yEnemy = 0;            
 
             for (int i = 1; i < FoxCharacter.Tiles.Count; i++)
             {

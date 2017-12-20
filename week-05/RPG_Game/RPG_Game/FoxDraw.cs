@@ -9,23 +9,24 @@ namespace GreenFox
 {
     public class FoxDraw
     {
-        private const int TileSize = 50;
+        private int MapElementSize;
 
         public Canvas Canvas { get; set; }
         public List<Image> Tiles { get; set; }
 
-        public FoxDraw(Canvas canvas)
+        public FoxDraw(Canvas canvas, int MapElementSize)
         {
             Canvas = canvas;
             Tiles = new List<Image>();
+            this.MapElementSize = MapElementSize;
         }
 
         public void AddImage(string source, int x, int y)
         {
             var image = new Image()
             {
-                Width = TileSize,
-                Height = TileSize,
+                Width = MapElementSize,
+                Height = MapElementSize,
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
 

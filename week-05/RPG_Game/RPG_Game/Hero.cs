@@ -20,14 +20,16 @@ namespace RPG_Game
             UpLookout = "Images/hero-up.png";
             RightLookout = "Images/hero-right.png";
             basicLookout = "Images/hero-down.png";
-            key = false;
-            var rn = new Random();
-            rn.Next(1, 7);
+            
+            var rn = new Random();            
             HP = 20 + 3 * rn.Next(1, 7);
             DP = 2 * rn.Next(1, 7);
             SP = 5 + rn.Next(1, 7);
+
             position[0] = xPosition;
-            position[1] = yPosition;            
+            position[1] = yPosition;
+
+            key = false;
         }                
     }
 }

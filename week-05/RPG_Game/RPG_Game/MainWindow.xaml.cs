@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using GreenFox;
 using System.Media;
 
+
 namespace RPG_Game
 {
     /// <summary>
@@ -28,11 +29,12 @@ namespace RPG_Game
 
         public MainWindow()
         {
+            int MapElementSize = 70;
             InitializeComponent();
-            var FoxMap = new FoxDraw(canvas);
-            FoxCharacter = new FoxDraw(canvas);
+            var FoxMap = new FoxDraw(canvas, MapElementSize);
+            FoxCharacter = new FoxDraw(canvas, MapElementSize);
 
-            GameLogic = new GameLogic(FoxMap);
+            GameLogic = new GameLogic(FoxMap, MapElementSize);
             GameLogic.GenerateMap();           
             GameLogic.PlaceTheCharacters(FoxCharacter);
             heroStatusArray = GameLogic.GetHeroStatus();

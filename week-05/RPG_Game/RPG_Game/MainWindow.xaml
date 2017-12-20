@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPG_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1008" KeyDown="KeyEvent">
+        Title="MainWindow" Height="1000" Width="1008" KeyDown="KeyEvent">
     <Grid>
         <Canvas Name="canvas">
-            <TextBlock Name="HeroData" TextWrapping="Wrap" Text="TextBlock" Width="766" Height="64" RenderTransformOrigin="0.494,2.609" Canvas.Left="-3" Canvas.Top="527"/>
+            <TextBlock Name="HeroData" TextWrapping="Wrap" Text="TextBlock" Width="766" Height="64" RenderTransformOrigin="0.494,2.609" Canvas.Left="10" Canvas.Top="895"/>
         </Canvas>
     </Grid>
 </Window>
