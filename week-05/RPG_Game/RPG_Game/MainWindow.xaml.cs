@@ -24,6 +24,7 @@ namespace RPG_Game
     {        
         private FoxDraw FoxCharacter;
         private GameLogic GameLogic;
+        public int[] heroStatusArray;
 
         public MainWindow()
         {
@@ -34,7 +35,7 @@ namespace RPG_Game
             GameLogic = new GameLogic(FoxMap);
             GameLogic.GenerateMap();           
             GameLogic.PlaceTheCharacters(FoxCharacter);
-            var heroStatusArray = GameLogic.GetHeroStatus();
+            heroStatusArray = GameLogic.GetHeroStatus();
             HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
         }
 
@@ -42,7 +43,7 @@ namespace RPG_Game
         {
             if (e.Key == Key.W)
             {
-                GameLogic.MoveHero(0, FoxCharacter);               
+                GameLogic.MoveHero(0, FoxCharacter);
             }
 
             if (e.Key == Key.S)
@@ -62,13 +63,12 @@ namespace RPG_Game
             if (e.Key == Key.Space)
             {
                 GameLogic.Battle(FoxCharacter);
-                var heroStatusArray = GameLogic.GetHeroStatus();
-                HeroData.Text = "  HP: "+heroStatusArray[0]+" DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2]; 
+                heroStatusArray = GameLogic.GetHeroStatus();
+                HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
             }
-            
-            GameLogic.MoveEnemies(FoxCharacter);
 
-            
+            GameLogic.MoveEnemies(FoxCharacter);
+           
         }
     }
 }

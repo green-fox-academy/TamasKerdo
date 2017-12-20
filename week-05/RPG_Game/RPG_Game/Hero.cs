@@ -28,16 +28,6 @@ namespace RPG_Game
             SP = 5 + rn.Next(1, 7);
             position[0] = xPosition;
             position[1] = yPosition;            
-        }
-
-        public void Leveling()
-        {
-            var rn = new Random();
-            rn.Next(1, 7);
-            HP = HP + rn.Next(1, 7);
-            DP = DP + rn.Next(1, 7);
-            SP = SP + rn.Next(1, 7);            
-        }
-                
+        }                
     }
 }

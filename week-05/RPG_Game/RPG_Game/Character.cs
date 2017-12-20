@@ -20,7 +20,14 @@ namespace RPG_Game
             position = new int[2];
             alive = true;
         }
-
-        public void GetHit(int HitAmount) => HP = HP - HitAmount;
+        
+        public void Leveling()
+        {
+            var rn = new Random();
+            rn.Next(1, 7);
+            HP = HP + rn.Next(1, 7);
+            DP = DP + rn.Next(1, 7);
+            SP = SP + rn.Next(1, 7);
+        }
     }
 }
