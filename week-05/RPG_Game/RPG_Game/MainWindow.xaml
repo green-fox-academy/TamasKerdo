@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="551" Width="1008" KeyDown="KeyEvent">
     <Grid>
-        <Canvas Name="canvas"/>
+        <Canvas Name="canvas">
+            <TextBlock Name="HeroData" TextWrapping="Wrap" Text="TextBlock" Width="766" Height="64" RenderTransformOrigin="0.494,2.609" Canvas.Left="-3" Canvas.Top="527"/>
+        </Canvas>
     </Grid>
 </Window>

@@ -33,7 +33,9 @@ namespace RPG_Game
 
             GameLogic = new GameLogic(FoxMap);
             GameLogic.GenerateMap();           
-            GameLogic.PlaceTheCharacters(FoxCharacter); 
+            GameLogic.PlaceTheCharacters(FoxCharacter);
+            var heroStatusArray = GameLogic.GetHeroStatus();
+            HeroData.Text = "  HP: " + heroStatusArray[0] + " DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2];
         }
 
         private void KeyEvent(object sender, KeyEventArgs e)
@@ -60,8 +62,13 @@ namespace RPG_Game
             if (e.Key == Key.Space)
             {
                 GameLogic.Battle(FoxCharacter);
+                var heroStatusArray = GameLogic.GetHeroStatus();
+                HeroData.Text = "  HP: "+heroStatusArray[0]+" DP: " + heroStatusArray[1] + " SP: " + heroStatusArray[2]; 
             }
+            
             GameLogic.MoveEnemies(FoxCharacter);
+
+            
         }
     }
 }

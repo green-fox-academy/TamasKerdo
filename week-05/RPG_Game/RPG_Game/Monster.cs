@@ -13,7 +13,7 @@ namespace RPG_Game
 
         public Monster(int xPosition, int yPosition, bool key, int Level)
         {
-            basicLookout = "Images/fireball.png";
+            basicLookout = "Images/skeleton.png";
             var rn = new Random();
             this.key = key;
             switch (Level)

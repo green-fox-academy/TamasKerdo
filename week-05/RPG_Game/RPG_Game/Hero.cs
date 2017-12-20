@@ -27,8 +27,7 @@ namespace RPG_Game
             DP = 2 * rn.Next(1, 7);
             SP = 5 + rn.Next(1, 7);
             position[0] = xPosition;
-            position[1] = yPosition;
-            
+            position[1] = yPosition;            
         }
 
         public void Leveling()

@@ -8,13 +8,11 @@ using GreenFox;
 namespace RPG_Game
 {
     class Boss : Character
-    {
-        public bool alive { get; set; }
+    { 
 
         public Boss(int xPosition, int yPosition, int Level)
         {
-            basicLookout = "Images/boss.png";
-            alive = true;
+            basicLookout = "Images/boss.png";            
             var rn = new Random();            
             switch (Level)
             {

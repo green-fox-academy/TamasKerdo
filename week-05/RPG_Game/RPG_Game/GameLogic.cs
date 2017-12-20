@@ -208,37 +208,50 @@ namespace RPG_Game
             {
                 x = FoxCharacter.GetLeft(FoxCharacter.Tiles[i]);
                 y = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
-                
-                switch (rn.Next(0, 4))
+                if (CharacterList[i].alive == true)
                 {
-                    case 0:
-                        if (CanTheCharacterStepThere(x, y - 50))
-                        {
-                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - 50);
-                        }
-                        break;
-                    case 1:
-                        if (CanTheCharacterStepThere(x + 50, y))
-                        {
-                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + 50, y);
-                        }
-                        break;
-                    case 2:
-                        if (CanTheCharacterStepThere(x, y + 50))
-                        {
-                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + 50);
-                        }
-                        break;
-                    case 3:
-                        if (CanTheCharacterStepThere(x - 50, y))
-                        {
-                            FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - 50, y);
-                        }
-                        break;
-                    default:
-                        break;
-                }                
+                    switch (rn.Next(0, 4))
+                    {
+                        case 0:
+                            if (CanTheCharacterStepThere(x, y - 50))
+                            {
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y - 50);
+                            }
+                            break;
+                        case 1:
+                            if (CanTheCharacterStepThere(x + 50, y))
+                            {
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x + 50, y);
+                            }
+                            break;
+                        case 2:
+                            if (CanTheCharacterStepThere(x, y + 50))
+                            {
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x, y + 50);
+                            }
+                            break;
+                        case 3:
+                            if (CanTheCharacterStepThere(x - 50, y))
+                            {
+                                FoxCharacter.SetPosition(FoxCharacter.Tiles[i], x - 50, y);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+               
             }            
+        }
+
+        public int[] GetHeroStatus()
+        {
+            var heroData = new int[10];
+            heroData[0] = CharacterList[0].HP;
+            heroData[1] = CharacterList[0].DP;
+            heroData[2] = CharacterList[0].SP;
+
+            return heroData;
         }
 
         public void Battle(FoxDraw FoxCharacter)
@@ -255,17 +268,17 @@ namespace RPG_Game
                 yEnemy = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
                 if ((xHero == xEnemy)&&(yHero ==yEnemy))
                 {
-                    CharacterList[i].HP = CharacterList[i].HP -( CharacterList[i].DP - CharacterList[0].SP);
+                    //CharacterList[i].HP = CharacterList[i].HP - (CharacterList[i].DP - CharacterList[0].SP);
+                    CharacterList[i].HP = CharacterList[i].HP - 20;
 
                     if (CharacterList[i].HP > 0)
                     {
-                        CharacterList[0].HP = CharacterList[0].HP - (CharacterList[0].DP - CharacterList[i].SP);
+                        CharacterList[0].HP = CharacterList[0].HP - (CharacterList[0].DP - CharacterList[i].SP);                        
                     }
                     else
                     {
-                        CharacterList.RemoveAt(i);
-                        FoxCharacter.Canvas.Children.Remove(FoxCharacter.Tiles[i]);
-                        FoxCharacter.Tiles.RemoveAt(i);
+                        FoxCharacter.Tiles[i].Source = new BitmapImage(new Uri("Images/ash.png", UriKind.Relative));
+                        CharacterList[i].alive = false;                        
                     }
                 }
             }            
