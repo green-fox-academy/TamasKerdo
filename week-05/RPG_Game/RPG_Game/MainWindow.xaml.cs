@@ -50,22 +50,22 @@ namespace RPG_Game
                 GameLogic.MoveHero(0, FoxCharacter);
             }
 
-            if (e.Key == Key.S)
+            else if (e.Key == Key.S)
             {
                 GameLogic.MoveHero(1, FoxCharacter);
             }
 
-            if (e.Key == Key.D)
+            else if (e.Key == Key.D)
             {
                 GameLogic.MoveHero(2, FoxCharacter);
             }
 
-            if (e.Key == Key.A)
+            else if (e.Key == Key.A)
             {
                 GameLogic.MoveHero(3, FoxCharacter);
             }
 
-            if (e.Key == Key.Space)
+            else if (e.Key == Key.Space)
             {
                 GameLogic.Battle(FoxCharacter);
                 heroStatusArray = GameLogic.GetHeroStatus();
