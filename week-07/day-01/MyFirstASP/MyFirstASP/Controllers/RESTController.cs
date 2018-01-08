@@ -9,6 +9,8 @@ namespace MyFirstASP.Controllers
 {
     public class RESTController : Controller
     {
+        public static int counter { get; set; } = 0;
+
         [Route("api")]
         public IActionResult Index()
         {
@@ -16,13 +18,12 @@ namespace MyFirstASP.Controllers
         }
 
         [Route("greeting")]
-        public IActionResult Greeting([FromQuery] string name)
+        public IActionResult Greting([FromQuery] string name)
         {
             var greeting = new Greeting();
-            
-            greeting.Id = 0;
-            greeting.Content = "Hello,"+ name;
-
+            greeting.Id = counter;
+            counter++;
+            greeting.Content = "Hello," + name;
             return new JsonResult(greeting);
         }
     }
