@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyFirstASP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,14 @@ namespace MyFirstASP.Controllers
         }
 
         [Route("greeting")]
-        public IActionResult Greeting()
+        public IActionResult Greeting([FromQuery] string name)
         {
-            var v = new { id = 1, content = "Hello,World" };
-            return new JsonResult(v);
+            var greeting = new Greeting();
+            
+            greeting.Id = 0;
+            greeting.Content = "Hello,"+ name;
+
+            return new JsonResult(greeting);
         }
     }
 }
