@@ -25,8 +25,8 @@ namespace MyFirstASP
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc();
+            //app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
