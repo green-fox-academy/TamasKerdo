@@ -2,9 +2,39 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <style>
+        .button {            
+            height: auto;
+            width: 150px;          
+        }
+
+        .images {
+            display: inline-block;
+            cursor: pointer;
+            width: 145px;
+            height: auto;
+        }
+
+        button:active {
+            position: relative;
+            top: 3px;
+            background-color: mediumvioletred;
+        }         
+    </style>
 </head>
 <body>
-    <p>Hi There</p>
+    <button class="button" type="submit" style="border: 0;">
+        <img class="images" src="@Model.StartImageList[0].StartImageLink" alt="submit" />
+    </button>
+
+    <button class="button" type="submit" style="border: 0;">
+        <img class="images" src="@Model.StartImageList[1].StartImageLink" alt="submit" />
+    </button>
+
+    <button class="button" type="submit" style="border: 0;">
+        <img class="images" src="@Model.StartImageList[2].StartImageLink" alt="submit" />
+    </button>
 </body>
 </html>
+
+

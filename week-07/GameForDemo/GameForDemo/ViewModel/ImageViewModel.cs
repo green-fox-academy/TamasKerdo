@@ -8,16 +8,16 @@ namespace GameForDemo.ViewModel
 {
     public class ImageViewModel
     {
-        public List<HackerImage> ImageList { get; set; }
-        public List<StartImage> StartImageList { get; set; }
+        public List<HackerImage> ImageList { get; set; } = new List<HackerImage>();
+        public List<StartImage> StartImageList { get; set; } = new List<StartImage>();
 
         public void GenerateImageList()
         {
             var linkList = new List<string>();
-            linkList[0] = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\admin.jpg";
-            linkList[1] = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\geek.jpg";
-            linkList[2] = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg";
-
+            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\admin.jpg");
+            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\geek.jpg");
+            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg");
+            string StartImageLink = @"d:\Greenfox Academy tananyag\practice\week07\day3\images\question.jpg";
             var rn = new Random();
             int hackerNumber=0;
             for (int i = 0; i < 3; i++)
@@ -32,7 +32,14 @@ namespace GameForDemo.ViewModel
                     hackerNumber = generatedRandomNumber;
                 }
             }
-            ImageList[hackerNumber].IsThisAHacker = true;            
+            ImageList[hackerNumber].IsThisAHacker = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                StartImageList.Add(new StartImage());
+                StartImageList[i].StartImageLink = StartImageLink;
+                StartImageList[i].Modified = false;
+            }
         }
     }
 }

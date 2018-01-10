@@ -8,5 +8,6 @@ namespace GameForDemo.Models
     public class StartImage
     {
         public string StartImageLink { get; set; }
+        public bool Modified { get; set; }
     }
 }

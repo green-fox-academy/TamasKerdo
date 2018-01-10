@@ -18,8 +18,8 @@ namespace GameForDemo.Controllers
         
         public IActionResult Index()
         {
-
-            return View();
+            Images.GenerateImageList();
+            return View(Images);
         }
     }
 }
