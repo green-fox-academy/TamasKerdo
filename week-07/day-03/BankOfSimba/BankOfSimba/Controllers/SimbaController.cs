@@ -9,8 +9,10 @@ using BankOfSimba.Models;
 
 namespace BankOfSimba.Controllers
 {
+    [Route("")]
     public class SimbaController : Controller
     {
+        [Route("")]
         // GET: /<controller>/
         public IActionResult Index()
         {
