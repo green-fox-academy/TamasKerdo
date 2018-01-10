@@ -15,15 +15,26 @@ namespace BankOfSimba.Controllers
     {
         public static AccountViewModel AccountList { get; set; } = new AccountViewModel();
 
-        [Route("")]
+        [HttpGet("")]               
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var simba = new BankAccounts() {Name = "Simba", Balance = 2000.00, AnimalType = "Animal.Lion" };
-            var zebra = new BankAccounts() { Name = "zebra", Balance = 2000.00, AnimalType = "Animal.zebra" };
-            AccountList.AddNewAccount(simba);
-            AccountList.AddNewAccount(zebra);
-            return View(AccountList);
+            if (AccountList.BankAccountList.Count == 0)
+            {
+                var simba = new BankAccounts() { Name = "Simba", Balance = 2000.00, AnimalType = "Animal.Lion" };
+                var zebra = new BankAccounts() { Name = "Lion", Balance = 2000.00, AnimalType = "King" };
+                AccountList.BankAccountList.Add(simba);
+                             
+            }
+            return View(AccountList);                     
+        }
+
+        [HttpPost("add")]        
+        public IActionResult AddAnimal(BankAccounts newAccount)
+        {            
+            AccountList.BankAccountList.Add(newAccount);
+
+            return RedirectToAction("Index");
         }
     }
 }

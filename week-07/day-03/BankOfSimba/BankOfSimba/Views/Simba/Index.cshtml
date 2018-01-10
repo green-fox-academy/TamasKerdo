@@ -2,15 +2,52 @@
 
     <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <style>
+        .King {
+            background-color: yellow;
+            display: inline;
+        }
+        
+    </style>
 </head>
 <body>
-    @foreach (var account in Model.BankAccountList)
-    {
-        <td>@account.Balance.ToString("0.00")</td>
-        <td>@account.Name.</td>
-        <td>@account.AnimalType</td>
-    }  
+    @{
+        var counter = 0;
+        @foreach (var account in Model.BankAccountList)
+        {
+            if (@account.AnimalType == "King")
+            {
+                <ul class="King">
+                    <li>@counter</li>
+                    <li>@account.Balance.ToString("0.00") zebra</li>
+                    <li>@account.Name</li>
+                    <li>@account.AnimalType</li>
+                </ul>
+            }
+            else
+            {
+                <ul>
+                    <li>@counter</li>
+                    <li>@account.Balance.ToString("0.00") zebra</li>
+                    <li>@account.Name</li>
+                    <li>@account.AnimalType</li>
+                </ul>
+            }
+            counter++;
+        }
+    }
+    <form action="/add" method="post">
+        Name:
+        <input type="text" name="Name" value="d">
+        <br />
+        Balance:
+        <input type="number" name="Balance" value="1">
+        AnimalType:
+        <input type="text" name="AnimalType" value="ee">
+        <br />
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
 </html>
+

@@ -10,9 +10,9 @@ namespace BankOfSimba.ViewModels
     {
         public List<BankAccounts> BankAccountList { get; set; } = new List<BankAccounts>();
 
-        public void AddNewAccount(BankAccounts newAccount)
-        {
-            BankAccountList.Add(newAccount);
-        }
+        //public void AddNewAccount(BankAccounts newAccount)
+        //{
+        //    BankAccountList.Add(newAccount);
+        //}
     }
 }
