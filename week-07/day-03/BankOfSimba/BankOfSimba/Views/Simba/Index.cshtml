@@ -3,51 +3,74 @@
     <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
-        .King {
-            background-color: yellow;
-            display: inline;
+        .King 
+        {
+            background-color :gold;
+        }
+        .NotKing {
+            background-color: khaki;
+        }
+
+        table, td {
+            border: 1px solid black;
+            table-layout: fixed;
+        }
+
+        td {
+            padding: 5px;
+            text-align: left;
+            width :  200px;
+        }
+form {
+
         }
         
+
     </style>
 </head>
 <body>
+
+    <form action="/add" method="post">
+        Name:
+        <input type="text" name="Name" value="">
+        <br />
+        Balance:
+        <input type="number" name="Balance" value="">
+        AnimalType:
+        <input type="text" name="AnimalType" value="">
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+
     @{
         var counter = 0;
         @foreach (var account in Model.BankAccountList)
         {
             if (@account.AnimalType == "King")
             {
-                <ul class="King">
-                    <li>@counter</li>
-                    <li>@account.Balance.ToString("0.00") zebra</li>
-                    <li>@account.Name</li>
-                    <li>@account.AnimalType</li>
-                </ul>
+                
+                <table style="width:800px">
+                    <tr class="King">
+                        <td>@counter</td>
+                        <td>@account.Name</td>
+                        <td>@account.Balance.ToString("0.00") zebra</td>                        
+                        <td>@account.AnimalType</td>
+                    </tr>                    
+                </table>
             }
             else
             {
-                <ul>
-                    <li>@counter</li>
-                    <li>@account.Balance.ToString("0.00") zebra</li>
-                    <li>@account.Name</li>
-                    <li>@account.AnimalType</li>
-                </ul>
+                <table style="width:800px">
+                    <tr class="NotKing">
+                        <td>@counter</td>
+                        <td>@account.Name</td>
+                        <td>@account.Balance.ToString("0.00") zebra</td>
+                        <td>@account.AnimalType</td>
+                    </tr>
+                </table>
             }
             counter++;
         }
     }
-    <form action="/add" method="post">
-        Name:
-        <input type="text" name="Name" value="d">
-        <br />
-        Balance:
-        <input type="number" name="Balance" value="1">
-        AnimalType:
-        <input type="text" name="AnimalType" value="ee">
-        <br />
-        <input type="submit" value="Submit">
-    </form>
-
-</body>
+  </body>
 </html>
-

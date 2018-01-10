@@ -21,10 +21,8 @@ namespace BankOfSimba.Controllers
         {
             if (AccountList.BankAccountList.Count == 0)
             {
-                var simba = new BankAccounts() { Name = "Simba", Balance = 2000.00, AnimalType = "Animal.Lion" };
-                var zebra = new BankAccounts() { Name = "Lion", Balance = 2000.00, AnimalType = "King" };
-                AccountList.BankAccountList.Add(simba);
-                             
+                var simba = new BankAccounts() { Name = "Simba", Balance = 2000.00, AnimalType = "Animal.Lion" };                
+                AccountList.BankAccountList.Add(simba);                             
             }
             return View(AccountList);                     
         }
