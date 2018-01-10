@@ -8,6 +8,7 @@ namespace BankOfSimba.ViewModels
 {
     public class AccountViewModel
     {
-        public List<BankAccounts> BankAccountList { get; set; } = new List<BankAccounts>();        
+        public List<BankAccounts> BankAccountList { get; set; } = new List<BankAccounts>();
+        public Modify AnimalBalanceToModify { get; set; } = new Modify();
     }
 }

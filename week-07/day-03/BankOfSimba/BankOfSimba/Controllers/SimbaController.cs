@@ -34,5 +34,21 @@ namespace BankOfSimba.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost("modify")]
+        public IActionResult ModifyAnimal(Modify AnimalToModify)
+        {
+            int zebraNumber = 0;
+            if (AccountList.BankAccountList[AnimalToModify.AnimalInTheTable].AnimalType=="King")
+            {
+                zebraNumber = 100;
+            }
+            else
+            {
+                zebraNumber = 10;
+            }
+            AccountList.BankAccountList[AnimalToModify.AnimalInTheTable].Balance += zebraNumber;
+            return RedirectToAction("Index");
+        }
     }
 }
