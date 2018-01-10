@@ -1,13 +1,16 @@
-﻿@model BankOfSimba.Models.BankAccounts
+﻿@model BankOfSimba.ViewModels.AccountViewModel
 
     <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-  <td>@Model.Balance</td>
-  <td>@Model.Name.ToString()</td>
-  <td>@Model.AnimalType</td>
+    @foreach (var account in Model.BankAccountList)
+    {
+        <td>@account.Balance.ToString("0.00")</td>
+        <td>@account.Name.</td>
+        <td>@account.AnimalType</td>
+    }  
 
 </body>
 </html>
