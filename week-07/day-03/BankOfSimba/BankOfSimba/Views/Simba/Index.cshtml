@@ -27,7 +27,18 @@
             width: 190px;
             border: 5px solid black;
             table-layout: fixed;
-        }        
+        }
+
+        button {
+            display: inline-block;
+            cursor: pointer;
+            background-color: transparent;
+        }
+            button:active {
+                position: relative;
+                top: 3px;
+                background-color :brown;
+            }
 
     </style>
 </head>
@@ -47,7 +58,6 @@
         <input type="submit" value="Add new Animal">
         <br />
     </form>
-
 
     <form action="/modify" method="post">
         AnimalInTheTable:
@@ -88,6 +98,14 @@
             }
             counter++;
         }
+
+        <button type="submit" style="border: 0;">
+            <img src="D:\Greenfox Academy tananyag\practice\week07\day3\images\rabbit.jpeg" width="100%" alt="submit" />
+        </button>
+
+        
     }
   </body>
 </html>
+
+
