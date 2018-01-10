@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace GameForDemo.Models
 {
-    public class Image
+    public class StartImage
     {
-        public string ImageLink { get; set; }
-        public bool IsThisAHacker { get; set; }
+        public string StartImageLink { get; set; }
     }
 }

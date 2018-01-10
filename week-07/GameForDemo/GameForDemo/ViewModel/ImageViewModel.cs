@@ -8,6 +8,7 @@ namespace GameForDemo.ViewModel
 {
     public class ImageViewModel
     {
-        public List<Image> ImageList { get; set; } = new List<Image>();
+        public List<HackerImage> ImageList { get; set; }
+        public List<StartImage> StartImageList { get; set; }
     }
 }
