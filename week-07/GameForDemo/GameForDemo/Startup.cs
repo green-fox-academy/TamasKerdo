@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace GameForDemo
 {
     public class Startup
@@ -25,7 +26,8 @@ namespace GameForDemo
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            app.UseMvc();
         }
     }
 }
