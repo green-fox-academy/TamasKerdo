@@ -16,25 +16,32 @@ namespace GameForDemo.ViewModel
         public void GenerateImageList()
         {
             var linkList = new List<string>();
+            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg");
             linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\admin.jpg");
             linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\a.jpg");
-            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg");
+            
             string StartImageLink = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\question.jpg";
             var rn = new Random();
-            int hackerNumber=0;
+            bool hackerIsAdded=false;
             for (int i = 0; i < 3; i++)
             {                
                 int generatedRandomNumber = rn.Next(0, linkList.Count);
                 ImageList.Add(new HackerImage());
-                ImageList[i].ImageLink = linkList[generatedRandomNumber];
-                ImageList[i].IsThisAHacker = false;
-                linkList.RemoveAt(generatedRandomNumber);
-                if (i == 0)
+                if (generatedRandomNumber == 0&& hackerIsAdded == false)
                 {
-                    hackerNumber = generatedRandomNumber;
+                    hackerIsAdded = true;
+                    ImageList[i].IsThisAHacker = true;
+                    ImageList[i].ImageLink = linkList[generatedRandomNumber];
+                    linkList.RemoveAt(generatedRandomNumber);
                 }
+                else
+                {
+                    ImageList[i].ImageLink = linkList[generatedRandomNumber];
+                    ImageList[i].IsThisAHacker = false;
+                    linkList.RemoveAt(generatedRandomNumber);
+                }                             
             }
-            ImageList[hackerNumber].IsThisAHacker = true;
+            
 
             for (int i = 0; i < 3; i++)
             {

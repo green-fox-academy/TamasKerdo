@@ -29,7 +29,8 @@ namespace GameForDemo.Controllers
         
         [HttpPost("restart")]
         public IActionResult TurnUpTheCard()
-        {           
+        {
+            Images.GameOver = 0;
              return Redirect("/");
         }
 
