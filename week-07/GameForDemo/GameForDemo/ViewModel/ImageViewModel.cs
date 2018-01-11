@@ -17,9 +17,9 @@ namespace GameForDemo.ViewModel
         {
             var linkList = new List<string>();
             linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\admin.jpg");
-            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\geek.jpg");
+            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\a.jpg");
             linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg");
-            string StartImageLink = @"d:\Greenfox Academy tananyag\practice\week07\day3\images\question.jpg";
+            string StartImageLink = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\question.jpg";
             var rn = new Random();
             int hackerNumber=0;
             for (int i = 0; i < 3; i++)
@@ -28,7 +28,7 @@ namespace GameForDemo.ViewModel
                 ImageList.Add(new HackerImage());
                 ImageList[i].ImageLink = linkList[generatedRandomNumber];
                 ImageList[i].IsThisAHacker = false;
-
+                linkList.RemoveAt(generatedRandomNumber);
                 if (i == 0)
                 {
                     hackerNumber = generatedRandomNumber;
@@ -49,6 +49,7 @@ namespace GameForDemo.ViewModel
             if (ImageList[CardToCheck].IsThisAHacker)
             {
                 GameOver = 2;
+                StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
             }
             else if (!StartImageList[CardToCheck].Modified)
             {
@@ -56,6 +57,7 @@ namespace GameForDemo.ViewModel
                 StartImageList[CardToCheck].Modified = true;
             }
         }
+
         public void CheckNumberOfModifications()
         {
             int modificationNumber = 0;

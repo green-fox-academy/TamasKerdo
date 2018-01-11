@@ -15,7 +15,7 @@ namespace GameForDemo.Controllers
     public class HomeController : Controller
     {        
         public static ImageViewModel Images { get; set; } = new ImageViewModel();
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult Index()
         {
             if (Images.GameOver==0)
@@ -27,11 +27,43 @@ namespace GameForDemo.Controllers
             return View(Images);
 
         }
-        [HttpPost]
+        [HttpPost("TurnUpTheFirstCard")]
         public IActionResult TurnUpTheCard()
         {
-            Images.GenerateImageList();
-            return View(Images);
+            Images.CardToCheck = 0;
+            Images.CheckTheCard();
+            if (Images.GameOver == 2)
+            {
+                return RedirectToAction("Index");
+            }
+            Images.CheckNumberOfModifications();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("TurnUpTheSecondCard")]
+        public IActionResult TurnUpTheSecondCard()
+        {
+            Images.CardToCheck = 1;
+            Images.CheckTheCard();
+            if (Images.GameOver == 2)
+            {
+                return RedirectToAction("Index");
+            }
+            Images.CheckNumberOfModifications();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("TurnUpTheThirdCard")]
+        public IActionResult TurnUpTheThirdCard()
+        {
+            Images.CardToCheck = 2;
+            Images.CheckTheCard();
+            if (Images.GameOver == 2)
+            {
+                return RedirectToAction("Index");
+            }
+            Images.CheckNumberOfModifications();
+            return RedirectToAction("Index");
         }
     }
 }
