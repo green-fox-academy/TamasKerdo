@@ -3,37 +3,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
-        .button {            
+        .button 
+        {            
             height: auto;
-            width: 150px;          
+            width: 300px;            
         }
 
-        .images {
+        .images 
+        {
             display: inline-block;
             cursor: pointer;
-            width: 145px;
+            width: 290px;
             height: auto;
         }
 
-        button:active {
+        button:active 
+        {
             position: relative;
             top: 3px;
             background-color: mediumvioletred;
-        }         
+        }
+        
     </style>
 </head>
 <body>
-    <button class="button" type="submit" style="border: 0;">
-        <img class="images" src="@Model.StartImageList[0].StartImageLink" alt="submit" />
-    </button>
+    <form action="/TurnUpTheCard" method="post">
+        <button class="button" type="submit" style="border: 0;">
+            <img class="images" src="@Model.StartImageList[0].StartImageLink" alt="submit" />
+        </button>
+    </form>
 
-    <button class="button" type="submit" style="border: 0;">
-        <img class="images" src="@Model.StartImageList[1].StartImageLink" alt="submit" />
-    </button>
+    <form action="/TurnUpTheCard" method="post">
+        <button class="button" type="submit" style="border: 0;">
+            <img class="images" src="@Model.StartImageList[1].StartImageLink" alt="submit" />
+        </button>
+    </form>
 
-    <button class="button" type="submit" style="border: 0;">
-        <img class="images" src="@Model.StartImageList[2].StartImageLink" alt="submit" />
-    </button>
+    <form action="/TurnUpTheCard" method="post">
+        <button class="button" type="submit" style="border: 0;">
+            <img class="images" src="@Model.StartImageList[2].StartImageLink" alt="submit" />
+        </button>
+    </form>
 </body>
 </html>
 

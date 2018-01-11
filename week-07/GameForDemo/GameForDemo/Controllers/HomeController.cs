@@ -15,8 +15,20 @@ namespace GameForDemo.Controllers
     public class HomeController : Controller
     {        
         public static ImageViewModel Images { get; set; } = new ImageViewModel();
-        
+        [HttpGet]
         public IActionResult Index()
+        {
+            if (Images.GameOver==0)
+            {
+                Images.GenerateImageList();
+                return View(Images);
+            }
+
+            return View(Images);
+
+        }
+        [HttpPost]
+        public IActionResult TurnUpTheCard()
         {
             Images.GenerateImageList();
             return View(Images);

@@ -10,6 +10,8 @@ namespace GameForDemo.ViewModel
     {
         public List<HackerImage> ImageList { get; set; } = new List<HackerImage>();
         public List<StartImage> StartImageList { get; set; } = new List<StartImage>();
+        public int GameOver { get; set; } = 0;
+        public int CardToCheck { get; set; }
 
         public void GenerateImageList()
         {
@@ -39,6 +41,34 @@ namespace GameForDemo.ViewModel
                 StartImageList.Add(new StartImage());
                 StartImageList[i].StartImageLink = StartImageLink;
                 StartImageList[i].Modified = false;
+            }
+        }
+
+        public void CheckTheCard()
+        {
+            if (ImageList[CardToCheck].IsThisAHacker)
+            {
+                GameOver = 2;
+            }
+            else if (!StartImageList[CardToCheck].Modified)
+            {
+                StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                StartImageList[CardToCheck].Modified = true;
+            }
+        }
+        public void CheckNumberOfModifications()
+        {
+            int modificationNumber = 0;
+            foreach (var startImage in StartImageList)
+            {
+                if (startImage.Modified == true)
+                {
+                    modificationNumber++;
+                }
+            }
+            if (modificationNumber>1)
+            {
+                GameOver = 1;
             }
         }
     }
