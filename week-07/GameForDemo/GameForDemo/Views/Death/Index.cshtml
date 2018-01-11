@@ -3,8 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
-
-
         .image {
             display: inline-block;
             cursor: pointer;
@@ -27,7 +25,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            height: 300px;            
+            height: 300px;
             width: auto;
             flex-direction: row;
         }
@@ -42,26 +40,21 @@
 </head>
 <body>
     <div class="container">
-        <form class="card" action="/TurnUpTheFirstCard" method="post" name="submitbutton1">
-            <button class="button" type="submit" style="border: 0;" >
-                <img class="image" src="@Model.StartImageList[0].StartImageLink" alt="submit">
-                
-            </button>
+        <form class="card">            
+                <img class="image" src="@Model.StartImageList[0].StartImageLink" alt="submit">            
         </form>
 
-        <form class="card" action="/TurnUpTheSecondCard" method="post" name="submitbutton2">
-            <button class="button" type="submit" style="border: 0;">
-                <img class="image" src="@Model.StartImageList[1].StartImageLink" alt="submit">                
-            </button>
+        <form class="card">            
+                <img class="image" src="@Model.StartImageList[1].StartImageLink" alt="submit">            
         </form>
 
-        <form class="card" action="/TurnUpTheThirdCard" method="post" name="submitbutton3">
-            <button class="button" type="submit" style="border: 0;">
-                <img class="image" src="@Model.StartImageList[2].StartImageLink" alt="submit">                
-            </button>
-            
+        <form class="card">            
+                <img class="image" src="@Model.StartImageList[2].StartImageLink" alt="submit">
         </form>
-    </div>
+    </div>      
+    <form action="/death/restart" method="post">
+        <button type="submit">Restart!</button>
+    </form>
 </body>
 </html>
 

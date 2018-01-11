@@ -13,8 +13,14 @@ namespace GameForDemo.Controllers
 {
     [Route("")]
     public class HomeController : Controller
-    {        
-        public static ImageViewModel Images { get; set; } = new ImageViewModel();
+    {
+        public static ImageViewModel Images { get; set; }
+
+        public HomeController(ImageViewModel newModel)
+        {
+            Images = newModel;
+        }
+        
         [HttpGet("")]
         public IActionResult Index()
         {
@@ -24,6 +30,7 @@ namespace GameForDemo.Controllers
                 Images.GenerateImageList();
                 return View(Images);
             }
+            
 
             return View(Images);
 
@@ -48,7 +55,7 @@ namespace GameForDemo.Controllers
             Images.CheckTheCard();
             if (Images.GameOver == 2)
             {
-                return RedirectToAction("Index");
+                return Redirect("/death");
             }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
@@ -61,10 +68,10 @@ namespace GameForDemo.Controllers
             Images.CheckTheCard();
             if (Images.GameOver == 2)
             {
-                return RedirectToAction("Index");
+                return Redirect("/death");
             }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
-        }
+        }        
     }
 }
