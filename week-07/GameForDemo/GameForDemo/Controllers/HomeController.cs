@@ -20,6 +20,7 @@ namespace GameForDemo.Controllers
         {
             if (Images.GameOver==0)
             {
+                Images.GameOver = 4;
                 Images.GenerateImageList();
                 return View(Images);
             }
