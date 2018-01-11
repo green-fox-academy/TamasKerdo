@@ -42,7 +42,7 @@ namespace GameForDemo.Controllers
             Images.CheckTheCard();
             if (Images.GameOver == 2)
             {
-                return RedirectToAction("Index");
+                return Redirect("/death");
             }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
