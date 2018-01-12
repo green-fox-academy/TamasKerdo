@@ -43,6 +43,16 @@
             color: green;
             font-size: 30px;
         }
+        table, td {
+            border: 1px solid black;
+            table-layout: fixed;
+        }
+
+        td {
+            padding: 5px;
+            text-align: left;
+            width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +77,20 @@
             
         </form>
     </div>
+
+    <table style="width:800px">
+        <tr>
+
+            <td>Number Of your Wins</td>
+            <td>Number Of your deaths</td>
+        </tr>
+        <tr>
+            <td>@Model.NumberOfWins</td>
+            <td>@Model.NumberOfDeaths</td>
+
+        </tr>
+
+    </table>
 </body>
 </html>
 
