@@ -9,12 +9,12 @@ using FoxClub.Models;
 
 namespace FoxClub.Controllers
 {
-    [Route("")]
-
-    public class HomeController : Controller
+    [Route("login")]
+    public class LoginController : Controller
     {
         public Fox MyFox { get; set; }
-        public HomeController(Fox newFox)
+        
+        public LoginController(Fox newFox)
         {
             MyFox = newFox;
         }
@@ -22,8 +22,14 @@ namespace FoxClub.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return View(MyFox);
         }
-        
+
+        [HttpPost("")]
+        public IActionResult Index(string name)
+        {
+            MyFox.Name = name;
+            return Redirect("/");
+        }
     }
 }

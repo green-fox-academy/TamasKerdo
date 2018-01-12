@@ -1,0 +1,21 @@
+﻿@model FoxClub.Models.Fox
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Welcome to Programmer Fox Club!</h1>
+    <h2>Please provide a name, so you can associate it to your pet!</h2>
+
+    <form action="/login" method="post">
+        Name:
+        <br />
+        <input type="text" name="name" value="">
+        <br />
+        <input type="submit" value="Go">
+        <br />
+    </form>
+    <p>@Model.Name</p>
+</body>
+</html>
