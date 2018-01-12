@@ -36,31 +36,30 @@
             align-items: center;
             justify-content: center;
         }
-        p 
-        {
-            color:red;
-            font-size:30px;
+
+        p {
+            color: green;
+            font-size: 30px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <form class="card">            
-                <img class="image" src="@Model.StartImageList[0].StartImageLink" alt="submit">            
+        <form class="card">
+            <img class="image" src="@Model.StartImageList[0].StartImageLink" alt="submit">
         </form>
 
-        <form class="card">            
-                <img class="image" src="@Model.StartImageList[1].StartImageLink" alt="submit">            
+        <form class="card">
+            <img class="image" src="@Model.StartImageList[1].StartImageLink" alt="submit">
         </form>
 
-        <form class="card">            
-                <img class="image" src="@Model.StartImageList[2].StartImageLink" alt="submit">
+        <form class="card">
+            <img class="image" src="@Model.StartImageList[2].StartImageLink" alt="submit">
         </form>
-    </div>      
-    <form action="/death/restart" method="post">
+    </div>
+    <form action="/win/restart" method="post">
         <button type="submit">Restart!</button>
     </form>
-    <p>You have benn hacked!!!</p>
+    <p>Hacker is found!!!</p>
 </body>
 </html>
-

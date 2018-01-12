@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GameForDemo.Models;
 using GameForDemo.ViewModel;
@@ -10,28 +7,28 @@ using GameForDemo.ViewModel;
 
 namespace GameForDemo.Controllers
 {
-    [Route("death")]
-    public class DeathController : Controller
+    [Route("win")]
+    public class WinController : Controller
     {
 
         public static ImageViewModel Images { get; set; }
 
-        public DeathController(ImageViewModel newModel)
+        public WinController(ImageViewModel newModel)
         {
             Images = newModel;
         }
 
         [HttpGet("")]
         public IActionResult Index()
-        {            
+        {
             return View(Images);
         }
-        
+
         [HttpPost("restart")]
         public IActionResult TurnUpTheCard()
         {
             Images.GameOver = 0;
-            Images.NumberOfDeaths++;
+            Images.NumberOfWins++;
             return Redirect("/");
         }
 

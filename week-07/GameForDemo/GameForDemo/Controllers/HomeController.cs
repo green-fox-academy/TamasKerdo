@@ -29,11 +29,9 @@ namespace GameForDemo.Controllers
                 Images.GameOver = 4;
                 Images.GenerateImageList();
                 return View(Images);
-            }
-            
+            }            
 
             return View(Images);
-
         }
         [HttpPost("TurnUpTheFirstCard")]
         public IActionResult TurnUpTheCard()
@@ -43,6 +41,10 @@ namespace GameForDemo.Controllers
             if (Images.GameOver == 2)
             {
                 return Redirect("/death");
+            }
+            else if (Images.GameOver == 1)
+            {
+                return Redirect("/win");
             }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
@@ -57,6 +59,10 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/death");
             }
+            else if (Images.GameOver == 1)
+            {
+                return Redirect("/win");
+            }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
         }
@@ -69,6 +75,10 @@ namespace GameForDemo.Controllers
             if (Images.GameOver == 2)
             {
                 return Redirect("/death");
+            }
+            else if (Images.GameOver == 1)
+            {
+                return Redirect("/win");
             }
             Images.CheckNumberOfModifications();
             return RedirectToAction("Index");

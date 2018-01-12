@@ -12,6 +12,8 @@ namespace GameForDemo.ViewModel
         public List<StartImage> StartImageList { get; set; } = new List<StartImage>();
         public int GameOver { get; set; } = 0;
         public int CardToCheck { get; set; }
+        public int NumberOfDeaths { get; set; }
+        public int NumberOfWins { get; set; }
 
         public void GenerateImageList()
         {
@@ -52,17 +54,41 @@ namespace GameForDemo.ViewModel
         }
 
         public void CheckTheCard()
-        {
-            if (ImageList[CardToCheck].IsThisAHacker)
+        {            
+            int numberOfModifications = 0;
+            foreach (var ListElement in StartImageList) 
             {
-                GameOver = 2;
-                StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                if (ListElement.Modified==true)
+                {
+                    numberOfModifications++;
+                }
             }
-            else if (!StartImageList[CardToCheck].Modified)
+            if (numberOfModifications==0)
             {
-                StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
-                StartImageList[CardToCheck].Modified = true;
+                if (ImageList[CardToCheck].IsThisAHacker)
+                {
+                    GameOver = 1;
+                    StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                }
+                else if (!StartImageList[CardToCheck].Modified)
+                {
+                    StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                    StartImageList[CardToCheck].Modified = true;
+                }
             }
+            else
+            {
+                if (ImageList[CardToCheck].IsThisAHacker)
+                {
+                    GameOver = 1;
+                    StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                }
+                else
+                {
+                    GameOver = 2;
+                    StartImageList[CardToCheck].StartImageLink = ImageList[CardToCheck].ImageLink;
+                }
+            }           
         }
 
         public void CheckNumberOfModifications()
