@@ -20,16 +20,6 @@
             background-color: mediumvioletred;
         }
 
-
-        .card {
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 300px;
-            width: auto;
-            flex-direction: row;
-        }
-
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -40,10 +30,17 @@
         p {
             color: green;
             font-size: 30px;
+            top: 50%;            
+            text-align: center;
         }
         table, td {
             border: 1px solid black;
             table-layout: fixed;
+        }
+        table {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
         }
 
         td {
@@ -51,6 +48,46 @@
             text-align: left;
             width: 200px;
         }
+
+        .restartbutton {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background: #d46565;
+            background: -webkit-gradient(linear, left top, left bottom, from(#9c3e65), to(#d46565));
+            background: -webkit-linear-gradient(top, #9c3e65, #d46565);
+            background: -moz-linear-gradient(top, #9c3e65, #d46565);
+            background: -o-linear-gradient(top, #9c3e65, #d46565);
+            padding: 15px 30px;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+            -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+            -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+            box-shadow: rgba(0,0,0,1) 0 1px 0;
+            text-shadow: rgba(0,0,0,.4) 0 1px 0;
+            color: #000000;
+            font-size: 24px;
+            font-family: Georgia, Serif;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+            .restartbutton:hover {
+                border-top-color: #cad108;
+                background: #cad108;
+                color: #cccccc;
+            }
+
+        .restartbutton {
+            border-top-color: #245c1b;
+            background: #245c1b;
+        }
+        
+
     </style>
 </head>
 <body>
@@ -84,7 +121,7 @@
     <p>Hacker is found!!!</p>
 
     <form action="/win/restart" method="post">
-        <button type="submit">Restart!</button>
+        <button class="restartbutton" type="submit">Restart!</button>
     </form>
 </body>
 </html>
