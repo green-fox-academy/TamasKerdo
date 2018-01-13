@@ -46,7 +46,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            Images.CheckNumberOfModifications();
+            //Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
         }
 
@@ -63,7 +63,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            Images.CheckNumberOfModifications();
+            //Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
         }
 
@@ -80,7 +80,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            Images.CheckNumberOfModifications();
+            //Images.CheckNumberOfModifications();
             return RedirectToAction("Index");
         }        
     }

@@ -42,8 +42,7 @@ namespace GameForDemo.ViewModel
                     ImageList[i].IsThisAHacker = false;
                     linkList.RemoveAt(generatedRandomNumber);
                 }                             
-            }
-            
+            }            
 
             for (int i = 0; i < 3; i++)
             {
@@ -54,15 +53,9 @@ namespace GameForDemo.ViewModel
         }
 
         public void CheckTheCard()
-        {            
-            int numberOfModifications = 0;
-            foreach (var ListElement in StartImageList) 
-            {
-                if (ListElement.Modified==true)
-                {
-                    numberOfModifications++;
-                }
-            }
+        {
+            int numberOfModifications = CheckNumberOfModifications();
+
             if (numberOfModifications==0)
             {
                 if (ImageList[CardToCheck].IsThisAHacker)
@@ -91,7 +84,7 @@ namespace GameForDemo.ViewModel
             }           
         }
 
-        public void CheckNumberOfModifications()
+        public int CheckNumberOfModifications()
         {
             int modificationNumber = 0;
             foreach (var startImage in StartImageList)
@@ -101,10 +94,7 @@ namespace GameForDemo.ViewModel
                     modificationNumber++;
                 }
             }
-            if (modificationNumber>1)
-            {
-                GameOver = 1;
-            }
+            return modificationNumber;
         }
     }
 }

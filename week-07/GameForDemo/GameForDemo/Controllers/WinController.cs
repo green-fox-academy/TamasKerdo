@@ -10,7 +10,6 @@ namespace GameForDemo.Controllers
     [Route("win")]
     public class WinController : Controller
     {
-
         public static ImageViewModel Images { get; set; }
 
         public WinController(ImageViewModel newModel)
@@ -31,6 +30,5 @@ namespace GameForDemo.Controllers
             Images.NumberOfWins++;
             return Redirect("/");
         }
-
     }
 }

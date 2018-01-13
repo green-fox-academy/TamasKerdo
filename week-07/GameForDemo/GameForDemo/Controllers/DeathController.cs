@@ -13,7 +13,6 @@ namespace GameForDemo.Controllers
     [Route("death")]
     public class DeathController : Controller
     {
-
         public static ImageViewModel Images { get; set; }
 
         public DeathController(ImageViewModel newModel)
