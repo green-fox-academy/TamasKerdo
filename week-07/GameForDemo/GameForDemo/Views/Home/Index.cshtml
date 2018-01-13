@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
-
-        .image {
+        .image 
+        {
             display: inline-block;
             cursor: pointer;
             height: 300px;
@@ -16,32 +16,39 @@
             opacity: 1;
         }
 
-        button:active {
+        button:active 
+        {
             position: relative;
             top: 3px;
             background-color: mediumvioletred;
             opacity: 1;
         }
 
-        .container {
+        .container 
+        {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
-            
+            justify-content: center;            
         }
 
-        p {
+        p 
+        {
             color: green;
             font-size: 30px;
             opacity: 1;
         }
-        table, td {
+
+
+        table, td 
+        {
             border: 1px solid black;
             table-layout: fixed;
             opacity: 1;
         }
-        table {
+
+        table 
+        {
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -53,14 +60,16 @@
             font-weight: bold;
         }
 
-        td {
+        td 
+        {
             padding: 5px;
             text-align: left;
             width: 200px;
             opacity: 1;
         }
 
-        body {
+        body 
+        {
             background-image: url("D:/Greenfox Academy tananyag/practice/week07/day3/images/background.jpg");
             opacity: 0.95;
         }
@@ -92,17 +101,15 @@
 
     <table style="width:800px">
         <tr>
-
             <td>Number Of your Wins</td>
             <td>Number Of your deaths</td>
         </tr>
         <tr>
             <td>@Model.NumberOfWins</td>
             <td>@Model.NumberOfDeaths</td>
-
         </tr>
-
     </table>
+
 </body>
 </html>
 

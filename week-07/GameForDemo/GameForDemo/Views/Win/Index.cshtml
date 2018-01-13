@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
-        .image {
+        .image 
+        {
             display: inline-block;
             cursor: pointer;
             height: 300px;
@@ -15,45 +16,53 @@
             opacity: 1;
         }
 
-        button:active {
+        button:active 
+        {
             position: relative;
             top: 3px;
             background-color: mediumvioletred;
             opacity: 1;
         }
 
-        .container {
+        .container 
+        {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
         }
 
-        p {
+        p 
+        {
             color: green;
             font-size: 50px;
             top: 50%;
             text-align: center;
             opacity: 1;
         }
-        table, td {
+
+        table, td 
+        {
             border: 1px solid black;
             table-layout: fixed;
             opacity: 1;
         }
-        table {
+
+        table 
+        {
             display: block;
             margin-left: auto;
             margin-right: auto;
             opacity: 1;
             border-color: red;            
-            color: red;
+            color: white;
             font-size: 40px;
-            background-color: white;
+            background-color: green;
             font-weight: bold;
         }
 
-        td {
+        td 
+        {
             padding: 5px;
             text-align: left;
             width: 200px;
@@ -87,23 +96,25 @@
             opacity: 1;
         }
 
-            .restartbutton:hover {
-                border-top-color: #cad108;
-                background: #cad108;
-                color: #cccccc;
-                opacity: 1;
-            }
+        .restartbutton:hover 
+        {
+            border-top-color: #cad108;
+            background: #cad108;
+            color: #cccccc;
+            opacity: 1;
+        }
 
-        .restartbutton {
+        .restartbutton 
+        {
             border-top-color: #245c1b;
             background: #245c1b;
             opacity: 1;
         }
-        body {
+        body 
+        {
             background-image: url("D:/Greenfox Academy tananyag/practice/week07/day3/images/background.jpg");
             opacity: 0.95;
-        }
-             
+        }             
 
     </style>
 </head>
@@ -123,18 +134,16 @@
     </div>
 
     <table style="width:800px">
-        <tr>
-            
+        <tr>            
             <td>Number Of your Wins</td>
             <td>Number Of your deaths</td>            
         </tr>
         <tr>
             <td>@Model.NumberOfWins</td>
-            <td>@Model.NumberOfDeaths</td>
-            
+            <td>@Model.NumberOfDeaths</td>            
         </tr>
-
     </table>
+
     <p>Hacker is found!!!</p>
 
     <form action="/win/restart" method="post">
