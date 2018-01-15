@@ -24,7 +24,6 @@ namespace FirstSQLServerSetup.Controllers
         }
 
         [HttpGet("todo")]
-        [Route("")]
         public IActionResult Index()
         {
             var newtodo = new ToDo()
@@ -70,7 +69,7 @@ namespace FirstSQLServerSetup.Controllers
         {
             todoContext.ToDos.Add(todo);
             todoContext.SaveChanges();            
-            return Redirect("/");
+            return Redirect("add");
         }
     }
 }
