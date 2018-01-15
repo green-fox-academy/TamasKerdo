@@ -29,5 +29,10 @@ namespace FirstSQLServerSetup.Repository
             }
             return Todocontext.ToDos.Where(x => x.IsDone == true).ToList();
         }
+
+        public List<ToDo> GetFullList()
+        {
+            return Todocontext.ToDos.ToList();
+        }
     }
 }
