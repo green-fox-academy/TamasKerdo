@@ -34,5 +34,12 @@ namespace FirstSQLServerSetup.Repository
         {
             return Todocontext.ToDos.ToList();
         }
+
+        public void DeleteToDo(long idToDelete)
+        {
+            ToDo ToDoToRemove = Todocontext.ToDos.FirstOrDefault(x => x.Id == idToDelete);
+            Todocontext.ToDos.Remove(ToDoToRemove);
+            Todocontext.SaveChanges();
+        }
     }
 }

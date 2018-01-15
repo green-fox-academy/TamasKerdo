@@ -4,24 +4,26 @@
     <title>hhhhhhheeeeeeeeeeellllllllllooooooo</title>
 </head>
 <body>
-     
-        <table>
-            <tr>
-                <td>Id</td>
-                <td>What To Do</td>
-                <td>Is it Urgent?</td>
-                <td>Done?</td>
-            </tr>
-            @foreach (var todos in Model)
-             {
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>What To Do</td>
+            <td>Is it Urgent?</td>
+            <td>Done?</td>
+            <td>Delete</td>
+        </tr>
+        @foreach (var todos in Model)
+        {
             <tr>
                 <td>@todos.Id</td>
                 <td>@todos.Title</td>
                 <td>@todos.IsUrgent</td>
                 <td>@todos.IsDone</td>
+                <td><a href="/delete?Id=@todos.Id">Delete</a></td>
             </tr>
-            }
-        </table>
-    
+        }
+    </table>
+
 </body>
 </html>

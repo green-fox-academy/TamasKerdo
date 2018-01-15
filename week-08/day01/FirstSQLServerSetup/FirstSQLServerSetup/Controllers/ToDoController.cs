@@ -49,6 +49,7 @@ namespace FirstSQLServerSetup.Controllers
         [Route("list")]
         public IActionResult List([FromQuery] bool isActive)
         {
+            todoContext.SaveChanges();
             return View(Repository.GetActive(isActive));
         }
 
@@ -70,6 +71,13 @@ namespace FirstSQLServerSetup.Controllers
             todoContext.ToDos.Add(todo);
             todoContext.SaveChanges();            
             return Redirect("add");
+        }
+
+        [HttpGet("delete")]
+        public IActionResult Delete([FromQuery]long id)
+        {
+            Repository.DeleteToDo(id);
+            return RedirectToAction("list");
         }
     }
 }
