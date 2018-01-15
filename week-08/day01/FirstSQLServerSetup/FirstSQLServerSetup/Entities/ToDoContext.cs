@@ -11,9 +11,8 @@ namespace FirstSQLServerSetup.Entities
     {
         public ToDoContext(DbContextOptions options) : base(options)
         {
-
         }
 
-        public ToDo ToDos { get; set; }
+        public DbSet<ToDo> ToDos { get; set; }        
     }
 }
