@@ -18,18 +18,18 @@ namespace GameForDemo.ViewModel
         public void GenerateImageList()
         {
             var linkList = new List<string>();
-            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\hacker.jpg");
-            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\admin.jpg");
-            linkList.Add(@"D:\Greenfox Academy tananyag\practice\week07\day3\images\a.jpg");
+            linkList.Add(@"../../Images/hacker.jpg");
+            linkList.Add(@"../../Images/admin.jpg");
+            linkList.Add(@"../../Images/Images/sp.jpg");
             
-            string StartImageLink = @"D:\Greenfox Academy tananyag\practice\week07\day3\images\question.jpg";
+            string StartImageLink = @"../../Images/question.jpg";
             var rn = new Random();
             bool hackerIsAdded=false;
             for (int i = 0; i < 3; i++)
             {                
                 int generatedRandomNumber = rn.Next(0, linkList.Count);
                 ImageList.Add(new HackerImage());
-                if (generatedRandomNumber == 0&& hackerIsAdded == false)
+                if (generatedRandomNumber == 0 && hackerIsAdded == false)
                 {
                     hackerIsAdded = true;
                     ImageList[i].IsThisAHacker = true;
@@ -54,9 +54,8 @@ namespace GameForDemo.ViewModel
 
         public void CheckTheCard()
         {
-            int numberOfModifications = CheckNumberOfModifications();
 
-            if (numberOfModifications==0)
+            if (CheckNumberOfModifications()== 0)
             {
                 if (ImageList[CardToCheck].IsThisAHacker)
                 {

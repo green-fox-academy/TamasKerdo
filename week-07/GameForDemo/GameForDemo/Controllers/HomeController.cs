@@ -33,6 +33,7 @@ namespace GameForDemo.Controllers
 
             return View(Images);
         }
+
         [HttpPost("TurnUpTheFirstCard")]
         public IActionResult TurnUpTheCard()
         {
@@ -46,7 +47,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            //Images.CheckNumberOfModifications();
+
             return RedirectToAction("Index");
         }
 
@@ -63,7 +64,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            //Images.CheckNumberOfModifications();
+
             return RedirectToAction("Index");
         }
 
@@ -80,7 +81,7 @@ namespace GameForDemo.Controllers
             {
                 return Redirect("/win");
             }
-            //Images.CheckNumberOfModifications();
+
             return RedirectToAction("Index");
         }        
     }

@@ -16,6 +16,7 @@ namespace FirstSQLServerSetup.Controllers
     {
         private ToDoContext todoContext;
         private ToDoRepository Repository;
+        //static public long IdToUpdate { get; set; }
 
         public ToDoController(ToDoContext todoContext, ToDoRepository Repository)
         {
@@ -40,16 +41,10 @@ namespace FirstSQLServerSetup.Controllers
             return Json(lasttodo);
         }
 
-        //[Route("list")]
-        //public IActionResult List()
-        //{            
-        //    return View(Repository.GetAll());
-        //}
-
         [Route("list")]
         public IActionResult List([FromQuery] bool isActive)
         {
-            todoContext.SaveChanges();
+            
             return View(Repository.GetActive(isActive));
         }
 
@@ -77,6 +72,21 @@ namespace FirstSQLServerSetup.Controllers
         public IActionResult Delete([FromQuery]long id)
         {
             Repository.DeleteToDo(id);
+            return Redirect("fullList");
+        }
+
+        [HttpGet("edit/{id}")]
+        public IActionResult Edit(long id)
+        {
+            //IdToUpdate = id;
+            return View(Repository.GetToDo(id));
+        }
+
+        [HttpPost("edit/{id}")]
+        public IActionResult Edit(ToDo todoToUpdate,[FromQuery] long id)
+        {
+            todoToUpdate.Id = id;
+            Repository.UpdateToDo(todoToUpdate);
             return RedirectToAction("list");
         }
     }

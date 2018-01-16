@@ -12,6 +12,7 @@
             <td>Is it Urgent?</td>
             <td>Done?</td>
             <td>Delete</td>
+            <td>Edit</td>
         </tr>
         @foreach (var todos in Model)
         {
@@ -21,9 +22,8 @@
                 <td>@todos.IsUrgent</td>
                 <td>@todos.IsDone</td>
                 <td><a href="/delete?Id=@todos.Id">Delete</a></td>
+                <td><a href="/edit/@todos.Id">Edit</a></td>
             </tr>
         }
     </table>
-
-</body>
-</html>
+    </body>

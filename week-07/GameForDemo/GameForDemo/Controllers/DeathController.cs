@@ -33,6 +33,5 @@ namespace GameForDemo.Controllers
             Images.NumberOfDeaths++;
             return Redirect("/");
         }
-
     }
 }
