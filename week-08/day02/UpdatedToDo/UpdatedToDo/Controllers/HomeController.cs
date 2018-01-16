@@ -23,7 +23,7 @@ namespace UpdatedToDo.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            return Ok();
+            return View("Index");
         }
     }
 }

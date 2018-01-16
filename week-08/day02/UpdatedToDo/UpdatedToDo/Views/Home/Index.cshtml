@@ -1,4 +1,19 @@
-﻿@page
-@model IndexModel
-@{
-}
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>Hello! Please choose your activity!
+    <form action="add/" method="post">        
+        <input type="submit" name="name" value="Add" />
+    </form>
+    <form action="listAll/" method="post">
+        <input type="submit" name="name" value="List All" />
+    </form>
+    <form action="listFinished/" method="post">
+        <input type="submit" name="name" value="List Finished" />
+    </form>
+    <form action="listFinished/" method="post">
+        <input type="submit" name="name" value="List Not Finished" />
+    </form>
+</body>
+</html>
