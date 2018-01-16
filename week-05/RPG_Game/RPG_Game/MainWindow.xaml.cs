@@ -30,7 +30,7 @@ namespace RPG_Game
         {
             InitializeComponent();
             int MapElementSize = 70;
-            int NumberOfTheEnemies = 7;
+            int NumberOfTheEnemies = 20;
 
             var FoxMap = new FoxDraw(canvas, MapElementSize);
             FoxCharacter = new FoxDraw(canvas, MapElementSize);

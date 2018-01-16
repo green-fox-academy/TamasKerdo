@@ -8,7 +8,7 @@ namespace Dominoes
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("give me the dominoes in this form: int int");
 
@@ -21,6 +21,9 @@ namespace Dominoes
             {
                 Console.WriteLine("[" + ListElement.ASide +" "+ ListElement.BSide + "]");
             }
+            var domino = new DominoBrick(0,0);
+            domino.PrintAllFields(OrderDominoBricks(DominoList));
+
             Console.ReadLine();
         }
 
@@ -105,6 +108,6 @@ namespace Dominoes
 
             }                         
             return OrderedDominoList;
-        }
+        }        
     }
 }

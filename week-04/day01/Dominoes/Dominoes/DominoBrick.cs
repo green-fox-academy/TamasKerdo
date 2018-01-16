@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominoes
 {
-    class DominoBrick
+    class DominoBrick : IPrintable
     {
         public int ASide { get; private set; }
         public int BSide { get; private set; }
@@ -22,6 +22,15 @@ namespace Dominoes
             int helper = ASide;
             ASide = BSide;
             BSide = helper;
+        }
+
+        public void PrintAllFields(List<DominoBrick> DominoList)
+        {
+            foreach (var DominoElement in DominoList)
+            {
+                Console.WriteLine($"{DominoElement.ASide} { DominoElement.BSide}");
+                Console.WriteLine();
+            }
         }
     }
 }

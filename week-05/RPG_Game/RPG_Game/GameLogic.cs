@@ -272,7 +272,7 @@ namespace RPG_Game
                 yEnemy = FoxCharacter.GetTop(FoxCharacter.Tiles[i]);
                 if ((xHero == xEnemy)&&(yHero ==yEnemy))
                 {
-                    CharacterList[i].HP = CharacterList[i].HP - 10;                    
+                    CharacterList[i].HP = CharacterList[i].HP - 15;                    
 
                     if (CharacterList[i].HP > 0)
                     {
