@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using UpdatedToDo.Repositories;
+using UpdatedToDo.Entities;
 
 namespace UpdatedToDo
 {
@@ -16,6 +18,8 @@ namespace UpdatedToDo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<Repository>();
+            services.AddScoped<ToDoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
