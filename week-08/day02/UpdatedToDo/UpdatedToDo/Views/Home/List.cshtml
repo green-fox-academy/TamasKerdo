@@ -1,0 +1,28 @@
+﻿@model List<UpdatedToDo.Models.ToDo>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>To Do</td>
+            <td>Is it Finished?</td>
+            <td>Is it urgent?</td>
+            <td>Delete</td>
+            <td>Edit</td>
+        </tr>
+        @foreach (var todo in Model)
+        {
+            <td>@todo.Id</td>
+            <td>@todo.title</td>
+            <td>@todo.isDone</td>
+            <td>@todo.isUrgent</td>
+            <td><a href="/delete">delete it</a></td>
+            <td><a href="/delete">edit it</a></td>
+        }
+    </table>
+</body>
+</html>
