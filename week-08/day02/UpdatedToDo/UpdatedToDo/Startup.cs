@@ -19,7 +19,7 @@ namespace UpdatedToDo
         {
             services.AddMvc();
             services.AddScoped<Repository>();
-            services.AddScoped<ToDoContext>();
+            services.AddDbContext<ToDoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
