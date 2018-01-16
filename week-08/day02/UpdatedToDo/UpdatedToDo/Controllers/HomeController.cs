@@ -25,5 +25,29 @@ namespace UpdatedToDo.Controllers
         {
             return View("Index");
         }
+
+        [HttpGet("/add")]
+        public IActionResult Get()
+        {
+            return View("Index");
+        }
+
+        [Route("/listAll")]
+        public IActionResult List()
+        {
+            return View("Index");
+        }
+
+        [Route("/listFinished")]
+        public IActionResult List()
+        {
+            return View("Index");
+        }
+
+        [Route("/listFinished")]
+        public IActionResult List()
+        {
+            return View("Index");
+        }
     }
 }
