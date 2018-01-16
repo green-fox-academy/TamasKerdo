@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using UpdatedToDo.Repositories;
 using UpdatedToDo.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace UpdatedToDo
 {
@@ -19,7 +20,8 @@ namespace UpdatedToDo
         {
             services.AddMvc();
             services.AddScoped<Repository>();
-            services.AddDbContext<ToDoContext>();
+            string connection = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=UpdatedToDoDatabase;Integrated Security=True;Connect Timeout=30;";
+            services.AddDbContext<ToDoContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
