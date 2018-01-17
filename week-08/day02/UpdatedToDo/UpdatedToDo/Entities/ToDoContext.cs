@@ -15,5 +15,6 @@ namespace UpdatedToDo.Entities
         }
 
         public DbSet<ToDo> ToDos { get; set; }
+        public DbSet<ToDo> User { get; set; }
     }
 }

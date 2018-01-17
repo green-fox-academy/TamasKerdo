@@ -31,7 +31,7 @@ namespace UpdatedToDo
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

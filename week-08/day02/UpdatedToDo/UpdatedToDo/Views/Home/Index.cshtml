@@ -1,8 +1,14 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>Hello! Please choose your activity!
+
+    
+
+
+
     <form action="/Add" method="get">        
         <input type="submit" name="name" value="Add" />
     </form>
@@ -15,5 +21,8 @@
     <form action="/listFinished" method="get">
         <input type="submit" name="name" value="List Not Finished" />
     </form>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
