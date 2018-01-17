@@ -48,5 +48,11 @@ namespace UpdatedToDo.Repositories
             ToDoContext.ToDos.Remove(todoToDelete);
             ToDoContext.SaveChanges();
         }
+
+        public void EditToDo(ToDo newtodo)
+        {            
+            ToDoContext.ToDos.Update(newtodo);
+            ToDoContext.SaveChanges();
+        }
     }
 }
