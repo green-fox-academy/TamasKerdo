@@ -11,15 +11,16 @@ namespace UpdatedToDo.Repositories
     {
         public ToDoContext ToDoContext { get; set; }
 
+        public static List<ToDo> ToDoToList { get; set; } = new List<ToDo>();
+
         public Repository(ToDoContext ToDoContext)
         {
             this.ToDoContext = ToDoContext;
         }
 
         public void AddNewToDo(ToDo newTodo)
-        {
-            ToDo todo = newTodo;
-            ToDoContext.ToDos.Add(todo);
+        {            
+            ToDoContext.ToDos.Add(newTodo);
             ToDoContext.SaveChanges();
         }
 
@@ -39,6 +40,13 @@ namespace UpdatedToDo.Repositories
         {
             var todoList = ToDoContext.ToDos.Where(x => x.isDone == false).ToList();
             return todoList;
+        }
+
+        public void DeleteToDo(int id)
+        {
+            ToDo todoToDelete = ToDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            ToDoContext.ToDos.Remove(todoToDelete);
+            ToDoContext.SaveChanges();
         }
     }
 }

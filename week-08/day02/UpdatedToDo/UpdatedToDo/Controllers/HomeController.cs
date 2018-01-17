@@ -29,52 +29,50 @@ namespace UpdatedToDo.Controllers
         [HttpGet("/Add")]
         public IActionResult Add()
         {            
-            return View("Add");
+            return View("Add",new ToDo());
         }
 
         [HttpPost("/Add")]
         public IActionResult Add(ToDo newtodo)
         {
             Repository.AddNewToDo(newtodo);
-
+            Repository.ToDoToList = Repository.ListAllToDo();
             return RedirectToAction("List");
         }
 
         [HttpGet("List")]
         public IActionResult List()
-        {
-            return View(Repository.ListAllToDo());
-        }
-
-        //[HttpGet("listAll")]
-        //public IActionResult List()
-        //{
-        //    return View(Repository.ListAllToDo());
-        //}
-
-        [HttpPost("/listAll")]
-        public IActionResult ListAll()
         {            
-            return Redirect("listAll");
+            return View("List", Repository.ToDoToList);
         }
 
-        //[Route("/listFinished")]
-        //public IActionResult List()
-        //{
-        //    return View("Index");
-        //}
+        [HttpGet("/GetList")]
+        public IActionResult GetList()
+        {
+            Repository.ToDoToList = Repository.ListAllToDo();
+            return RedirectToAction("List");
+        }
 
-        //[Route("/listFinished")]
-        //public IActionResult List()
-        //{
-        //    return View("Index");
-        //}
+        [HttpGet("/ListFinished")]
+        public IActionResult ListFinished()
+        {
+            Repository.ToDoToList = Repository.ListFinishedToDos();
+            return RedirectToAction("List");
+        }
 
-        //[Route("/delete/{id}")]
-        //public IActionResult List(int id)
-        //{
-        //    return View("Index");
-        //}
+        [HttpGet("/ListUnFinished")]
+        public IActionResult ListUnFinished()
+        {
+            Repository.ToDoToList = Repository.ListUnFinishedToDos();
+            return RedirectToAction("List");
+        }
+
+        [Route("/delete/{id}")]
+        public IActionResult List(int id)
+        {
+            Repository.DeleteToDo(id);
+            return RedirectToAction("GetList");
+        }
 
         //[Route("/edit/{id}")]
         //public IActionResult List(int id)
