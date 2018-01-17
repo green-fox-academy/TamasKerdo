@@ -15,6 +15,14 @@ namespace UpdatedToDo.Entities
         }
 
         public DbSet<ToDo> ToDos { get; set; }
-        //public DbSet<ToDo> User { get; set; }
+        public DbSet<ToDo> User { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                 .HasMany(x => x.ToDoList)
+                 .WithOne(x => x.person)
+                 .HasPrincipalKey(x => x.Id);
+        }
     }
 }

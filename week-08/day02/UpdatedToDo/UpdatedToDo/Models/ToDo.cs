@@ -11,5 +11,6 @@ namespace UpdatedToDo.Models
         public string title { get; set; }
         public bool isDone { get; set; }
         public bool isUrgent { get; set; }
+        public User person { get; set; }
     }
 }
