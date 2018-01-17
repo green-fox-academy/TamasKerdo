@@ -18,6 +18,12 @@ namespace UpdatedToDo.Repositories
             this.ToDoContext = ToDoContext;
         }
 
+        public ToDo GetToDo(int id)
+        {
+            ToDo todoToGet = ToDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            return todoToGet;
+        }
+
         public void AddNewToDo(ToDo newTodo)
         {            
             ToDoContext.ToDos.Add(newTodo);

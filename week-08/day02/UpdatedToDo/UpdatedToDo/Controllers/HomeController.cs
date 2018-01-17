@@ -74,19 +74,18 @@ namespace UpdatedToDo.Controllers
             return RedirectToAction("GetList");
         }
 
-        [HttpPost("/Edit/{id}")]
-        public IActionResult Edit([FromQuery] int id)
+        [HttpGet("/Edit/{id}")]
+        public IActionResult Edit(int id)
         {
-            ToDo newTodo = new ToDo();
-            newTodo.Id = id;
-            return View("Edit",newTodo);
+            var currentTodo = Repository.GetToDo(id);
+            return View(currentTodo);
         }
 
-        [HttpPost("/Edit/{id}")]
-        public IActionResult EditIt(ToDo newTodo,[FromRoute] int id)
+        [HttpPost("/EditIt/{id}")]
+        public IActionResult EditIt(ToDo todoToChange,[FromRoute] int id)
         {
-            newTodo.Id = id;
-            Repository.EditToDo(newTodo);
+            todoToChange.Id = id;
+            Repository.EditToDo(todoToChange);
             return RedirectToAction("GetList");
         }
     }
