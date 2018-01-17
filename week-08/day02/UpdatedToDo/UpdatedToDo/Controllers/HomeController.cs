@@ -26,28 +26,60 @@ namespace UpdatedToDo.Controllers
             return View("Index");
         }
 
-        [HttpGet("/add")]
-        public IActionResult Get()
-        {
-            return View("Index");
+        [HttpGet("/Add")]
+        public IActionResult Add()
+        {            
+            return View("Add");
         }
 
-        [Route("/listAll")]
-        public IActionResult List()
+        [HttpPost("/Add")]
+        public IActionResult Add(ToDo newtodo)
         {
-            return View("Index");
+            Repository.AddNewToDo(newtodo);
+
+            return RedirectToAction("List");
         }
 
-        [Route("/listFinished")]
+        [HttpGet("List")]
         public IActionResult List()
         {
-            return View("Index");
+            return View(Repository.ListAllToDo());
         }
 
-        [Route("/listFinished")]
-        public IActionResult List()
-        {
-            return View("Index");
+        //[HttpGet("listAll")]
+        //public IActionResult List()
+        //{
+        //    return View(Repository.ListAllToDo());
+        //}
+
+        [HttpPost("/listAll")]
+        public IActionResult ListAll()
+        {            
+            return Redirect("listAll");
         }
+
+        //[Route("/listFinished")]
+        //public IActionResult List()
+        //{
+        //    return View("Index");
+        //}
+
+        //[Route("/listFinished")]
+        //public IActionResult List()
+        //{
+        //    return View("Index");
+        //}
+
+        //[Route("/delete/{id}")]
+        //public IActionResult List(int id)
+        //{
+        //    return View("Index");
+        //}
+
+        //[Route("/edit/{id}")]
+        //public IActionResult List(int id)
+        //{
+        //    return View("Index");
+        //}
     }
 }

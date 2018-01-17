@@ -19,7 +19,8 @@ namespace UpdatedToDo.Repositories
         public void AddNewToDo(ToDo newTodo)
         {
             ToDo todo = newTodo;
-            ToDoContext.ToDos.Add(todo);            
+            ToDoContext.ToDos.Add(todo);
+            ToDoContext.SaveChanges();
         }
 
         public List<ToDo> ListAllToDo()

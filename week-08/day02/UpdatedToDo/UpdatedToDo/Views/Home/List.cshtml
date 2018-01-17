@@ -5,6 +5,16 @@
     <title></title>
 </head>
 <body>
+    <form action="/Add" method="get">
+        <input type="submit" name="name" value="Add" />
+    </form>
+    <form action="/listFinished" method="post">
+        <input type="submit" name="name" value="List Finished" />
+    </form>
+    <form action="/listUnFinished" method="post">
+        <input type="submit" name="name" value="List Not Finished" />
+    </form>
+
     <table>
         <tr>
             <td>Id</td>
@@ -16,12 +26,14 @@
         </tr>
         @foreach (var todo in Model)
         {
-            <td>@todo.Id</td>
-            <td>@todo.title</td>
-            <td>@todo.isDone</td>
-            <td>@todo.isUrgent</td>
-            <td><a href="/delete/@todo.Id">delete it</a></td>
-            <td><a href="/edit/@todo.Id">edit it</a></td>
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.title</td>
+                <td>@todo.isDone</td>
+                <td>@todo.isUrgent</td>
+                <td><a href="/delete/@todo.Id">delete it</a></td>
+                <td><a href="/edit/@todo.Id">edit it</a></td>
+            </tr>
         }
     </table>
 </body>
