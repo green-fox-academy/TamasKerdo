@@ -18,7 +18,7 @@ namespace Reddit.Controllers
             Repo = Repository;
         }
 
-        [Route("post")]
+        [Route("posts")]
         public IActionResult Index()
         {
             return View();
