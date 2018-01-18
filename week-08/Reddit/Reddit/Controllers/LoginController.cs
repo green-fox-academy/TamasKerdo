@@ -20,7 +20,7 @@ namespace Reddit.Controllers
         {
             if (name == "login")
             {                
-                return Redirect("/Post");
+                return Redirect("/post");
             }
             else
             {
