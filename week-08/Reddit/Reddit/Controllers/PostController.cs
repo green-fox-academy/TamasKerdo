@@ -9,18 +9,19 @@ using Reddit.Repositories;
 
 namespace Reddit.Controllers
 {
-    public class HomeController : Controller
+    public class PostController : Controller
     {
         public Repository Repo { get; set; }
 
-        public HomeController(Repository Repository)
+        public PostController(Repository Repository)
         {
             Repo = Repository;
         }
-        [Route("")]
+
+
         public IActionResult Index()
         {
-            return View("Index");
+            return View();
         }
     }
 }
