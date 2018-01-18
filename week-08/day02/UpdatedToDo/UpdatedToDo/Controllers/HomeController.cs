@@ -67,7 +67,7 @@ namespace UpdatedToDo.Controllers
             return RedirectToAction("List");
         }
 
-        [HttpPost("/Delete/{id}")]
+        [HttpGet("/Delete/{id}")]
         public IActionResult List(int id)
         {
             Repository.DeleteToDo(id);
