@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Reddit.Repositories;
 using Reddit.Controllers;
+using Reddit.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Reddit
 {
@@ -19,7 +21,7 @@ namespace Reddit
         {
             services.AddMvc();
             services.AddScoped<Repository>();
-            services.AddScoped<HomeController>();
+            services.AddDbContext<PostContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=RedditDatabase;Integrated Security=True;Connect Timeout=30;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,8 +31,8 @@ namespace Reddit
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }

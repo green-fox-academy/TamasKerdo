@@ -17,10 +17,10 @@ namespace Reddit.Controllers
         {
             Repo = Repository;
         }
-
+        [Route("")]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
     }
 }
