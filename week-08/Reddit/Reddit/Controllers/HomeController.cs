@@ -13,9 +13,9 @@ namespace Reddit.Controllers
     {
         public Repository Repo { get; set; }
 
-        public HomeController()
+        public HomeController(Repository Repository)
         {
-
+            Repo = Repository;
         }
 
         public IActionResult Index()
