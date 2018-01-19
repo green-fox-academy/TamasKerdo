@@ -21,6 +21,26 @@ namespace Reddit.Repositories
             return PC.Posts.ToList();
         }
 
+        public List<Post> ListTheBests()
+        {
+            var OrderedList = new List<Post>();
+            OrderedList = PC.Posts.OrderByDescending(p=>p.Opinion).ToList();
+            var returnList = new List<Post>();
+
+            if (OrderedList.Count < 10)
+            {
+                return OrderedList;
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    returnList[i] = OrderedList[i];
+                }
+            }
+            return returnList;
+        }
+
         public void CreateNewPost(string newContent)
         {
             var newPost = new Post();

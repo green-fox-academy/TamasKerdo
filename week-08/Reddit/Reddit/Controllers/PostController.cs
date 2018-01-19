@@ -19,10 +19,20 @@ namespace Reddit.Controllers
         {
             Repo = Repository;
         }
-        
+        [Route("")]
         public IActionResult Index()
-        {            
+        {
             return View(Repo.getAllThePosts());
+        }
+
+        [Route("ListTheBests")]
+        public IActionResult ListTheBests()
+        {
+            var list = new List<Post>();
+            list = Repo.ListTheBests();
+            //return View("Index",Repo.getAllThePosts());
+            return PartialView("~/Views/Post/Index.cshtml", list);
+            //PartialView("~/Views/Student/_DeleteStudent.cshtml", model);
         }
 
         [HttpPost("/posts/{name}")]
@@ -57,5 +67,7 @@ namespace Reddit.Controllers
             Repo.IncrementPostId(false, PostId);
             return RedirectToAction("Index");
         }
+
+       
     }
 }
