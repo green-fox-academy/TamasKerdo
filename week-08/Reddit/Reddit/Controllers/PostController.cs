@@ -28,11 +28,7 @@ namespace Reddit.Controllers
         [Route("ListTheBests")]
         public IActionResult ListTheBests()
         {
-            var list = new List<Post>();
-            list = Repo.ListTheBests();
-            //return View("Index",Repo.getAllThePosts());
-            return PartialView("~/Views/Post/Index.cshtml", list);
-            //PartialView("~/Views/Student/_DeleteStudent.cshtml", model);
+            return View("~/Views/Post/Index.cshtml", Repo.ListTheBests());
         }
 
         [HttpPost("/posts/{name}")]
