@@ -25,9 +25,9 @@ namespace Reddit.Repositories
         {
             var OrderedList = new List<Post>();
             OrderedList = PC.Posts.OrderByDescending(p=>p.Opinion).ToList();
-            var returnList = new List<Post>();
+            List<Post> returnList = new List<Post>();
 
-            if (OrderedList.Count < 10)
+            if (OrderedList.Count <= 10)
             {
                 return OrderedList;
             }
@@ -35,7 +35,7 @@ namespace Reddit.Repositories
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    returnList[i] = OrderedList[i];
+                    returnList.Add(OrderedList[i]);
                 }
             }
             return returnList;
