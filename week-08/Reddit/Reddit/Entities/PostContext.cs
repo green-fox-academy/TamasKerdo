@@ -14,5 +14,7 @@ namespace Reddit.Entities
         public PostContext(DbContextOptions<PostContext> options) : base(options)
         {
         }
+
+        
     }
 }

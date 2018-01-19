@@ -11,9 +11,10 @@ using System;
 namespace Reddit.Migrations
 {
     [DbContext(typeof(PostContext))]
-    partial class PostContextModelSnapshot : ModelSnapshot
+    [Migration("20180119062209_opinion")]
+    partial class opinion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +26,7 @@ namespace Reddit.Migrations
                     b.Property<long>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("Opinion");
+                    b.Property<long>("Opinion");
 
                     b.Property<string>("PostContent");
 

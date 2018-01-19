@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Reddit.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace Reddit.Migrations
                     PostId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PostContent = table.Column<string>(nullable: true),
-                    TimoeOfThePost = table.Column<DateTime>(nullable: false)
+                    TimoeOfThePost = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

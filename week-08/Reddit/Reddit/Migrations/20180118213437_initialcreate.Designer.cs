@@ -11,8 +11,8 @@ using System;
 namespace Reddit.Migrations
 {
     [DbContext(typeof(PostContext))]
-    [Migration("20180118103007_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180118213437_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace Reddit.Migrations
 
                     b.Property<string>("PostContent");
 
-                    b.Property<DateTime>("TimoeOfThePost");
+                    b.Property<string>("TimoeOfThePost");
 
                     b.HasKey("PostId");
 
