@@ -55,32 +55,26 @@ namespace frontend.Controllers
         [HttpPost("dountil/{what}")]
         public IActionResult Dountil([FromRoute] string what, [FromBody] Item input)
         {
-            if (input.until !=null)
+            if (what == "sum")
             {
-                switch (what)
+                int sum = 0;
+                for (int i = 1; i < input.until + 1; i++)
                 {
-
-                    case "sum":
-                        int sum = 0;
-                        for (int i = 1; i < input.until+1; i++)
-                        {
-                            sum += i;
-                        }
-                        return Json(new { result = sum });
-                        
-                    case "factor":
-                        int factorial = 1;
-                        for (int i = 1; i < input.until+1; i++)
-                        {
-                            factorial *= i;
-                        }
-                        return Json(new { result = factorial });
-                        
-                    default:
-                        break;
+                    sum += i;
                 }
+                return Json(new { result = sum });
             }
-            return Json(new { error = "Please provide a number!" });
+            else if (what == "factor")
+            {
+                int factorial = 1;
+                for (int i = 1; i < input.until + 1; i++)
+                {
+                    factorial *= i;
+                }
+                return Json(new { result = factorial });
+            }
+
+         return Json(new { error = "Please provide a number!" });
         }
     }
 }
