@@ -31,6 +31,10 @@ namespace frontend.Controllers
         [HttpGet("greeter")]
         public IActionResult Greeter([FromQuery] string name, [FromQuery] string title)
         {
+            if (name==null||title==null)
+            {
+                return Content("Please provide an input!");
+            }
             return Json(new { welcome_message = $"Oh, hi there {name}, my dear {title}!"});        
         }
     }
