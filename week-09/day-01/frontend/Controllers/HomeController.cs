@@ -11,11 +11,21 @@ namespace frontend.Controllers
     [Route("")]
     public class HomeController : Controller
     {
-        
-        [HttpGet]
+
+        [HttpGet("")]
         public IActionResult Index()
         {
             return File("index.html", "text/html");
+        }
+
+        [HttpGet("doubling")]
+        public IActionResult doubling([FromQuery] int input)
+        {
+            if (input != 0)
+            {
+                return Json(new { received = input, result = input * 2 });
+            }
+            return Content("Please provide an input!");
         }
     }
 }
