@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using frontend.Models;
+using Frontend.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace frontend.Controllers
+namespace Frontend.Controllers
 {
     [Route("api")]
     public class HomeController : Controller
     {
+        public  DbContext LC { get; set; }
+
+        public HomeController(DbContext lc)
+        {
+            LC = lc;
+        }
 
         [HttpGet("")]
         public IActionResult Index()
@@ -58,7 +65,7 @@ namespace frontend.Controllers
             if (what == "sum")
             {
                 int sum = 0;
-                for (int i = 1; i < input.until + 1; i++)
+                for (int i = 1; i < input.Until + 1; i++)
                 {
                     sum += i;
                 }
@@ -67,7 +74,7 @@ namespace frontend.Controllers
             else if (what == "factor")
             {
                 int factorial = 1;
-                for (int i = 1; i < input.until + 1; i++)
+                for (int i = 1; i < input.Until + 1; i++)
                 {
                     factorial *= i;
                 }
@@ -81,31 +88,31 @@ namespace frontend.Controllers
         public IActionResult ArrayHandler([FromBody] Item item)
         {
            
-            if (item.what == "sum")
+            if (item.What == "sum")
             {
                 int resultToReturn = 0;
-                foreach (var element in item.numbers)
+                foreach (var element in item.Numbers)
                 {
                     resultToReturn += element;
                 }
                 return Json(new { result = resultToReturn });
             }
-            else if (item.what == "multiply")
+            else if (item.What == "multiply")
             {
                 int resultToReturn = 1;
-                foreach (var element in item.numbers)
+                foreach (var element in item.Numbers)
                 {
                     resultToReturn *= element;
                 }
                 return Json(new {result = resultToReturn});
             }
-            else if (item.what == "double")
+            else if (item.What == "double")
             {
-                for (int i = 0; i < item.numbers.Count(); i++)
+                for (int i = 0; i < item.Numbers.Count(); i++)
                 {
-                    item.numbers[i] = item.numbers[i] * 2;
+                    item.Numbers[i] = item.Numbers[i] * 2;
                 }
-                return Json(new { result = item.numbers});
+                return Json(new { result = item.Numbers});
             }
 
             return Json(new { error = "Please provide what to do with the numbers!" });

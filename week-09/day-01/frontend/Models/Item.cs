@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace frontend.Models
+namespace Frontend.Models
 {
     public class Item
     {
-        public int? until { get; set; }
-        public string what { get; set; }
-        public int[] numbers { get; set; }
+        public int? Until { get; set; }
+        public string What { get; set; }
+        public int[] Numbers { get; set; }
     }
 }
