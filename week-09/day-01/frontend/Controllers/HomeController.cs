@@ -76,5 +76,39 @@ namespace frontend.Controllers
 
          return Json(new { error = "Please provide a number!" });
         }
+
+        [HttpPost("arrays")]
+        public IActionResult ArrayHandler([FromBody] Item item)
+        {
+           
+            if (item.what == "sum")
+            {
+                int resultToReturn = 0;
+                foreach (var element in item.numbers)
+                {
+                    resultToReturn += element;
+                }
+                return Json(new { result = resultToReturn });
+            }
+            else if (item.what == "multiply")
+            {
+                int resultToReturn = 1;
+                foreach (var element in item.numbers)
+                {
+                    resultToReturn *= element;
+                }
+                return Json(new {result = resultToReturn});
+            }
+            else if (item.what == "double")
+            {
+                for (int i = 0; i < item.numbers.Count(); i++)
+                {
+                    item.numbers[i] = item.numbers[i] * 2;
+                }
+                return Json(new { result = item.numbers});
+            }
+
+            return Json(new { error = "Please provide what to do with the numbers!" });
+        }
     }
 }

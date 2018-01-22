@@ -8,5 +8,7 @@ namespace frontend.Models
     public class Item
     {
         public int? until { get; set; }
+        public string what { get; set; }
+        public int[] numbers { get; set; }
     }
 }
