@@ -29,8 +29,7 @@ namespace Frontend.Repositories
             else
             {
                 returnData = item.Until.ToString();
-            }
-            
+            }            
 
             var newLog = new Log();
             newLog.Endpoint = endpointName;
