@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Frontend.Entities;
 using Microsoft.EntityFrameworkCore;
+using Frontend.Repositories;
 
 namespace frontend
 {
@@ -28,7 +29,7 @@ namespace frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+            services.AddScoped<Repository>();
             services.AddDbContext<LogContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=LogEntries;Integrated Security=True;Connect Timeout=30;"));
         }
 

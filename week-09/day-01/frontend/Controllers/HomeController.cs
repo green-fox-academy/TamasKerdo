@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 using Microsoft.EntityFrameworkCore;
+using Frontend.Entities;
+using Frontend.Repositories;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,16 +15,17 @@ namespace Frontend.Controllers
     [Route("api")]
     public class HomeController : Controller
     {
-        public  DbContext LC { get; set; }
+        public Repository Repo { get; set; }
 
-        public HomeController(DbContext lc)
+        public HomeController(Repository repository)
         {
-            LC = lc;
+            Repo = repository;
         }
 
         [HttpGet("")]
         public IActionResult Index()
         {
+            Repo.AddNewLog("api");
             return File("index.html", "text/html");
         }
 
@@ -30,7 +33,8 @@ namespace Frontend.Controllers
         public IActionResult Doubling([FromQuery] int? input)
         {
             if (input == null)
-            {
+            {                
+                Repo.AddNewLog("doubling",input.ToString());
                 return Json(new { recieved = input, result = input * 2 });
             }
             return Content("Please provide an input!");
@@ -43,12 +47,16 @@ namespace Frontend.Controllers
             {
                 return Content("Please provide an input!");
             }
+
+            Repo.AddNewLog("greeter", name + " " + title);
             return Json(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
         }
 
         [HttpGet("appenda/{input}")]
         public IActionResult Appenda([FromRoute] string input)
         {
+
+            Repo.AddNewLog("appenda", input + @"/a/");
             return Json(new { appended = input + "a" });
         }
 
@@ -69,6 +77,7 @@ namespace Frontend.Controllers
                 {
                     sum += i;
                 }
+                Repo.AddNewLog("dountil", input);
                 return Json(new { result = sum });
             }
             else if (what == "factor")
@@ -78,6 +87,8 @@ namespace Frontend.Controllers
                 {
                     factorial *= i;
                 }
+                var newInput = input;
+                Repo.AddNewLog("dountil", input);
                 return Json(new { result = factorial });
             }
 
@@ -85,37 +96,46 @@ namespace Frontend.Controllers
         }
 
         [HttpPost("arrays")]
-        public IActionResult ArrayHandler([FromBody] Item item)
+        public IActionResult ArrayHandler([FromBody] Item input)
         {
            
-            if (item.What == "sum")
+            if (input.What == "sum")
             {
                 int resultToReturn = 0;
-                foreach (var element in item.Numbers)
+                foreach (var element in input.Numbers)
                 {
                     resultToReturn += element;
                 }
+                Repo.AddNewLog("arrays", input);
                 return Json(new { result = resultToReturn });
             }
-            else if (item.What == "multiply")
+            else if (input.What == "multiply")
             {
                 int resultToReturn = 1;
-                foreach (var element in item.Numbers)
+                foreach (var element in input.Numbers)
                 {
                     resultToReturn *= element;
                 }
+                Repo.AddNewLog("arrays", input);
                 return Json(new {result = resultToReturn});
             }
-            else if (item.What == "double")
+            else if (input.What == "double")
             {
-                for (int i = 0; i < item.Numbers.Count(); i++)
+                for (int i = 0; i < input.Numbers.Count(); i++)
                 {
-                    item.Numbers[i] = item.Numbers[i] * 2;
+                    input.Numbers[i] = input.Numbers[i] * 2;
                 }
-                return Json(new { result = item.Numbers});
+                Repo.AddNewLog("arrays", input);
+                return Json(new { result = input.Numbers});
             }
 
             return Json(new { error = "Please provide what to do with the numbers!" });
+        }
+
+        [HttpGet("log")]
+        public IActionResult Log()
+        {
+            return Json(Repo.GetAll());
         }
     }
 }
