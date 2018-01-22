@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace frontend.Controllers
 {
-    [Route("")]
+    [Route("api")]
     public class HomeController : Controller
     {
 
@@ -19,13 +19,19 @@ namespace frontend.Controllers
         }
 
         [HttpGet("doubling")]
-        public IActionResult doubling([FromQuery] int input)
+        public IActionResult Doubling([FromQuery] int? input)
         {
-            if (input != 0)
+            if (input == null)
             {
                 return Json(new { received = input, result = input * 2 });
             }
             return Content("Please provide an input!");
+        }
+
+        [HttpGet("greeter")]
+        public IActionResult Greeter([FromQuery] string name, [FromQuery] string title)
+        {
+            return Json(new { welcome_message = $"Oh, hi there {name}, my dear {title}!"});        
         }
     }
 }
