@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace frontend
 {
@@ -35,6 +37,9 @@ namespace frontend
             }
 
             app.UseMvc();
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
+
         }
     }
 }
