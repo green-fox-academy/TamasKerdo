@@ -23,7 +23,7 @@ namespace frontend.Controllers
         {
             if (input == null)
             {
-                return Json(new { received = input, result = input * 2 });
+                return Json(new { recieved = input, result = input * 2 });
             }
             return Content("Please provide an input!");
         }
@@ -31,11 +31,24 @@ namespace frontend.Controllers
         [HttpGet("greeter")]
         public IActionResult Greeter([FromQuery] string name, [FromQuery] string title)
         {
-            if (name==null||title==null)
+            if (name == null || title == null)
             {
                 return Content("Please provide an input!");
             }
-            return Json(new { welcome_message = $"Oh, hi there {name}, my dear {title}!"});        
+            return Json(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
+        }
+
+        [HttpGet("appenda/{input}")]
+        public IActionResult Appenda([FromRoute] string input)
+        {
+            return Json(new { appended = input + "a" });
+        }
+
+        [HttpGet("appenda")]
+        public IActionResult AppendaWithoutParameter()
+        {
+            var result = new NotFoundObjectResult(new { message = "404 Not Found", currentDate = DateTime.Now });
+            return result;
         }
     }
 }
