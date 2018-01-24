@@ -18,17 +18,17 @@ namespace RorasCargo.Controllers
         {
             this.cargo = cargo;
         }
-        
+
         [HttpGet("")]
         public IActionResult CargoList()
         {
-            return Json(new {caliber25 = cargo.caliber25, caliber30 = cargo.caliber30, caliber50 = cargo.caliber50, shipstatus = cargo.IsEmpty, ready = cargo.Ready});
+            return Json(new { caliber25 = cargo.caliber25, caliber30 = cargo.caliber30, caliber50 = cargo.caliber50, shipstatus = cargo.IsEmpty, ready = cargo.Ready });
         }
 
         [HttpGet("fill")]
         public IActionResult CargoFill([FromRoute] string caliber, [FromRoute] int amount)
         {
-            if (caliber!=null&&amount!=0)
+            if (caliber != null && amount != 0)
             {
                 cargo.FillInAmmo(caliber, amount);
                 string cargostatus = cargo.CheckCargoStatus();

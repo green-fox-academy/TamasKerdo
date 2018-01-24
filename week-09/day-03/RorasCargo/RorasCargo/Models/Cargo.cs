@@ -10,6 +10,7 @@ namespace RorasCargo.Models
         public int caliber25 { get; set; } = 0;
         public int caliber30 { get; set; } = 0;
         public int caliber50 { get; set; } = 0;
+        public string IsEmpty { get; set; } = "empty";
         public bool Ready { get; set; } = false;
 
 
@@ -35,6 +36,7 @@ namespace RorasCargo.Models
             float ammoPercentage = (fullAmmo / 12500) * 100;
             if (fullAmmo == 12500)
             {
+                IsEmpty = "full";
                 return "full";
             }
             else if (fullAmmo == 0)
