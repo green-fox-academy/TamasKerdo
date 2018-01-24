@@ -9,7 +9,7 @@ using RorasCargo.Models;
 
 namespace RorasCargo.Controllers
 {
-    [Route("")]
+    [Route("rocket")]
     public class CargoController : Controller
     {
         public Cargo cargo { get; set; }
@@ -19,15 +19,22 @@ namespace RorasCargo.Controllers
             this.cargo = cargo;
         }
         
-        public IActionResult Index()
-        {
-            return Ok();
-        }
-
-        [HttpGet("rocket")]
+        [HttpGet("")]
         public IActionResult CargoList()
         {
+            return Json(new {caliber25 = cargo.caliber25, caliber30 = cargo.caliber30, caliber50 = cargo.caliber50, shipstatus = cargo.IsEmpty, ready = cargo.Ready});
+        }
 
+        [HttpGet("fill")]
+        public IActionResult CargoFill([FromRoute] string caliber, [FromRoute] int amount)
+        {
+            if (caliber!=null&&amount!=0)
+            {
+                cargo.FillInAmmo(caliber, amount);
+                string cargostatus = cargo.CheckCargoStatus();
+                return Json(new { recieved = amount, amount = amount, caliber50 = cargo.caliber50, shipstatus = cargostatus, ready = cargo.Ready });
+            }
+            return Json(new { failure = "yes it is true" });
         }
     }
 }
