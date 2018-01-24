@@ -8,16 +8,13 @@ using ProjectNote.Repositories;
 
 namespace ProjectNote.Controllers
 {
-    [Route("loggedIn")]
     public class HomeController : Controller
-    {
+    {        
         
-        public User user { get; set; }
         public Repository repository { get; set; }
 
-        public HomeController(User user, Repository repository)
+        public HomeController(Repository repository)
         {
-            this.user = user;
             this.repository = repository;
         }
 

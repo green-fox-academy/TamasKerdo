@@ -10,10 +10,12 @@ namespace ProjectNote.Repositories
     public class Repository
     {
         public ProjectNoteContext PNC { get; set; }
+        public User loggedInUser { get; set; }
 
-        public Repository(ProjectNoteContext PNC)
+        public Repository(ProjectNoteContext PNC, User loggedInUser)
         {
-            this.PNC = PNC; 
+            this.PNC = PNC;
+            this.loggedInUser = loggedInUser;
         }
 
         public void AddNewUser(string name,string password,string greenfoxClass)
@@ -34,6 +36,7 @@ namespace ProjectNote.Repositories
             {
                 if (searchedUser.password.Equals(password))
                 {
+                    loggedInUser = searchedUser;
                     return true;
                 }
             }
