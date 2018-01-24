@@ -18,9 +18,14 @@ namespace IAmGroot.Controllers
             return View();
         }
         [HttpGet("groot")]
-        public IActionResult GetGroot()
+        public IActionResult GetGroot([FromQuery] string message)
         {
-
+            if (message != null)
+            {
+                return Json(new { received = message, translated = "I am Groot!" });
+            }
+            return Json(new { error = "I am Groot!" });
         }
+
     }
 }
