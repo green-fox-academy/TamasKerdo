@@ -11,7 +11,9 @@ namespace ProjectNote.Models
         [Key]
         public long? userId { get; set; }
         public string name { get; set; }
+        public string password { get; set; }
         public string greenfoxClass { get; set; }
+        
         public IList<Project> projects { get; set; } = new List<Project>();
     }
 }

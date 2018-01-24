@@ -26,7 +26,7 @@ namespace ProjectNote.Controllers
         [HttpPost("CreateUser")]
         public IActionResult CreateUser([FromQuery] string name,[FromQuery] string password,[FromQuery] string greenfoxClass)
         {
-            repository.AddNewUser();
+            repository.AddNewUser(name, password, greenfoxClass);
             return View();
         }
 
