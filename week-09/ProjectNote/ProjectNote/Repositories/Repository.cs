@@ -25,5 +25,19 @@ namespace ProjectNote.Repositories
             PNC.users.Add(newUser);
             PNC.SaveChanges();
         }
+
+        public bool Verify(string name, string password)
+        {
+            User searchedUser = PNC.users.FirstOrDefault(x => x.name == name);
+
+            if (searchedUser!=null)
+            {
+                if (searchedUser.password.Equals(password))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
