@@ -13,5 +13,6 @@ namespace ProjectNote.Models
         public string link { get; set; }
         public string description { get; set; }
         public string programmingLanguage { get; set; }
+        public User user { get; set; }
     }
 }

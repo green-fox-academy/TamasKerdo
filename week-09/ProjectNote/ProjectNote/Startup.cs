@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectNote.Models;
 using ProjectNote.Repositories;
+using ProjectNote.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectNote
 {
@@ -20,6 +22,8 @@ namespace ProjectNote
             services.AddMvc();
             services.AddSingleton<User>();
             services.AddSingleton<Repository>();
+
+            services.AddDbContext<ProjectNoteContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=ProjectNoteDatabase;Integrated Security=True;Connect Timeout=30;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
