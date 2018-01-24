@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoundusArrow", "YoundusArrow\YoundusArrow.csproj", "{9B504984-6D1C-4AFB-84FE-6AE4C042CAFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoundusArrowTest", "..\YoundusArrowTest\YoundusArrowTest.csproj", "{E117F277-AAE5-426D-94FA-463C53F6EEBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9B504984-6D1C-4AFB-84FE-6AE4C042CAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B504984-6D1C-4AFB-84FE-6AE4C042CAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B504984-6D1C-4AFB-84FE-6AE4C042CAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E117F277-AAE5-426D-94FA-463C53F6EEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E117F277-AAE5-426D-94FA-463C53F6EEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E117F277-AAE5-426D-94FA-463C53F6EEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E117F277-AAE5-426D-94FA-463C53F6EEBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
