@@ -8,9 +8,10 @@ using ProjectNote.Repositories;
 
 namespace ProjectNote.Controllers
 {
-    
+    [Route("loggedIn")]
     public class HomeController : Controller
     {
+        
         public User user { get; set; }
         public Repository repository { get; set; }
 
@@ -22,7 +23,7 @@ namespace ProjectNote.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return Content("Password is verified!");
         }
     }
 }

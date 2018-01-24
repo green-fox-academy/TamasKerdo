@@ -21,7 +21,7 @@ namespace ProjectNote.Controllers
 
         public IActionResult Index()
         {
-            return Ok();
+            return Content("Welcome at the loginpage!");
         }
         [HttpPost("CreateUser")]
         public IActionResult CreateUser([FromQuery] string name,[FromQuery] string password,[FromQuery] string greenfoxClass)
@@ -33,7 +33,10 @@ namespace ProjectNote.Controllers
         [HttpGet("VerifyPassword")]
         public IActionResult VerifyPassword([FromQuery] string name, [FromQuery] string password)
         {
-            return Ok();
+            if (repository.Verify(name, password))            
+            return RedirectToAction("Index","Home");
+            else
+            return RedirectToAction("Index");
         }
     }
 }
