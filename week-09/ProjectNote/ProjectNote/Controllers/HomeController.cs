@@ -8,7 +8,7 @@ using ProjectNote.Repositories;
 
 namespace ProjectNote.Controllers
 {
-    [Route("")]
+    
     public class HomeController : Controller
     {
         public User user { get; set; }

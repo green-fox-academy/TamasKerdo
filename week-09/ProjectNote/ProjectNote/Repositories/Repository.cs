@@ -7,5 +7,9 @@ namespace ProjectNote.Repositories
 {
     public class Repository
     {
+        internal void AddNewUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
