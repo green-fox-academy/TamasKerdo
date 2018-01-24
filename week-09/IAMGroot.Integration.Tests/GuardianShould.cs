@@ -33,5 +33,30 @@ namespace IAMGroot.Integration.Tests
             string json = await response.Content.ReadAsStringAsync();
             Assert.Equal("{\"received\":\"laiweufhluasd\",\"translated\":\"I am Groot!\"}", json);
         }
+
+        [Fact]
+        public async Task IndexShouldReturnJsonOk()
+        {
+            //act
+            var response = await Client.GetAsync("groot");
+
+            //assert
+            response = await Client.GetAsync("groot?message=laiweufhluasd");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"received\":\"laiweufhluasd\",\"translated\":\"I am Groot!\"}", json);
+        }
+
+        [Fact]
+        public async Task IndexShouldReturnJsonNotOk()
+        {
+            //act
+            var response = await Client.GetAsync("groot");
+
+            //assert
+
+            response = await Client.GetAsync("groot");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"error\":\"I am Groot!\"}", json);
+        }
     }
 }
