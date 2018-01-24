@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using ProjectNote.Models;
+using ProjectNote.Repositories;
 
 namespace ProjectNote.Controllers
 {
+    [Route("")]
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+        public User user { get; set; }
+        public Repository repository { get; set; }
+
+        public HomeController(User user, Repository repository)
+        {
+            this.user = user;
+            this.repository = repository;
+        }
+
         public IActionResult Index()
         {
             return View();
