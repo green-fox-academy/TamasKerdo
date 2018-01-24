@@ -28,6 +28,10 @@ namespace IAMGroot.Integration.Tests
 
             //assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            response = await Client.GetAsync("groot?message=laiweufhluasd");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"received\":\"laiweufhluasd\",\"translated\":\"I am Groot!\"}", json);
         }
     }
 }
