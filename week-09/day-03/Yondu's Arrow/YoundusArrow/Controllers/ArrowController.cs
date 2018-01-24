@@ -17,6 +17,11 @@ namespace YoundusArrow.Controllers
             return View();
         }
 
-
+        [HttpGet("yondu")]
+        public IActionResult Yondu([FromQuery] float distance, [FromQuery] float time)
+        {
+            float speed = distance / time;
+            return Json(new { distance = distance, time = time, speed = speed });
+        }
     }
 }
