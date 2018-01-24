@@ -26,13 +26,13 @@ namespace RorasCargo.Controllers
         }
 
         [HttpGet("fill")]
-        public IActionResult CargoFill([FromRoute] string caliber, [FromRoute] int amount)
+        public IActionResult CargoFill([FromQuery] string caliber, [FromQuery] int amount)
         {
             if (caliber != null && amount != 0)
             {
                 cargo.FillInAmmo(caliber, amount);
                 string cargostatus = cargo.CheckCargoStatus();
-                return Json(new { recieved = amount, amount = amount, caliber50 = cargo.caliber50, shipstatus = cargostatus, ready = cargo.Ready });
+                return Json(new { recieved = amount, amount = amount, shipstatus = cargostatus, ready = cargo.Ready });
             }
             return Json(new { failure = "yes it is true" });
         }

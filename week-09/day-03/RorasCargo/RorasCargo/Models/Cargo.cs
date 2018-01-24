@@ -16,6 +16,7 @@ namespace RorasCargo.Models
 
         public void FillInAmmo(string caliber, int amount)
         {
+
             if (caliber == ".25")
             {
                 caliber25 += amount;
@@ -32,7 +33,7 @@ namespace RorasCargo.Models
 
         public string CheckCargoStatus()
         {
-            int fullAmmo = caliber25 + caliber30 + caliber50;
+            float fullAmmo = caliber25 + caliber30 + caliber50;
             float ammoPercentage = (fullAmmo / 12500) * 100;
             if (fullAmmo == 12500)
             {
@@ -47,7 +48,8 @@ namespace RorasCargo.Models
             {
                 return "overloaded";
             }
-            return fullAmmo.ToString();
+            fullAmmo = (fullAmmo / 12500) * 100;
+            return (fullAmmo).ToString();
         }
     }
 }
