@@ -62,12 +62,13 @@ namespace ProjectNote.Repositories
         public List<ProjectWithoutConnection> Search(string word, bool location, string language, long userId)
         {
             var projectWithoutConnectionList = new List<ProjectWithoutConnection>();
+            PNC.users.Load();
+            PNC.projects.Load();
             if (location)
             {
                 var user = PNC.users.FirstOrDefault(u => u.userId == userId);
                 //PNC.Entry(user).Collection(u => u.projects).Load();
-                PNC.users.Load();
-                PNC.projects.Load();
+                
                 foreach (var project in PNC.projects)
                 {
                     if ((project.description.Contains(word)) && (project.programmingLanguage == language))

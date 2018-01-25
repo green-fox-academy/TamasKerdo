@@ -42,8 +42,7 @@ namespace ProjectNote.Controllers
             [FromQuery] bool location, 
             [FromQuery] string language)
         {
-            List<ProjectWithoutConnection> ListOfProjects = repository.Search(word, location, language, UserId);
-                   
+            List<ProjectWithoutConnection> ListOfProjects = repository.Search(word, location, language, UserId);                 
             
             return Json(new{ListOfProjects});
         }
