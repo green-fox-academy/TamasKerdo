@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectNote.Entities;
 using ProjectNote.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProjectNote.Repositories
 {
@@ -42,8 +40,7 @@ namespace ProjectNote.Repositories
         }
 
         public void AddNewProject(Project json, long UserId)
-        {
-            
+        {            
             User user = PNC.Users.FirstOrDefault(u=>u.UserId == UserId);
             user.Projects.Add(json);
             PNC.SaveChanges();
@@ -62,9 +59,6 @@ namespace ProjectNote.Repositories
             PNC.Projects.Load();
             if (location)
             {
-                var user = PNC.Users.FirstOrDefault(u => u.UserId == userId);
-                //PNC.Entry(user).Collection(u => u.projects).Load();
-                
                 foreach (var project in PNC.Projects)
                 {
                     if ((project.Description.Contains(word)) && (project.ProgrammingLanguage == language))

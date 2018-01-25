@@ -1,11 +1,8 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectNote.Models;
 using ProjectNote.Repositories;
-using Newtonsoft.Json;
 
 namespace ProjectNote.Controllers
 {
@@ -25,6 +22,7 @@ namespace ProjectNote.Controllers
             UserId = id;
             return Content("Password is verified!");
         }
+
         [HttpPost("AddNewProject")]
         public IActionResult AddNewProject([FromBody] Project json)
         {
@@ -35,8 +33,8 @@ namespace ProjectNote.Controllers
                 ProjectLink = json.Link,
                 Description = json.Description,
                 Language = json.ProgrammingLanguage});
-         
         }
+
         [HttpGet("Search")]
         public IActionResult Search([FromQuery] string word,
             [FromQuery] bool location, 
