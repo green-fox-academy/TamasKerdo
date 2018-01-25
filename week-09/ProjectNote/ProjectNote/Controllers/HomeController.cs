@@ -37,7 +37,7 @@ namespace ProjectNote.Controllers
                 Language = json.programmingLanguage});
          
         }
-        [HttpPost("Search")]
+        [HttpGet("Search")]
         public IActionResult Search([FromQuery] string word,
             [FromQuery] bool location, 
             [FromQuery] string language)

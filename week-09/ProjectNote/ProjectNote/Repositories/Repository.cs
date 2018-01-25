@@ -77,10 +77,18 @@ namespace ProjectNote.Repositories
                     }
                 }
             }
-
             else
             {
-                
+                foreach (var user in PNC.users)
+                {
+                    foreach (var project in user.projects)
+                    {
+                        if ((project.name == word||project.description.Contains(word))&&project.programmingLanguage ==language)
+                        {
+                            projectWithoutConnectionList.Add(ProjectCopier(project));
+                        }
+                    }
+                }
             }
             return projectWithoutConnectionList;
                         
