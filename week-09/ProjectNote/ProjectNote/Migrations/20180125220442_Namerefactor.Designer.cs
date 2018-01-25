@@ -11,9 +11,10 @@ using System;
 namespace ProjectNote.Migrations
 {
     [DbContext(typeof(ProjectNoteContext))]
-    partial class ProjectNoteContextModelSnapshot : ModelSnapshot
+    [Migration("20180125220442_Namerefactor")]
+    partial class Namerefactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

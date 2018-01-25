@@ -13,15 +13,15 @@ namespace ProjectNote.Entities
         {
         }
 
-        public DbSet<Project> projects { get; set; }
-        public DbSet<User> users { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasMany(x => x.projects)
-                .WithOne(x => x.user)
-                .HasPrincipalKey(x => x.userId);
+                .HasMany(x => x.Projects)
+                .WithOne(x => x.User)
+                .HasPrincipalKey(x => x.UserId);
         }
     }
 }

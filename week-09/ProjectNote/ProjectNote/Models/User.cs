@@ -9,11 +9,11 @@ namespace ProjectNote.Models
     public class User
     {
         [Key]
-        public long? userId { get; set; }
-        public string name { get; set; }
-        public string password { get; set; }
-        public string greenfoxClass { get; set; }
+        public long? UserId { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string GreenfoxClass { get; set; }
         
-        public IList<Project> projects { get; set; } = new List<Project>();
+        public IList<Project> Projects { get; set; } = new List<Project>();
     }
 }

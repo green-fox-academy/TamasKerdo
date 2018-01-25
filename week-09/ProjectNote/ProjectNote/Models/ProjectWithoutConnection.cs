@@ -7,10 +7,10 @@ namespace ProjectNote.Models
 {
     public class ProjectWithoutConnection
     {       
-        public string name { get; set; }
-        public string link { get; set; }
-        public string description { get; set; }
-        public string programmingLanguage { get; set; }
-        public string userName { get; set; }
+        public string Name { get; set; }
+        public string Link { get; set; }
+        public string Description { get; set; }
+        public string ProgrammingLanguage { get; set; }
+        public string UserName { get; set; }
     }
 }

@@ -31,10 +31,10 @@ namespace ProjectNote.Controllers
            repository.AddNewProject(json, UserId);
 
            return Json(new {Status = "New project is added",
-                ProjectName = json.name,
-                ProjectLink = json.link,
-                Description = json.description,
-                Language = json.programmingLanguage});
+                ProjectName = json.Name,
+                ProjectLink = json.Link,
+                Description = json.Description,
+                Language = json.ProgrammingLanguage});
          
         }
         [HttpGet("Search")]

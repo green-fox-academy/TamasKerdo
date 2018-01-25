@@ -20,20 +20,20 @@ namespace ProjectNote.Repositories
         public void AddNewUser(string name,string password,string greenfoxClass)
         {
             User newUser = new User();
-            newUser.name = name;
-            newUser.password = password;
-            newUser.greenfoxClass = greenfoxClass;
-            PNC.users.Add(newUser);
+            newUser.Name = name;
+            newUser.Password = password;
+            newUser.GreenfoxClass = greenfoxClass;
+            PNC.Users.Add(newUser);
             PNC.SaveChanges();
         }        
 
         public bool Verify(string name, string password)
         {
-            User searchedUser = PNC.users.FirstOrDefault(x => x.name == name);
+            User searchedUser = PNC.Users.FirstOrDefault(x => x.Name == name);
 
             if (searchedUser!=null)
             {
-                if (searchedUser.password.Equals(password))
+                if (searchedUser.Password.Equals(password))
                 {                    
                     return true;
                 }
@@ -43,35 +43,31 @@ namespace ProjectNote.Repositories
 
         public void AddNewProject(Project json, long UserId)
         {
-            //var newProject = new Project();
-            //newProject.name = json.name;
-            //newProject.link = json.link;
-            //newProject.description = json.description;
-            //newProject.programmingLanguage = json.programmingLanguage;
-            User user = PNC.users.FirstOrDefault(u=>u.userId == UserId);
-            user.projects.Add(json);
+            
+            User user = PNC.Users.FirstOrDefault(u=>u.UserId == UserId);
+            user.Projects.Add(json);
             PNC.SaveChanges();
         }
 
         internal long? GetUser(string name, string password)
         {
-            long? id = PNC.users.FirstOrDefault(u => u.name == name).userId;
+            long? id = PNC.Users.FirstOrDefault(u => u.Name == name).UserId;
             return id;
         }
 
         public List<ProjectWithoutConnection> Search(string word, bool location, string language, long userId)
         {
             var projectWithoutConnectionList = new List<ProjectWithoutConnection>();
-            PNC.users.Load();
-            PNC.projects.Load();
+            PNC.Users.Load();
+            PNC.Projects.Load();
             if (location)
             {
-                var user = PNC.users.FirstOrDefault(u => u.userId == userId);
+                var user = PNC.Users.FirstOrDefault(u => u.UserId == userId);
                 //PNC.Entry(user).Collection(u => u.projects).Load();
                 
-                foreach (var project in PNC.projects)
+                foreach (var project in PNC.Projects)
                 {
-                    if ((project.description.Contains(word)) && (project.programmingLanguage == language))
+                    if ((project.Description.Contains(word)) && (project.ProgrammingLanguage == language))
                     {
                         projectWithoutConnectionList.Add(ProjectCopier(project));
                     }
@@ -79,11 +75,11 @@ namespace ProjectNote.Repositories
             }
             else
             {
-                foreach (var user in PNC.users)
+                foreach (var user in PNC.Users)
                 {
-                    foreach (var project in user.projects)
+                    foreach (var project in user.Projects)
                     {
-                        if ((project.name == word||project.description.Contains(word))&&project.programmingLanguage ==language)
+                        if ((project.Name == word||project.Description.Contains(word))&&project.ProgrammingLanguage ==language)
                         {
                             projectWithoutConnectionList.Add(ProjectCopier(project));
                         }
@@ -97,11 +93,11 @@ namespace ProjectNote.Repositories
         public ProjectWithoutConnection ProjectCopier(Project projectToCopy)
         {
             var projectWithoutConnection = new ProjectWithoutConnection();
-            projectWithoutConnection.name = projectToCopy.name;
-            projectWithoutConnection.description = projectToCopy.description;
-            projectWithoutConnection.link = projectToCopy.link;
-            projectWithoutConnection.programmingLanguage = projectToCopy.programmingLanguage;
-            projectWithoutConnection.userName = projectToCopy.user.name.ToString();
+            projectWithoutConnection.Name = projectToCopy.Name;
+            projectWithoutConnection.Description = projectToCopy.Description;
+            projectWithoutConnection.Link = projectToCopy.Link;
+            projectWithoutConnection.ProgrammingLanguage = projectToCopy.ProgrammingLanguage;
+            projectWithoutConnection.UserName = projectToCopy.User.Name.ToString();
             return projectWithoutConnection;
         }
     }
