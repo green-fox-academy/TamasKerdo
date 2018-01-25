@@ -21,7 +21,7 @@ namespace ProjectNote
         {
             services.AddMvc();
             services.AddSingleton<User>();
-            services.AddSingleton<Repository>();
+            services.AddScoped<Repository>();
 
             services.AddDbContext<ProjectNoteContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=ProjectNoteDatabase;Integrated Security=True;Connect Timeout=30;"));
         }

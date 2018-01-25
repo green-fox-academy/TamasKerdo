@@ -1,4 +1,5 @@
-﻿using ProjectNote.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectNote.Entities;
 using ProjectNote.Models;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,10 @@ namespace ProjectNote.Repositories
     public class Repository
     {
         public ProjectNoteContext PNC { get; set; }
-        public User loggedInUser { get; set; }
 
-        public Repository(ProjectNoteContext PNC, User loggedInUser)
+        public Repository(ProjectNoteContext PNC)
         {
             this.PNC = PNC;
-            this.loggedInUser = loggedInUser;
         }
 
         public void AddNewUser(string name,string password,string greenfoxClass)
@@ -35,45 +34,66 @@ namespace ProjectNote.Repositories
             if (searchedUser!=null)
             {
                 if (searchedUser.password.Equals(password))
-                {
-                    loggedInUser = searchedUser;
+                {                    
                     return true;
                 }
             }
             return false;
         }
 
-        public void AddNewProject(string link, string projectName, string description, string language)
+        public void AddNewProject(Project json, long UserId)
         {
-            var newProject = new Project();
-            newProject.name = projectName;
-            newProject.link = link;
-            newProject.description = description;
-            newProject.programmingLanguage = language;
-
-            loggedInUser.projects.Add(newProject);
+            //var newProject = new Project();
+            //newProject.name = json.name;
+            //newProject.link = json.link;
+            //newProject.description = json.description;
+            //newProject.programmingLanguage = json.programmingLanguage;
+            User user = PNC.users.FirstOrDefault(u=>u.userId == UserId);
+            user.projects.Add(json);
             PNC.SaveChanges();
         }
 
-        public List<Project> Search(string word, bool location, string language)
+        internal long? GetUser(string name, string password)
         {
-            var projectList = new List<Project>();
+            long? id = PNC.users.FirstOrDefault(u => u.name == name).userId;
+            return id;
+        }
+
+        public List<ProjectWithoutConnection> Search(string word, bool location, string language, long userId)
+        {
+            var projectWithoutConnectionList = new List<ProjectWithoutConnection>();
             if (location)
             {
-                PNC.Entry(loggedInUser).Collection(u => u.projects).Load();
+                var user = PNC.users.FirstOrDefault(u => u.userId == userId);
+                //PNC.Entry(user).Collection(u => u.projects).Load();
+                PNC.users.Load();
+                PNC.projects.Load();
                 foreach (var project in PNC.projects)
                 {
                     if ((project.description.Contains(word)) && (project.programmingLanguage == language))
                     {
-                        projectList.Add(project);
+                        projectWithoutConnectionList.Add(ProjectCopier(project));
                     }
                 }
             }
+
             else
             {
                 
             }
-            return projectList;
+            return projectWithoutConnectionList;
+                        
+        }
+
+        public ProjectWithoutConnection ProjectCopier(Project projectToCopy)
+        {
+            var projectWithoutConnection = new ProjectWithoutConnection();
+            projectWithoutConnection.name = projectToCopy.name;
+            projectWithoutConnection.description = projectToCopy.description;
+            projectWithoutConnection.link = projectToCopy.link;
+            projectWithoutConnection.programmingLanguage = projectToCopy.programmingLanguage;
+            projectWithoutConnection.userName = projectToCopy.user.name.ToString();
+            return projectWithoutConnection;
         }
     }
 }

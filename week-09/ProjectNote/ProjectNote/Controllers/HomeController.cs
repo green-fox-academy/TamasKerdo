@@ -5,45 +5,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectNote.Models;
 using ProjectNote.Repositories;
+using Newtonsoft.Json;
 
 namespace ProjectNote.Controllers
 {
-    [Route("loggedIn")]
+    [Route("LoggedIn")]
     public class HomeController : Controller
-    {       
+    {
         public Repository repository { get; set; }
+        public static long UserId { get; set; }
 
         public HomeController(Repository repository)
         {
-            this.repository = repository;
+            this.repository = repository;            
         }
 
-        public IActionResult Index()
+        public IActionResult Index(long id)
         {
+            UserId = id;
             return Content("Password is verified!");
         }
-
-        public IActionResult AddNewProject([FromQuery] string link, 
-            [FromQuery] string projectName, 
-            [FromQuery] string description, 
-            [FromQuery] string language)
+        [HttpPost("AddNewProject")]
+        public IActionResult AddNewProject([FromBody] Project json)
         {
-            repository.AddNewProject(link, projectName, description, language);
+           repository.AddNewProject(json, UserId);
 
-            return Json(new {Status = "New project is added",
-                ProjectName = projectName,
-                ProjectLink = link,
-                Description = description,
-                Language = language});
+           return Json(new {Status = "New project is added",
+                ProjectName = json.name,
+                ProjectLink = json.link,
+                Description = json.description,
+                Language = json.programmingLanguage});
+         
         }
-
+        [HttpPost("Search")]
         public IActionResult Search([FromQuery] string word,
             [FromQuery] bool location, 
             [FromQuery] string language)
         {
-            var ListOfProjects = repository.Search(word, location, language);
-
-            return Json(new {ListOfProjects});
+            List<ProjectWithoutConnection> ListOfProjects = repository.Search(word, location, language, UserId);
+                   
+            
+            return Json(new{ListOfProjects});
         }
     }
 }
