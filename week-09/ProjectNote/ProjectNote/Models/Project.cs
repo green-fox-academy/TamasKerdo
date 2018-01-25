@@ -10,8 +10,9 @@ namespace ProjectNote.Models
     {
         [Key]
         public long? projectId { get; set; }
+        public string name { get; set; }
         public string link { get; set; }
-        public string description { get; set; }
+        public string description { get; set; }        
         public string programmingLanguage { get; set; }
         public User user { get; set; }
     }

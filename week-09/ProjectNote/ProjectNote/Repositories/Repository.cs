@@ -26,7 +26,7 @@ namespace ProjectNote.Repositories
             newUser.greenfoxClass = greenfoxClass;
             PNC.users.Add(newUser);
             PNC.SaveChanges();
-        }
+        }        
 
         public bool Verify(string name, string password)
         {
@@ -41,6 +41,39 @@ namespace ProjectNote.Repositories
                 }
             }
             return false;
+        }
+
+        public void AddNewProject(string link, string projectName, string description, string language)
+        {
+            var newProject = new Project();
+            newProject.name = projectName;
+            newProject.link = link;
+            newProject.description = description;
+            newProject.programmingLanguage = language;
+
+            loggedInUser.projects.Add(newProject);
+            PNC.SaveChanges();
+        }
+
+        public List<Project> Search(string word, bool location, string language)
+        {
+            var projectList = new List<Project>();
+            if (location)
+            {
+                PNC.Entry(loggedInUser).Collection(u => u.projects).Load();
+                foreach (var project in PNC.projects)
+                {
+                    if ((project.description.Contains(word)) && (project.programmingLanguage == language))
+                    {
+                        projectList.Add(project);
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+            return projectList;
         }
     }
 }
