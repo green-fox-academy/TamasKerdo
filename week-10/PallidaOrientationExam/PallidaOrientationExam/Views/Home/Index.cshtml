@@ -1,0 +1,45 @@
+﻿@model List<PallidaOrientationExam.Models.Plates>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="search?q=name" method="get">
+        <input type="text" name="q"/>
+        <button type="submit">Search</button>
+    </form>
+
+    <a href="search?police=1">Police Cars Only</a>
+    <a href="search?diplomat=1">Diplomat Cars Only</a>
+
+    
+        @if (Model.Count() == 0)
+        {
+            <p>Sorry no found!</p>
+        }
+        else
+        {
+            <table border="1">
+                <tr>
+                    <th>License Plate</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Color</th>
+                    <th>Year</th>
+                </tr>
+                @foreach (var plate in Model)
+                {
+                    <tr>
+                        <th>@plate.Plate</th>
+                        <th><a href="search/@plate.CarBrand">@plate.CarBrand</a></th>
+                        <th>@plate.CarModel</th>
+                        <th>@plate.Color</th>
+                        <th>@plate.Year</th>
+                    </tr>
+                }
+            </table>
+        }
+
+            
+</body>
+</html>
