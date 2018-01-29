@@ -23,7 +23,7 @@ namespace ProjectNote.Repositories
             newUser.GreenfoxClass = greenfoxClass;
             PNC.Users.Add(newUser);
             PNC.SaveChanges();
-        }        
+        }
 
         public bool Verify(string name, string password)
         {
@@ -80,8 +80,8 @@ namespace ProjectNote.Repositories
                     }
                 }
             }
-            return projectWithoutConnectionList;
-                        
+
+            return projectWithoutConnectionList;                        
         }
 
         public ProjectWithoutConnection ProjectCopier(Project projectToCopy)

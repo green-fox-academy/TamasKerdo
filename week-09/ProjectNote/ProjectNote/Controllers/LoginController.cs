@@ -20,14 +20,17 @@ namespace ProjectNote.Controllers
             return Content("Welcome at the loginpage!");
         }
         [HttpPost("CreateUser")]
-        public IActionResult CreateUser([FromQuery] string name,[FromQuery] string password,[FromQuery] string greenfoxClass)
+        public IActionResult CreateUser([FromQuery] string name,
+            [FromQuery] string password,
+            [FromQuery] string greenfoxClass)
         {
             repository.AddNewUser(name, password, greenfoxClass);
             return View();
         }
 
         [HttpGet("VerifyPassword")]
-        public IActionResult VerifyPassword([FromQuery] string name, [FromQuery] string password)
+        public IActionResult VerifyPassword([FromQuery] string name,
+            [FromQuery] string password)
         {
             if (repository.Verify(name, password))
             {
