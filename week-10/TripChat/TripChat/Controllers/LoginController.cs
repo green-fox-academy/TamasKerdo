@@ -16,5 +16,17 @@ namespace TripChat.Controllers
         {
             return View();
         }
+
+        [HttpGet("createNew")]
+        public IActionResult CreateNew()
+        {
+            return View();
+        }
+
+        [HttpGet("login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }

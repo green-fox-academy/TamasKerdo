@@ -4,21 +4,15 @@
 </head>
 <body>
     <h1>Welcome!</h1>
-    <form action="login" method="post" name="Login">
-        <label for="UserName">UserName </label>
-        <input type="text" name="UserName" value=""/>
-        <label for="Password">Password </label>
-        <input type="text" name="Password" value="" />
-        <button type="submit">Submit</button>
+    <form action="createNew?q=name" method="get">
+        <input type="text" name="q" />
+        <button type="submit">Crate New Account</button>
     </form>
 
-    <form action="signIn" method="post" name="Sign In">
-        <label for="UserName">UserName </label>
-        <input type="text" name="UserName" value="" />
-        <label for="Password">Password </label>
-        <input type="text" name="Password" value="" />
-        <button type="submit">Sign in</button>
+    <form action="login?q=name" method="get">
+        <input type="text" name="q" />
+        <button type="submit">Login</button>
     </form>
 
 </body>
-</html>b
+</html>
