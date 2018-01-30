@@ -26,5 +26,27 @@ namespace TripChat.Controllers
             List<Trip> newList = new List<Trip>();
             return View(newList);
         }
+
+        [HttpGet("createNewTrip")]
+        public IActionResult CreateNewTrip()
+        {
+            long? newTripId = null;
+            return View(newTripId);
+        }
+
+        [HttpGet("addLocation")]
+        public IActionResult AddLocation([FromQuery] string tripName, [FromQuery] string description, [FromQuery] long? tripId, [FromQuery] float altitude, [FromQuery] float longitude)
+        {
+            if (tripId == null)
+            {
+                //tripId = Service.CreateNewTrip(tripName, description);
+                return View(tripId);
+            }
+            else
+            {
+                //Service.AddNewLocation(tripId, altitude, longitude, description);
+            }
+            return View(tripId);
+        }
     }
 }

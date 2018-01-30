@@ -1,0 +1,34 @@
+﻿@model long?
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="addLocation?description=name&altitude=name&longitude=name&@Model" method="get">
+        <br />
+        <label for="description">Description of Location</label>
+        <input type="text" name="description" id="description" />
+        <br />
+
+        <label for="altitude">Altitude of the Location</label>
+        <input type="text" name="altitude" />
+        <br />
+
+        <label for="longitude">Longitude of the Location</label>
+        <input type="text" name="longitude" />
+        <br />
+        <button type="submit">Create New Location</button>
+    </form>
+
+    <br />
+    <br />
+
+    <form action="" method="get">
+        <input type="text" name="q" />
+        <button type="submit">Go back to the main page</button>
+    </form>df
+
+
+</body>
+</html>

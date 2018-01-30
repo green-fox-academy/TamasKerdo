@@ -20,5 +20,15 @@ namespace TripChat.Services
         {
             throw new NotImplementedException();
         }
+
+        internal long? CreateNewTrip(string tripName, string tripDescription)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
