@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TripChat.Models
 {
-    public class TripChat
+    public class Chat
     {
-        public long? TripChatId { get; set; }
+        public long? ChatId { get; set; }
         public string Content { get; set; }
         public DateTime TimeOfThePost { get; set; }
 

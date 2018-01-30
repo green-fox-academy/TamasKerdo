@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TripChat.Models
 {
-    public class TripLocation
+    public class Location
     {
-        public long? TripLocationId { get; set; }
+        public long? LocationId { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public string Description { get; set; }

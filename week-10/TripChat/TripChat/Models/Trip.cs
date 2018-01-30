@@ -13,8 +13,8 @@ namespace TripChat.Models
         public string DateOfTheTrip { get; set; }
         public DateTime TimeOfTripPostCreated { get; set; }
 
-        public ICollection<TripLocation> TripLocations { get; } = new List<TripLocation>();
-        public ICollection<TripChat> TripChats { get; } = new List<TripChat>();
+        public ICollection<Location> TripLocations { get; } = new List<Location>();
+        public ICollection<Chat> TripChats { get; } = new List<Chat>();
 
         public ICollection<UserTrip> UserTrips { get; } = new List<UserTrip>();        
     }

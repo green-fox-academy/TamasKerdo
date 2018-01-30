@@ -8,6 +8,9 @@ namespace TripChat.Entities
         public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Trip> Trips { get; set; }
+        public DbSet<Chat> TripChats { get; set; }
+        public DbSet<Location> TripLocations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

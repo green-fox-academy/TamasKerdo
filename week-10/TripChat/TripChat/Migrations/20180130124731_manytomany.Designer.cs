@@ -11,9 +11,10 @@ using TripChat.Entities;
 namespace TripChat.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20180130124731_manytomany")]
+    partial class manytomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +56,7 @@ namespace TripChat.Migrations
 
                     b.HasIndex("TripId");
 
-                    b.ToTable("TripLocations");
+                    b.ToTable("TripLocation");
                 });
 
             modelBuilder.Entity("TripChat.Models.Trip", b =>
