@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TripChat.Models;
 using TripChat.Repositories;
 
 namespace TripChat.Services
@@ -13,6 +14,11 @@ namespace TripChat.Services
         public HomeService(HomeRepository repository)
         {
             Repository = repository;
+        }
+
+        internal List<Trip> GetAllTripList()
+        {
+            throw new NotImplementedException();
         }
     }
 }

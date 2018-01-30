@@ -1,8 +1,44 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model List<TripChat.Models.Trip>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    Hello home!
+    <form action="createNewTrip" method="get">
+        <button type="submit">Create New Trip</button>
+    </form>
+    <br />
+    <br />
+    <form action="tripDescription" method="get">
+        <button type="submit">Show details</button>
+    </form>
+    <form action="apply" method="get">
+        <button type="submit">Apply</button>
+    </form>
+    <form action="createNewTrip" method="get">
+        <button type="submit">Remove my apply</button>
+    </form>
+    
+    <table border="1">
+        <tr>
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.Count()>0)
+        {
+            @foreach (var trip in Model)
+            {
+                <tr>
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                </tr>
+            }
+        }        
+    </table>
 </body>
 </html>

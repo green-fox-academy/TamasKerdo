@@ -17,7 +17,9 @@ namespace TripChat
             services.AddMvc();
             services.AddScoped<UserContext>();
             services.AddScoped<LoginRepository>();
+            services.AddScoped<HomeRepository>();
             services.AddScoped<LoginService>();
+            services.AddScoped<HomeService>();
             services.AddEntityFrameworkSqlServer().AddDbContext<UserContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TripChat;Integrated Security=True;Connect Timeout=30;"));
         }
 
