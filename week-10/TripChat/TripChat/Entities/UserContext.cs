@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TripChat.Entities
 {
-    public class User
+    public class UserContext
     {
     }
 }
