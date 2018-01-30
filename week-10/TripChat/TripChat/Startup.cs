@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TripChat.Entities;
 using Microsoft.EntityFrameworkCore;
 using TripChat.Repositories;
+using TripChat.Services;
 
 namespace TripChat
 {
@@ -21,6 +22,7 @@ namespace TripChat
             services.AddMvc();
             services.AddScoped<UserContext>();
             services.AddScoped<LoginRepository>();
+            services.AddScoped<LoginService>();
             services.AddEntityFrameworkSqlServer().AddDbContext<UserContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TripChat;Integrated Security=True;Connect Timeout=30;"));
         }
 

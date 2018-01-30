@@ -14,5 +14,15 @@ namespace TripChat.Services
         {
             Repository = repository;
         }
+
+        internal long? CreateNewUser(string userName)
+        {
+            return 1;
+        }
+
+        internal long? CheckUser(string userName)
+        {
+            return 1;
+        }
     }
 }
