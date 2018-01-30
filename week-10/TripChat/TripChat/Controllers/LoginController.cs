@@ -28,8 +28,8 @@ namespace TripChat.Controllers
         public IActionResult CreateNew([FromQuery] string userName)
         {
             long? userId = LoginService.CreateNewUser(userName);
-            if (userId != null)            
-                return Ok();            
+            if (userId != null)
+                return Redirect("main");
             return RedirectToAction("Index");
         }
 
@@ -38,7 +38,7 @@ namespace TripChat.Controllers
         {
             long? userId = LoginService.CheckUser(userName);
             if (userId != null)
-                return Ok();
+                return Redirect("main");
             return RedirectToAction("Index");
         }
     }
