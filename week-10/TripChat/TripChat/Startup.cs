@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TripChat.Entities;
 using Microsoft.EntityFrameworkCore;
+using TripChat.Repositories;
 
 namespace TripChat
 {
@@ -18,8 +19,9 @@ namespace TripChat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddEntityFrameworkSqlServer()
-                 .AddDbContext<UserContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TripChat;Integrated Security=True;Connect Timeout=30;"));
+            services.AddScoped<UserContext>();
+            services.AddScoped<LoginRepository>();
+            services.AddEntityFrameworkSqlServer().AddDbContext<UserContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TripChat;Integrated Security=True;Connect Timeout=30;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
