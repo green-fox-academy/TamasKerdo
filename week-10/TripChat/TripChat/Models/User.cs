@@ -1,7 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TripChat.Models
 {
@@ -10,5 +8,7 @@ namespace TripChat.Models
         public long? UserId { get; set; }
         public string Name { get; set; }
         public int OrganisedTrips { get; set; }
+
+        public ICollection<UserTrip> PostTags { get; } = new List<UserTrip>();
     }
 }
