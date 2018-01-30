@@ -12,16 +12,18 @@ namespace TripChat.Controllers
 {
     [Route("main")]
     public class HomeController : Controller
-    {
+    {        
         public HomeService Service { get; set; }
+        public static long? UserId { get; set; }
 
         public HomeController(HomeService service)
         {
             Service = service;
         }
         [Route("")]
-        public IActionResult Index()
+        public IActionResult Index(long? userId)
         {
+            UserId = userId;
             //List<Trip> tripList = Service.GetAllTripList();
             List<Trip> newList = new List<Trip>();
             return View(newList);

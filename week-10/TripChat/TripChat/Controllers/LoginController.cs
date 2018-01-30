@@ -29,7 +29,7 @@ namespace TripChat.Controllers
         {
             long? userId = LoginService.CreateNewUser(userName);
             if (userId != null)
-                return Redirect("main");
+                return RedirectToAction("Index","Home", new { userId = userId });
             return RedirectToAction("Index");
         }
 
@@ -38,7 +38,7 @@ namespace TripChat.Controllers
         {
             long? userId = LoginService.CheckUser(userName);
             if (userId != null)
-                return Redirect("main");
+                return RedirectToAction("Index", "Home", new { userId = userId });
             return RedirectToAction("Index");
         }
     }
