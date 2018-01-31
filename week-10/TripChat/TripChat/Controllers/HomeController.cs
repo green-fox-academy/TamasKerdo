@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TripChat.Services;
 using TripChat.Models;
+using TripChat.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,36 +20,43 @@ namespace TripChat.Controllers
         public HomeController(HomeService service)
         {
             Service = service;
-        }
+        }        
+
         [Route("")]
-        public IActionResult Index(long? userId)
+        public IActionResult Index()
+        {            
+            List<Trip> tripList = Service.GetAllTripList();
+            return View(tripList);
+        }
+
+        [HttpGet("IndexFromLocations")]
+        public IActionResult IndexFromLocations()
         {
-            UserId = userId;
-            //List<Trip> tripList = Service.GetAllTripList();
-            List<Trip> newList = new List<Trip>();
-            return View(newList);
+            return RedirectToAction("Index",UserId);
         }
 
         [HttpGet("createNewTrip")]
         public IActionResult CreateNewTrip()
         {
-            long? newTripId = null;
-            return View(newTripId);
+            var helper = new TripIdViewModel();
+            return View(helper);
         }
 
-        [HttpGet("addLocation")]
-        public IActionResult AddLocation([FromQuery] string tripName, [FromQuery] string description, [FromQuery] long? tripId, [FromQuery] float altitude, [FromQuery] float longitude)
+        [HttpPost("addLocation")]
+        public IActionResult AddLocation([FromForm] string tripName, [FromForm] string description, [FromForm] long? tripId, [FromForm] float altitude, [FromForm] float longitude)
         {
-            if (tripId == null)
+            var helper = new TripIdViewModel();
+            helper.ViewModelId = tripId;
+            if (helper.ViewModelId == null)
             {
-                tripId = Service.CreateNewTrip(tripName, description,UserId);
-                return View(tripId);
+                helper.ViewModelId = Service.CreateNewTrip(tripName, description, UserId);
+                return View(helper);
             }
             else
-            {
+            {                
                 Service.AddNewLocation(tripId, altitude, longitude, description,UserId);
             }
-            return View(tripId);
+            return View(helper);
         }
     }
 }

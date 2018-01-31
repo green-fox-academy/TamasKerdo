@@ -29,8 +29,8 @@ namespace TripChat.Services
             };
             return null;
         }
-
-        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
+        
+        public void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
         {
             if (tripId != null&& userId !=null)
             {

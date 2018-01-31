@@ -21,7 +21,7 @@ namespace TripChat.Repositories
             return Context.Trips.ToList();
         }
 
-        internal long? CreateNewTrip(string tripName, string tripDescription, long? userId)
+        public long? CreateNewTrip(string tripName, string tripDescription, long? userId)
         {
             User user = LoadTripsToUsers().FirstOrDefault(u=>u.UserId == userId);
 
@@ -31,14 +31,14 @@ namespace TripChat.Repositories
             Context.Trips.Add(newTrip);
             Context.SaveChanges();
 
-            UserTrip newUserTrip = new UserTrip() {User = user, Trip = newTrip, UserId = (int)userId, TripId = (int)newTrip.TripId };
+            UserTrip newUserTrip = new UserTrip() {User = user, Trip = newTrip, UserId = userId, TripId = newTrip.TripId };
             user.UserTrips.Add(newUserTrip);
             Context.SaveChanges();
             return newUserTrip.TripId;
         }
         
 
-        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
+        public void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
         {
             Trip trip = LoadUsersToTrips().FirstOrDefault(t=>t.TripId == tripId);
             Location newLocation = new Location();

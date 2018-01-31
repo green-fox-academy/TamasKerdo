@@ -1,30 +1,30 @@
-﻿@model long?
+﻿@model TripChat.ViewModels.TripIdViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    <form action="addLocation?description=name&altitude=name&longitude=name&@Model" method="get">
+    <form action="addLocation" method="post">
         <br />
         <label for="description">Description of Location</label>
         <input type="text" name="description" id="description" />
+        <input type="text" hidden="hidden" value=@Model.ViewModelId name="tripId" id="altitude" />
         <br />
 
         <label for="altitude">Altitude of the Location</label>
-        <input type="text" name="altitude" />
+        <input type="text" name="altitude" id="altitude"/>
         <br />
 
         <label for="longitude">Longitude of the Location</label>
-        <input type="text" name="longitude" />
+        <input type="text" name="longitude" id="longitude"/>
         <br />
         <button type="submit">Create New Location</button>
     </form>
-
     <br />
     <br />
 
-    <form action="" method="get">        
+    <form action="IndexFromLocations" method="get">        
         <button type="submit">Go back to the main page</button>
     </form>
 

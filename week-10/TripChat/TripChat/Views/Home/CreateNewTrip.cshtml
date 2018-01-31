@@ -1,11 +1,11 @@
-﻿@model long?
+﻿@model TripChat.ViewModels.TripIdViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    <form action="addLocation?tripName=name&description=name&@Model" method="get">
+    <form action="addLocation" method="post">
         <br />
         <label for="name">Name of the Trip</label>
         <input type="text" name="tripName" id="name"/>
@@ -21,10 +21,9 @@
     <br />
     <br />
 
-    <form action="" method="get">
-        <input type="text" name="q" />
+    <form action="IndexFromLocations" method="get">
         <button type="submit">Go back to the main page</button>
-    </form>df
+    </form>
 
     
 </body>
