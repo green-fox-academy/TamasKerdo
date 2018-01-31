@@ -58,5 +58,26 @@ namespace TripChat.Controllers
             }
             return View(helper);
         }
+
+        [Route("apply/{TripId}")]
+        public IActionResult ApplyForTheTrip([FromRoute] long? TripId)
+        {
+            var helper = TripId;
+            return View(helper);
+        }
+
+        [Route("revokeApply/{TripId}")]
+        public IActionResult RevokeApplyForTheTrip([FromRoute] long? TripId)
+        {
+            var helper = TripId;
+            return View(helper);
+        }
+
+        [Route("tripDetails/{TripId}")]
+        public IActionResult TripDetails([FromRoute] long? TripId)
+        {
+            var helper = TripId;
+            return View(helper);
+        }
     }
 }

@@ -10,15 +10,7 @@
     </form>
     <br />
     <br />
-    <form action="tripDescription" method="get">
-        <button type="submit">Show details</button>
-    </form>
-    <form action="apply" method="get">
-        <button type="submit">Apply</button>
-    </form>
-    <form action="createNewTrip" method="get">
-        <button type="submit">Remove my apply</button>
-    </form>
+    
     
     <table border="1">
         <tr>
@@ -36,6 +28,9 @@
                     <th>@trip.Name</th>
                     <th>@trip.Description</th>
                     <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/apply/@trip.TripId">Apply for the trip</a></th>
+                    <th><a href="main/revokeApply/@trip.TripId">Revoke Application</a></th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
                 </tr>
             }
         }        
