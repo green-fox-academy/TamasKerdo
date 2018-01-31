@@ -23,8 +23,9 @@ namespace TripChat.Controllers
         }        
 
         [Route("")]
-        public IActionResult Index()
-        {            
+        public IActionResult Index(long? userId)
+        {
+            UserId = userId;
             List<Trip> tripList = Service.GetAllTripList();
             return View(tripList);
         }
