@@ -10,20 +10,51 @@
     </form>
     <br />
     <br />
-    
-    
     <table border="1">
         <tr>
+            Organised trips by @Model.NameOfTheCurrentUser:
+        </tr>
+        <tr>            
             <th>Planned date of the trip</th>
             <th>Name of the trip</th>
             <th>Details about the trip</th>
             <th>Time of the creation</th>
         </tr>
-        @if (Model.ListOfTrips.Count()>0)
+        @if (Model.ListOftTheUserTrips !=null)
         {
-            @foreach (var trip in Model.ListOfTrips)
+            @foreach (var trip in Model.ListOftTheUserTrips)
+            {
+                <tr>                    
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
+                </tr>
+            }
+        }
+       
+    </table>
+    <br />
+    <br />
+        
+    <table border="1">
+        <tr>
+            Possible trips to apply:
+        </tr>    
+        <tr>
+            <th>Organised By</th>
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.ListOfTripsNotOrganisedByTheUser != null)
+        {
+            @foreach (var trip in Model.ListOfTripsNotOrganisedByTheUser)
             {
                 <tr>
+                    <th>@trip.OrganisedBy</th>
                     <th>@trip.DateOfTheTrip</th>
                     <th>@trip.Name</th>
                     <th>@trip.Description</th>

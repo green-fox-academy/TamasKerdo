@@ -18,6 +18,7 @@ namespace TripChat.Migrations
                     DateOfTheTrip = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
+                    OrganisedBy = table.Column<string>(nullable: true),
                     TimeOfTripPostCreated = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

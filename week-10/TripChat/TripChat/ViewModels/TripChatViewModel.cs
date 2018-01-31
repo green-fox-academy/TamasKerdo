@@ -9,6 +9,8 @@ namespace TripChat.ViewModels
     public class TripChatViewModel
     {
         public long? ViewModelId { get; set; } = null;
-        public List<Trip> ListOfTrips { get; set; } = new List<Trip>();
+        public string NameOfTheCurrentUser { get; set; }
+        public List<Trip> ListOfTripsNotOrganisedByTheUser { get; set; } = new List<Trip>();
+        public List<Trip> ListOftTheUserTrips { get; set; } = new List<Trip>();
     }
 }

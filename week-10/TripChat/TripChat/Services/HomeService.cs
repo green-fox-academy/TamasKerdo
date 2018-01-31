@@ -35,8 +35,34 @@ namespace TripChat.Services
             if (tripId != null&& userId !=null)
             {
                 Repository.AddNewLocation(tripId, altitude, longitude, description, userId);
+            }           
+        }
+
+        public List<Trip> GetTripsOfUser(long? userId)
+        {
+            if (userId != null)
+            {
+                return Repository.GetTripsOfUser(userId);
             }
-           
+            return null;
+        }
+
+        public string GetTheNameOfTheCurrentUser(long? userId)
+        {
+            if (userId != null)
+            {
+                return Repository.GetTheNameOfTheCurrentUser(userId);
+            }
+            return null;
+        }
+
+        public List<Trip> GetTripsNotOrganisedByTheUser(long? userId)
+        {
+            if (userId != null)
+            {
+                return Repository.GetTripsNotOrganisedByTheUser(userId);
+            }
+            return null;
         }
     }
 }

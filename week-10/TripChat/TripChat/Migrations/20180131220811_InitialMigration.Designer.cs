@@ -7,12 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TripChat.Entities;
-using TripChat.ViewModels;
 
 namespace TripChat.Migrations
 {
-    [DbContext(typeof(TripChatViewModel))]
-    [Migration("20180131112718_InitialMigration")]
+    [DbContext(typeof(UserContext))]
+    [Migration("20180131220811_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +69,8 @@ namespace TripChat.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("OrganisedBy");
 
                     b.Property<DateTime>("TimeOfTripPostCreated");
 

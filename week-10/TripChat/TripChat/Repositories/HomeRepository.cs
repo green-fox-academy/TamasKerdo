@@ -28,6 +28,7 @@ namespace TripChat.Repositories
             Trip newTrip = new Trip();
             newTrip.Name = tripName;
             newTrip.Description = tripDescription;
+            newTrip.OrganisedBy = user.Name;
             Context.Trips.Add(newTrip);
             Context.SaveChanges();
 
@@ -48,15 +49,36 @@ namespace TripChat.Repositories
             trip.TripLocations.Add(newLocation);
             Context.SaveChanges();
         }
-        
+
+        internal string GetTheNameOfTheCurrentUser(long? userId)
+        {
+            return Context.Users.FirstOrDefault(u=>u.UserId == userId).Name;
+        }
+
         public List<Trip> GetTripsOfUser(long? userId)
         {
             var users = LoadTripsToUsers();
 
-            return users.FirstOrDefault(u => u.UserId == userId)
+            if (users.Any(u => u.UserId == userId))
+            {
+                return users.FirstOrDefault(u => u.UserId == userId)
                 .UserTrips.Select(u => u.Trip)
-                .ToList();              
-        }        
+                .ToList();
+            }
+            return null;
+        }
+
+        public List<Trip> GetTripsNotOrganisedByTheUser(long? userId)
+        {
+            var users = LoadTripsToUsers();
+            if (users.Any(u => u.UserId != userId))
+            {
+                return users.FirstOrDefault(u => u.UserId != userId)
+                .UserTrips.Select(u => u.Trip)
+                .ToList();
+            }
+            return null;
+        }
 
         public List<User> GetUsersOfTrip(long? tripId)
         {
