@@ -5,6 +5,7 @@ using TripChat.Entities;
 using Microsoft.EntityFrameworkCore;
 using TripChat.Repositories;
 using TripChat.Services;
+using TripChat.ViewModels;
 
 namespace TripChat
 {
@@ -15,6 +16,7 @@ namespace TripChat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<TripChatViewModel>();
             services.AddScoped<UserContext>();
             services.AddScoped<LoginRepository>();
             services.AddScoped<HomeRepository>();

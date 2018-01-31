@@ -15,11 +15,13 @@ namespace TripChat.Controllers
     public class HomeController : Controller
     {        
         public HomeService Service { get; set; }
+        public TripChatViewModel TripChatViewModel { get; set; }
         public static long? UserId { get; set; }
 
-        public HomeController(HomeService service)
+        public HomeController(HomeService service, TripChatViewModel tripChatViewModel)
         {
             Service = service;
+            TripChatViewModel = tripChatViewModel;
         }        
 
         [Route("")]
@@ -38,26 +40,25 @@ namespace TripChat.Controllers
 
         [HttpGet("createNewTrip")]
         public IActionResult CreateNewTrip()
-        {
-            var helper = new TripIdViewModel();
-            return View(helper);
+        {            
+            return View(TripChatViewModel);
         }
 
         [HttpPost("addLocation")]
         public IActionResult AddLocation([FromForm] string tripName, [FromForm] string description, [FromForm] long? tripId, [FromForm] float altitude, [FromForm] float longitude)
         {
-            var helper = new TripIdViewModel();
-            helper.ViewModelId = tripId;
-            if (helper.ViewModelId == null)
+            
+            TripChatViewModel.ViewModelId = tripId;
+            if (TripChatViewModel.ViewModelId == null)
             {
-                helper.ViewModelId = Service.CreateNewTrip(tripName, description, UserId);
-                return View(helper);
+                TripChatViewModel.ViewModelId = Service.CreateNewTrip(tripName, description, UserId);
+                return View(TripChatViewModel);
             }
             else
             {                
                 Service.AddNewLocation(tripId, altitude, longitude, description,UserId);
             }
-            return View(helper);
+            return View(TripChatViewModel);
         }
 
         [Route("apply/{TripId}")]

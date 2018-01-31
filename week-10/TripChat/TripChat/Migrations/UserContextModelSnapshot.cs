@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TripChat.Entities;
+using TripChat.ViewModels;
 
 namespace TripChat.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(TripChatViewModel))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

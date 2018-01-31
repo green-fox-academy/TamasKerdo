@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TripChat.Entities;
+using TripChat.ViewModels;
 
 namespace TripChat.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(TripChatViewModel))]
     [Migration("20180131112718_InitialMigration")]
     partial class InitialMigration
     {
