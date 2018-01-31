@@ -28,8 +28,8 @@ namespace TripChat.Controllers
         public IActionResult Index(long? userId)
         {
             UserId = userId;
-            List<Trip> tripList = Service.GetAllTripList();
-            return View(tripList);
+            TripChatViewModel.ListOfTrips = Service.GetAllTripList();
+            return View(TripChatViewModel);
         }
 
         [HttpGet("IndexFromLocations")]
