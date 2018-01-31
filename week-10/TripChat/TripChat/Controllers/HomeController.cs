@@ -41,12 +41,12 @@ namespace TripChat.Controllers
         {
             if (tripId == null)
             {
-                //tripId = Service.CreateNewTrip(tripName, description);
+                tripId = Service.CreateNewTrip(tripName, description,UserId);
                 return View(tripId);
             }
             else
             {
-                //Service.AddNewLocation(tripId, altitude, longitude, description);
+                Service.AddNewLocation(tripId, altitude, longitude, description,UserId);
             }
             return View(tripId);
         }

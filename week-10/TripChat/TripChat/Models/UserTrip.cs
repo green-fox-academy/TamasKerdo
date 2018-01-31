@@ -7,10 +7,10 @@ namespace TripChat.Models
 {
     public class UserTrip
     {
-        public int UserId { get; set; }
+        public long? UserId { get; set; }
         public User User { get; set; }
 
-        public int TripId { get; set; }
+        public long? TripId { get; set; }
         public Trip Trip { get; set; }
     }
 }

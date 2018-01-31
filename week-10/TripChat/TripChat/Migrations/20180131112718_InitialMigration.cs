@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TripChat.Migrations
 {
-    public partial class manytomany : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,20 @@ namespace TripChat.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trips", x => x.TripId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    OrganisedTrips = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,7 +61,7 @@ namespace TripChat.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TripLocation",
+                name: "TripLocations",
                 columns: table => new
                 {
                     LocationId = table.Column<long>(nullable: false)
@@ -59,9 +73,9 @@ namespace TripChat.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TripLocation", x => x.LocationId);
+                    table.PrimaryKey("PK_TripLocations", x => x.LocationId);
                     table.ForeignKey(
-                        name: "FK_TripLocation_Trips_TripId",
+                        name: "FK_TripLocations_Trips_TripId",
                         column: x => x.TripId,
                         principalTable: "Trips",
                         principalColumn: "TripId",
@@ -72,26 +86,24 @@ namespace TripChat.Migrations
                 name: "UserTrip",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false),
-                    TripId = table.Column<int>(nullable: false),
-                    TripId1 = table.Column<long>(nullable: true),
-                    UserId1 = table.Column<long>(nullable: true)
+                    UserId = table.Column<long>(nullable: false),
+                    TripId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserTrip", x => new { x.UserId, x.TripId });
                     table.ForeignKey(
-                        name: "FK_UserTrip_Trips_TripId1",
-                        column: x => x.TripId1,
+                        name: "FK_UserTrip_Trips_TripId",
+                        column: x => x.TripId,
                         principalTable: "Trips",
                         principalColumn: "TripId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserTrip_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_UserTrip_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -100,19 +112,14 @@ namespace TripChat.Migrations
                 column: "TripId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TripLocation_TripId",
-                table: "TripLocation",
+                name: "IX_TripLocations_TripId",
+                table: "TripLocations",
                 column: "TripId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserTrip_TripId1",
+                name: "IX_UserTrip_TripId",
                 table: "UserTrip",
-                column: "TripId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserTrip_UserId1",
-                table: "UserTrip",
-                column: "UserId1");
+                column: "TripId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -121,13 +128,16 @@ namespace TripChat.Migrations
                 name: "TripChats");
 
             migrationBuilder.DropTable(
-                name: "TripLocation");
+                name: "TripLocations");
 
             migrationBuilder.DropTable(
                 name: "UserTrip");
 
             migrationBuilder.DropTable(
                 name: "Trips");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

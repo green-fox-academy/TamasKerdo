@@ -18,17 +18,25 @@ namespace TripChat.Services
 
         internal List<Trip> GetAllTripList()
         {
-            throw new NotImplementedException();
+            return Repository.GetAllTheTrips();
         }
 
-        internal long? CreateNewTrip(string tripName, string tripDescription)
+        public long? CreateNewTrip(string tripName, string tripDescription, long? userId)
         {
-            throw new NotImplementedException();
+            if (tripName !=null&& userId != null)
+            {
+                return Repository.CreateNewTrip(tripName, tripDescription, userId);
+            };
+            return null;
         }
 
-        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description)
+        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
         {
-            throw new NotImplementedException();
+            if (tripId != null&& userId !=null)
+            {
+                Repository.AddNewLocation(tripId, altitude, longitude, description, userId);
+            }
+           
         }
     }
 }

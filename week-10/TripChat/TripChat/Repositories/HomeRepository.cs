@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TripChat.Entities;
+using TripChat.Models;
 
 namespace TripChat.Repositories
 {
@@ -16,5 +16,75 @@ namespace TripChat.Repositories
             Context = context;
         }
 
+        public List<Trip> GetAllTheTrips()
+        {
+            return Context.Trips.ToList();
+        }
+
+        internal long? CreateNewTrip(string tripName, string tripDescription, long? userId)
+        {
+            User user = LoadTripsToUsers().FirstOrDefault(u=>u.UserId == userId);
+
+            Trip newTrip = new Trip();
+            newTrip.Name = tripName;
+            newTrip.Description = tripDescription;
+            Context.Trips.Add(newTrip);
+            Context.SaveChanges();
+
+            UserTrip newUserTrip = new UserTrip() {User = user, Trip = newTrip, UserId = (int)userId, TripId = (int)newTrip.TripId };
+            user.UserTrips.Add(newUserTrip);
+            Context.SaveChanges();
+            return newUserTrip.TripId;
+        }
+        
+
+        internal void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
+        {
+            Trip trip = LoadUsersToTrips().FirstOrDefault(t=>t.TripId == tripId);
+            Location newLocation = new Location();
+            newLocation.Description = description;
+            newLocation.Latitude = longitude;
+            newLocation.Longitude = longitude;
+            trip.TripLocations.Add(newLocation);
+            Context.SaveChanges();
+        }
+        
+        public List<Trip> GetTripsOfUser(long? userId)
+        {
+            var users = LoadTripsToUsers();
+
+            return users.FirstOrDefault(u => u.UserId == userId)
+                .UserTrips.Select(u => u.Trip)
+                .ToList();              
+        }        
+
+        public List<User> GetUsersOfTrip(long? tripId)
+        {
+            var trips = LoadUsersToTrips();
+
+            return trips.FirstOrDefault(t => t.TripId == tripId)
+                .UserTrips.Select(t => t.User)
+                .ToList();
+        }
+
+        public List<User> LoadTripsToUsers()
+        {
+            var users = Context.Users
+                .Include(u => u.UserTrips)
+                .ThenInclude(u => u.Trip)
+                .ToList();
+
+            return users;
+        }
+
+        public List<Trip> LoadUsersToTrips()
+        {
+            var trips = Context.Trips
+                .Include(t => t.UserTrips)
+                .ThenInclude(t => t.User)
+                .ToList();
+
+            return trips;
+        }
     }
 }

@@ -9,6 +9,6 @@ namespace TripChat.Models
         public string Name { get; set; }
         public int OrganisedTrips { get; set; }
 
-        public ICollection<UserTrip> PostTags { get; } = new List<UserTrip>();
+        public ICollection<UserTrip> UserTrips { get; } = new List<UserTrip>();
     }
 }

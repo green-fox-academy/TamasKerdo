@@ -92,19 +92,13 @@ namespace TripChat.Migrations
 
             modelBuilder.Entity("TripChat.Models.UserTrip", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<long?>("UserId");
 
-                    b.Property<int>("TripId");
-
-                    b.Property<long?>("TripId1");
-
-                    b.Property<long?>("UserId1");
+                    b.Property<long?>("TripId");
 
                     b.HasKey("UserId", "TripId");
 
-                    b.HasIndex("TripId1");
-
-                    b.HasIndex("UserId1");
+                    b.HasIndex("TripId");
 
                     b.ToTable("UserTrip");
                 });
@@ -127,11 +121,13 @@ namespace TripChat.Migrations
                 {
                     b.HasOne("TripChat.Models.Trip", "Trip")
                         .WithMany("UserTrips")
-                        .HasForeignKey("TripId1");
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TripChat.Models.User", "User")
-                        .WithMany("PostTags")
-                        .HasForeignKey("UserId1");
+                        .WithMany("UserTrips")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
