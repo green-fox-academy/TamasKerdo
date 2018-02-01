@@ -16,10 +16,17 @@ namespace TripChat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<TripChatViewModel>();
+
             services.AddScoped<UserContext>();
+
+            services.AddScoped<TripViewModel>();
+            services.AddScoped<HomeViewModel>();            
+
+            services.AddScoped<TripRepository>();
             services.AddScoped<LoginRepository>();
             services.AddScoped<HomeRepository>();
+
+            services.AddScoped<TripService>();
             services.AddScoped<LoginService>();
             services.AddScoped<HomeService>();
             services.AddEntityFrameworkSqlServer().AddDbContext<UserContext>(options => options.UseSqlServer(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TripChat;Integrated Security=True;Connect Timeout=30;"));

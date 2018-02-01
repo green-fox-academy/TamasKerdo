@@ -15,10 +15,10 @@ namespace TripChat.Controllers
     public class HomeController : Controller
     {        
         public HomeService Service { get; set; }
-        public TripChatViewModel TripChatViewModel { get; set; }
+        public HomeViewModel TripChatViewModel { get; set; }
         public static long? UserId { get; set; }
 
-        public HomeController(HomeService service, TripChatViewModel tripChatViewModel)
+        public HomeController(HomeService service, HomeViewModel tripChatViewModel)
         {
             Service = service;
             TripChatViewModel = tripChatViewModel;
@@ -84,8 +84,7 @@ namespace TripChat.Controllers
         [Route("tripDetails/{TripId}")]
         public IActionResult TripDetails([FromRoute] long? TripId)
         {
-            var helper = TripId;
-            return View(helper);
+            return RedirectToAction("Index", "Trip", new { userId = UserId, tripId = TripId });
         }
     }
 }

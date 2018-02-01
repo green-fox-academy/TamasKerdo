@@ -6,7 +6,7 @@ using TripChat.Models;
 
 namespace TripChat.ViewModels
 {
-    public class TripChatViewModel
+    public class HomeViewModel
     {
         public long? ViewModelId { get; set; } = null;
         public string NameOfTheCurrentUser { get; set; }
