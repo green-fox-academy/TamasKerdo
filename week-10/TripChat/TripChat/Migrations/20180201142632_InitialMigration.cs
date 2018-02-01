@@ -47,6 +47,7 @@ namespace TripChat.Migrations
                     ChatId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
                     TimeOfThePost = table.Column<DateTime>(nullable: false),
                     TripId = table.Column<long>(nullable: true)
                 },

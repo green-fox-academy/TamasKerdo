@@ -10,25 +10,33 @@ using TripChat.ViewModels;
 
 namespace TripChat.Controllers
 {
+    [Route("trip")]
     public class TripController : Controller
     {
         public TripService Service { get; set; }
         public TripViewModel TripViewModel { get; set; }
-        public static float? UserId { get; set; }
-        public static float? TripId { get; set; }
+        public static long? UserId { get; set; }
+        public static long? TripId { get; set; }
 
         public TripController(TripService service, TripViewModel tripViewModel)
         {
             Service = service;
             TripViewModel = tripViewModel;
-        }
-        [Route("trip")]
+        }        
         public IActionResult Index(long? tripId, long? userId)
-        {
+        {            
             UserId = userId;
             TripId = tripId;
             TripViewModel.Locations = Service.ListAllLocations(tripId);
+            TripViewModel.ChatMassages = Service.ListAllChatMassages(tripId);
             return View(TripViewModel);
+        }
+
+        [HttpPost("newChatMassage")]
+        public IActionResult NewChatMassage([FromForm] string newMassage)
+        {
+            Service.AddNewChatMassageToTrip(newMassage, TripId, UserId);
+            return RedirectToAction("Index", new { userId = UserId, tripId = TripId });
         }
     }
 }

@@ -26,8 +26,33 @@ namespace TripChat.Repositories
         public List<Trip> LoadLocationsToTrips()
         {
             return Context.Trips
-                    .Include(blog => blog.TripLocations)
+                    .Include(t => t.TripLocations)
                     .ToList();
+        }
+
+        public List<Trip> LoadChatsToTrips(long? tripId)
+        {
+            return Context.Trips
+                    .Include(t => t.TripChats)
+                    .ToList();
+        }
+                
+        public List<Chat> ListAllChatMassages(long? tripId)
+        {
+            var ChatOfTheTrip = LoadChatsToTrips(tripId);
+            return ChatOfTheTrip.FirstOrDefault(t => t.TripId == tripId).TripChats.ToList();
+        }
+
+        public void AddNewChatMassageToTrip(string newMassage, long? tripId, long? userId)
+        {
+            string ChatCreatedBy = Context.Users.FirstOrDefault(u => u.UserId == userId).Name;
+            var trips = LoadChatsToTrips(tripId);
+            var newChatMassage = new Chat();
+            newChatMassage.Content = newMassage;
+            newChatMassage.TimeOfThePost = DateTime.Now;
+            newChatMassage.CreatedBy = ChatCreatedBy;
+            trips.FirstOrDefault(t => t.TripId == tripId).TripChats.Add(newChatMassage);
+            Context.SaveChanges();
         }
     }
 }

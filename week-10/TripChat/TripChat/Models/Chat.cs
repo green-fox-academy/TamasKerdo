@@ -10,6 +10,7 @@ namespace TripChat.Models
         public long? ChatId { get; set; }
         public string Content { get; set; }
         public DateTime TimeOfThePost { get; set; }
+        public string CreatedBy { get; set; }
 
         public Trip Trip { get; set; }
     }

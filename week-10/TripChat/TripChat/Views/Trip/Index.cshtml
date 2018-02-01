@@ -10,6 +10,39 @@
     </form>
     <br />
     <br />
+
+    <form action="trip/newChatMassage" method="post" class="form-group">
+        <label for="formGroupExampleInput">New Chat Massage</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="newMassage">
+        <button type="submit">Send</button>
+    </form>
+    <br />
+    <br />
+
+    <table border="1">
+        <tr>
+            Chat of the Trip
+        </tr>
+        <tr>
+            <th>Massage</th>
+            <th>Created by</th>
+            <th>Time of the Post</th>
+        </tr>
+        @if (Model.Locations != null)
+        {
+            @foreach (var massage in Model.ChatMassages)
+            {
+                <tr>
+                    <th>@massage.Content</th>
+                    <th>@massage.CreatedBy</th>
+                    <th>@massage.TimeOfThePost</th>
+                </tr>
+            }
+        }
+    </table>
+    <br />
+    <br />
+
     <table border="1">
         <tr>
             Locations for the trip:

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TripChat.Models;
 using TripChat.Repositories;
 
@@ -23,6 +21,21 @@ namespace TripChat.Services
                 return Repository.ListAllLocations(tripId);
             }
             return null;
+        }
+
+        internal List<Chat> ListAllChatMassages(long? tripId)
+        {
+            if (tripId != null)
+            {
+                return Repository.ListAllChatMassages(tripId);
+            }
+            return null;
+        }
+
+        public void AddNewChatMassageToTrip(string newMassage, long? tripId, long? userId)
+        {
+            if ((tripId != null)&&(newMassage!=null)&&(userId!=null))
+                Repository.AddNewChatMassageToTrip(newMassage, tripId, userId);
         }
     }
 }

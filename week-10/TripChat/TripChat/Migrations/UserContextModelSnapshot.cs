@@ -27,6 +27,8 @@ namespace TripChat.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<string>("CreatedBy");
+
                     b.Property<DateTime>("TimeOfThePost");
 
                     b.Property<long?>("TripId");

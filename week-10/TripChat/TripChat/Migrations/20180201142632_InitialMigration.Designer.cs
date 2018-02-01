@@ -11,7 +11,7 @@ using TripChat.Entities;
 namespace TripChat.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20180201104040_InitialMigration")]
+    [Migration("20180201142632_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,8 @@ namespace TripChat.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content");
+
+                    b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("TimeOfThePost");
 
