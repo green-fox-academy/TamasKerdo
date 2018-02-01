@@ -38,11 +38,11 @@ namespace TripChat.Services
             }           
         }
 
-        public List<Trip> GetTripsOfUser(long? userId)
+        public List<Trip> GetTripsOrganisedByTheUser(long? userId)
         {
             if (userId != null)
             {
-                return Repository.GetTripsOfUser(userId);
+                return Repository.GetTripsOrganisedByTheUser(userId);
             }
             return null;
         }
@@ -56,13 +56,27 @@ namespace TripChat.Services
             return null;
         }
 
-        public List<Trip> GetTripsNotOrganisedByTheUser(long? userId)
+        public List<Trip> GetPotencialTripsToApply(long? userId)
         {
             if (userId != null)
             {
-                return Repository.GetTripsNotOrganisedByTheUser(userId);
+                return Repository.GetPotencialTripsToApply(userId);
             }
             return null;
+        }
+
+        public List<Trip> GetAppliedTrips(long? userId)
+        {
+            return Repository.GetAppliedTrips(userId);
+        }
+
+        public void ApplyForTrip(long? tripId, long? userId)
+        {
+            if (tripId != null && userId != null)
+            {
+                Repository.ApplyForTrip(tripId, userId);
+            }
+            
         }
     }
 }

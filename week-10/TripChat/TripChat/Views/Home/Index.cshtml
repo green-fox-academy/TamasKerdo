@@ -12,19 +12,19 @@
     <br />
     <table border="1">
         <tr>
-            Organised trips by @Model.NameOfTheCurrentUser:
+            TripList of @Model.NameOfTheCurrentUser:
         </tr>
-        <tr>            
+        <tr>
             <th>Planned date of the trip</th>
             <th>Name of the trip</th>
             <th>Details about the trip</th>
             <th>Time of the creation</th>
         </tr>
-        @if (Model.ListOftTheUserTrips !=null)
+        @if (Model.ListOftTheUserTrips != null)
         {
             @foreach (var trip in Model.ListOftTheUserTrips)
             {
-                <tr>                    
+                <tr>
                     <th>@trip.DateOfTheTrip</th>
                     <th>@trip.Name</th>
                     <th>@trip.Description</th>
@@ -33,11 +33,43 @@
                 </tr>
             }
         }
-       
     </table>
     <br />
     <br />
-        
+       
+
+    <table border="1">
+        <tr>
+            Already Applied:
+        </tr>
+        <tr>
+            <th>Organised By</th>
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.ListOfUserApplies != null)
+        {
+            @foreach (var trip in Model.ListOfUserApplies)
+            {
+                <tr>
+                    <th>@trip.OrganisedBy</th>
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/apply/@trip.TripId">Apply for the trip</a></th>
+                    <th><a href="main/revokeApply/@trip.TripId">Revoke Application</a></th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
+                </tr>
+            }
+        }
+    </table>
+
+    <br />
+    <br />
+
     <table border="1">
         <tr>
             Possible trips to apply:
@@ -49,9 +81,9 @@
             <th>Details about the trip</th>
             <th>Time of the creation</th>
         </tr>
-        @if (Model.ListOfTripsNotOrganisedByTheUser != null)
+        @if (Model.PotencialTripsToApply != null)
         {
-            @foreach (var trip in Model.ListOfTripsNotOrganisedByTheUser)
+            @foreach (var trip in Model.PotencialTripsToApply)
             {
                 <tr>
                     <th>@trip.OrganisedBy</th>

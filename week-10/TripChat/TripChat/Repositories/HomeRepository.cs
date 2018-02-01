@@ -55,32 +55,62 @@ namespace TripChat.Repositories
             return Context.Users.FirstOrDefault(u=>u.UserId == userId).Name;
         }
 
-        public List<Trip> GetTripsOfUser(long? userId)
+        public List<Trip> GetTripsOrganisedByTheUser(long? userId)
         {
             var users = LoadTripsToUsers();
-
+            var ReturnList = new List<Trip>();
             if (users.Any(u => u.UserId == userId))
             {
-                return users.FirstOrDefault(u => u.UserId == userId)
-                .UserTrips.Select(u => u.Trip)
-                .ToList();
+                string userName = users.FirstOrDefault(u => u.UserId == userId).Name;
+                
+                var TripsConnectedToUser = new List<Trip>();
+
+                TripsConnectedToUser = users.FirstOrDefault(u => u.UserId == userId)
+                                .UserTrips.Select(u => u.Trip)
+                                .ToList();
+                foreach (var trip in TripsConnectedToUser)
+                {
+                    if (trip.OrganisedBy.Equals(userName))
+                    {
+                        ReturnList.Add(trip);
+                    }
+                }                
             }
-            return null;
+            return ReturnList;
         }
 
-        public List<Trip> GetTripsNotOrganisedByTheUser(long? userId)
+
+        public List<Trip> GetAppliedTrips(long? userId)
         {
-            var users = LoadTripsToUsers();
-            if (users.Any(u => u.UserId != userId))
+            var trips = LoadUsersToTrips();
+            var ReturnList = new List<Trip>();
+            string userName = Context.Users.FirstOrDefault(u => u.UserId == userId).Name;
+            foreach (var trip in trips)
             {
-                return users.FirstOrDefault(u => u.UserId != userId)
-                .UserTrips.Select(u => u.Trip)
-                .ToList();
+                if ((trip.UserTrips.Any(t => t.UserId == userId))&& (trip.OrganisedBy != userName))
+                {
+                    ReturnList.Add(trip);
+                }                
             }
-            return null;
+            return ReturnList;
         }
 
-        public List<User> GetUsersOfTrip(long? tripId)
+        public List<Trip> GetPotencialTripsToApply(long? userId)
+        {
+            var trips = LoadUsersToTrips();
+            var ReturnList = new List<Trip>();
+            string userName = Context.Users.FirstOrDefault(u => u.UserId == userId).Name;
+            foreach (var trip in trips)
+            {
+                if (trip.UserTrips.Any(t => t.UserId != userId))
+                {
+                    ReturnList.Add(trip);
+                }
+            }
+            return ReturnList;
+        }
+
+            public List<User> GetUsersOfTrip(long? tripId)
         {
             var trips = LoadUsersToTrips();
 
@@ -108,5 +138,17 @@ namespace TripChat.Repositories
 
             return trips;
         }
+
+        public void ApplyForTrip(long? tripId, long? userId)
+        {
+            var trip = LoadUsersToTrips().FirstOrDefault(t=>t.TripId == tripId);
+            var UserToAdd = new User();
+            User userToAdd = Context.Users.FirstOrDefault(u => u.UserId == userId);
+
+            UserTrip newUserTrip = new UserTrip() { User = userToAdd, Trip = trip, UserId = userId, TripId = trip.TripId };
+            trip.UserTrips.Add(newUserTrip);
+            Context.SaveChanges();
+        }
     }
 }
+

@@ -28,10 +28,13 @@ namespace TripChat.Controllers
         public IActionResult Index(long? userId)
         {
             if (userId!=null)            
-                UserId = userId;            
-            TripChatViewModel.ListOfTripsNotOrganisedByTheUser = Service.GetTripsNotOrganisedByTheUser(UserId);
-            TripChatViewModel.ListOftTheUserTrips = Service.GetTripsOfUser(UserId);
+                UserId = userId;
+            TripChatViewModel.ListOftTheUserTrips = Service.GetTripsOrganisedByTheUser(UserId);
+            TripChatViewModel.PotencialTripsToApply = Service.GetPotencialTripsToApply(UserId);
+            TripChatViewModel.ListOfUserApplies = Service.GetAppliedTrips(UserId);
+
             TripChatViewModel.NameOfTheCurrentUser = Service.GetTheNameOfTheCurrentUser(UserId);
+            
             return View(TripChatViewModel);
         }
 
@@ -67,9 +70,8 @@ namespace TripChat.Controllers
         [Route("apply/{TripId}")]
         public IActionResult ApplyForTheTrip([FromRoute] long? TripId)
         {
-            
-            var helper = TripId;
-            return View(helper);
+            Service.ApplyForTrip(TripId,UserId);            
+            return RedirectToAction("Index", UserId);
         }
 
         [Route("revokeApply/{TripId}")]
