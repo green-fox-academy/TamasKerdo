@@ -21,11 +21,11 @@ namespace TripChat.Services
             return Repository.GetAllTheTrips();
         }
 
-        public long? CreateNewTrip(string tripName, string tripDescription, long? userId)
+        public long? CreateNewTrip(string tripName, string tripDescription, long? userId, string dateOfTheTrip)
         {
             if (tripName != null && userId != null)
             {
-                return Repository.CreateNewTrip(tripName, tripDescription, userId);
+                return Repository.CreateNewTrip(tripName, tripDescription, userId, dateOfTheTrip);
             };
             return null;
         }

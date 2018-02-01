@@ -51,13 +51,13 @@ namespace TripChat.Controllers
         }
 
         [HttpPost("addLocation")]
-        public IActionResult AddLocation([FromForm] string tripName, [FromForm] string description, [FromForm] long? tripId, [FromForm] float altitude, [FromForm] float longitude)
+        public IActionResult AddLocation([FromForm] string tripName, [FromForm] string description, [FromForm] long? tripId, [FromForm] float altitude, [FromForm] float longitude, [FromForm] string dateOfTheTrip)
         {
             
             TripChatViewModel.ViewModelId = tripId;
             if (TripChatViewModel.ViewModelId == null)
             {
-                TripChatViewModel.ViewModelId = Service.CreateNewTrip(tripName, description, UserId);
+                TripChatViewModel.ViewModelId = Service.CreateNewTrip(tripName, description, UserId, dateOfTheTrip);
                 return View(TripChatViewModel);
             }
             else

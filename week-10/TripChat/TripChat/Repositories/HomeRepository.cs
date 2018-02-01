@@ -21,13 +21,15 @@ namespace TripChat.Repositories
             return Context.Trips.ToList();
         }
 
-        public long? CreateNewTrip(string tripName, string tripDescription, long? userId)
+        public long? CreateNewTrip(string tripName, string tripDescription, long? userId, string dateOfTheTrip)
         {
             User user = LoadTripsToUsers().FirstOrDefault(u=>u.UserId == userId);
 
             Trip newTrip = new Trip();
             newTrip.Name = tripName;
+            newTrip.TimeOfTripPostCreated = DateTime.Now;
             newTrip.Description = tripDescription;
+            newTrip.DateOfTheTrip = dateOfTheTrip;
             newTrip.OrganisedBy = user.Name;
             Context.Trips.Add(newTrip);
             Context.SaveChanges();
@@ -106,7 +108,6 @@ namespace TripChat.Repositories
             }
             return ReturnList;
         }
-
         
         public List<Trip> GetPotencialTripsToApply(long? userId)
         {
