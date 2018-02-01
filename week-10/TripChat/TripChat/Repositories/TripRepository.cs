@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TripChat.Entities;
+using TripChat.Models;
 
 namespace TripChat.Repositories
 {
@@ -13,6 +15,19 @@ namespace TripChat.Repositories
         public TripRepository(UserContext context)
         {
             Context = context;
+        }
+
+        public List<Location> ListAllLocations(long? tripId)
+        {
+            var TripList = LoadLocationsToTrips();
+            return TripList.FirstOrDefault(t => t.TripId == tripId).TripLocations.ToList();
+        }
+
+        public List<Trip> LoadLocationsToTrips()
+        {
+            return Context.Trips
+                    .Include(blog => blog.TripLocations)
+                    .ToList();
         }
     }
 }

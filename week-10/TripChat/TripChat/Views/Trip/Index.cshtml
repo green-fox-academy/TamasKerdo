@@ -1,4 +1,37 @@
-﻿@page
-@model IndexModel
-@{
-}
+﻿@model TripChat.ViewModels.TripViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="/main" method="get">
+        <button type="submit">Go back to the main page</button>
+    </form>
+    <br />
+    <br />
+    <table border="1">
+        <tr>
+            Locations for the trip:
+        </tr>
+        <tr>
+            <th>Locations Of The Trip</th>  
+            <th>Description</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        @if (Model.Locations != null)
+        {
+            @foreach (var location in Model.Locations)
+            {
+                <tr>
+                    <th>@location.LocationId</th>
+                    <th>@location.Description</th>
+                    <th>@location.Latitude</th>
+                    <th>@location.Longitude</th>                    
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

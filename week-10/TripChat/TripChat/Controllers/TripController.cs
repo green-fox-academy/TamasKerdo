@@ -27,7 +27,8 @@ namespace TripChat.Controllers
         {
             UserId = userId;
             TripId = tripId;
-            return View();
+            TripViewModel.Locations = Service.ListAllLocations(tripId);
+            return View(TripViewModel);
         }
     }
 }

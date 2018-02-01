@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TripChat.Models;
 using TripChat.Repositories;
 
 namespace TripChat.Services
@@ -15,9 +16,13 @@ namespace TripChat.Services
             Repository = repository;
         }
 
-        internal void ListAllLocations(long? tripId)
+        public List<Location> ListAllLocations(long? tripId)
         {
-            throw new NotImplementedException();
+            if (tripId!=null)
+            {
+                return Repository.ListAllLocations(tripId);
+            }
+            return null;
         }
     }
 }
