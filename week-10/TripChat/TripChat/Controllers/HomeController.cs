@@ -77,8 +77,8 @@ namespace TripChat.Controllers
         [Route("revokeApply/{TripId}")]
         public IActionResult RevokeApplyForTheTrip([FromRoute] long? TripId)
         {
-            var helper = TripId;
-            return View(helper);
+            Service.RevokeApplyFromTrip(TripId, UserId);
+            return RedirectToAction("Index", UserId);
         }
 
         [Route("tripDetails/{TripId}")]

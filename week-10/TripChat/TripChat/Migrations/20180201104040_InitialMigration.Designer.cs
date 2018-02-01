@@ -11,7 +11,7 @@ using TripChat.Entities;
 namespace TripChat.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20180131220811_InitialMigration")]
+    [Migration("20180201104040_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

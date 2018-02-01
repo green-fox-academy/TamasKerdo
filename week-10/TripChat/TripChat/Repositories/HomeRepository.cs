@@ -79,6 +79,18 @@ namespace TripChat.Repositories
             return ReturnList;
         }
 
+        internal void RevokeApplyFromTrip(long? tripId, long? userId)
+        {
+            var appliedList = GetAppliedTrips(userId);
+            var trip = new Trip();
+            trip = appliedList.FirstOrDefault(t => t.TripId == tripId);
+            var user = new User();
+            user = Context.Users.FirstOrDefault(u => u.UserId == userId);
+            var userTrip = new UserTrip();
+            userTrip = trip.UserTrips.FirstOrDefault(t=>t.TripId == tripId&&t.UserId==userId);
+            trip.UserTrips.Remove(userTrip);
+            Context.SaveChanges();
+        }
 
         public List<Trip> GetAppliedTrips(long? userId)
         {
@@ -95,19 +107,28 @@ namespace TripChat.Repositories
             return ReturnList;
         }
 
+        
         public List<Trip> GetPotencialTripsToApply(long? userId)
         {
             var trips = LoadUsersToTrips();
-            var ReturnList = new List<Trip>();
-            string userName = Context.Users.FirstOrDefault(u => u.UserId == userId).Name;
+            var potencialTripList = new List<Trip>();
+            
             foreach (var trip in trips)
             {
-                if (trip.UserTrips.Any(t => t.UserId != userId))
+                bool helper = false;
+                foreach (var userTrip in trip.UserTrips)
                 {
-                    ReturnList.Add(trip);
+                    if (userTrip.UserId == userId)
+                    {
+                        helper = true;
+                    }
                 }
+                if (helper == false)
+                {
+                    potencialTripList.Add(trip);
+                }                
             }
-            return ReturnList;
+            return potencialTripList;
         }
 
             public List<User> GetUsersOfTrip(long? tripId)

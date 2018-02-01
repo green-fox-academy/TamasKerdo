@@ -23,19 +23,19 @@ namespace TripChat.Services
 
         public long? CreateNewTrip(string tripName, string tripDescription, long? userId)
         {
-            if (tripName !=null&& userId != null)
+            if (tripName != null && userId != null)
             {
                 return Repository.CreateNewTrip(tripName, tripDescription, userId);
             };
             return null;
         }
-        
+
         public void AddNewLocation(long? tripId, float altitude, float longitude, string description, long? userId)
         {
-            if (tripId != null&& userId !=null)
+            if (tripId != null && userId != null)
             {
                 Repository.AddNewLocation(tripId, altitude, longitude, description, userId);
-            }           
+            }
         }
 
         public List<Trip> GetTripsOrganisedByTheUser(long? userId)
@@ -76,7 +76,15 @@ namespace TripChat.Services
             {
                 Repository.ApplyForTrip(tripId, userId);
             }
-            
+
+        }
+
+        internal void RevokeApplyFromTrip(long? tripId, long? userId)
+        {
+            if (tripId != null && userId != null)
+            {
+                Repository.RevokeApplyFromTrip(tripId, userId);
+            }
         }
     }
 }
