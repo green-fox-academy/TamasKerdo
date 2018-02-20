@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <None Include="wwwroot\Images\admin.jpg" />
+    <None Include="wwwroot\Images\background.jpg" />
+    <None Include="wwwroot\Images\hacker.jpg" />
+    <None Include="wwwroot\Images\question.jpg" />
+    <None Include="wwwroot\Images\sp.jpg" />
   </ItemGroup>
 
   <ItemGroup>

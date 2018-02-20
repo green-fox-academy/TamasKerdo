@@ -18,11 +18,11 @@ namespace GameForDemo.ViewModel
         public void GenerateImageList()
         {
             var linkList = new List<string>();
-            linkList.Add(@"../../Images/hacker.jpg");
-            linkList.Add(@"../../Images/admin.jpg");
-            linkList.Add(@"../../Images/Images/sp.jpg");
+            linkList.Add(@"/Images/hacker.jpg");
+            linkList.Add(@"/Images/admin.jpg");
+            linkList.Add(@"/Images/sp.jpg");
             
-            string StartImageLink = @"../../Images/question.jpg";
+            string StartImageLink = @"/Images/question.jpg";
             var rn = new Random();
             bool hackerIsAdded=false;
             for (int i = 0; i < 3; i++)
