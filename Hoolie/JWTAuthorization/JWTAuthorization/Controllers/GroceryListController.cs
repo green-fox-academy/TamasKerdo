@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using JWTAuthorization.Entities;
 using JWTAuthorization.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace dotnet_grocery_list.Controllers
     {
-        [Route("api/groceryList")]
+        [Route("l")]
         public class GroceryListController : Controller
         {
             private readonly GroceryListContext Context;
@@ -25,7 +26,7 @@ namespace dotnet_grocery_list.Controllers
                     Context.SaveChanges();
                 }
             }
-
+            [Authorize]
             [HttpGet]
             public IEnumerable<GroceryItem> GetAll()
             {

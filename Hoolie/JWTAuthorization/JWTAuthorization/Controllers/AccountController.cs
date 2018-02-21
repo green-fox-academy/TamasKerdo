@@ -62,7 +62,7 @@ namespace JWTAuthorization.Controllers
                     return new JsonResult(new Dictionary<string, object>
                     {
                         { "access_token", GetAccessToken(Credentials.Email) },
-                        { "id_token", GetIdToken(user) }
+                        //{ "id_token", GetIdToken(user) }
                     });
                 }
                 return new JsonResult("Unable to sign in") { StatusCode = 401 };
