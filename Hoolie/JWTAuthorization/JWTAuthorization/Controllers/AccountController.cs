@@ -40,13 +40,32 @@ namespace JWTAuthorization.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false);
                     return new JsonResult(new Dictionary<string, object>
-          {
-            { "access_token", GetAccessToken(Credentials.Email) },
-            { "id_token", GetIdToken(user) }
-          });
+                    {
+                         { "access_token", GetAccessToken(Credentials.Email) },
+                         { "id_token", GetIdToken(user) }
+                    });
                 }
                 return Errors(result);
+            }
+            return Error("Unexpected error");
+        }
 
+        [HttpPost("sign-in")]
+        public async Task<IActionResult> SignIn([FromBody] Credentials Credentials)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await SignInManager.PasswordSignInAsync(Credentials.Email, Credentials.Password, false, false);
+                if (result.Succeeded)
+                {
+                    var user = await UserManager.FindByEmailAsync(Credentials.Email);
+                    return new JsonResult(new Dictionary<string, object>
+                    {
+                        { "access_token", GetAccessToken(Credentials.Email) },
+                        { "id_token", GetIdToken(user) }
+                    });
+                }
+                return new JsonResult("Unable to sign in") { StatusCode = 401 };
             }
             return Error("Unexpected error");
         }
@@ -55,11 +74,11 @@ namespace JWTAuthorization.Controllers
         {
             var payload = new Dictionary<string, object>
         {
-        { "id", user.Id },
-        { "sub", user.Email },
-        { "email", user.Email },
-        { "emailConfirmed", user.EmailConfirmed },
-      };
+            { "id", user.Id },
+            { "sub", user.Email },
+            { "email", user.Email },
+            { "emailConfirmed", user.EmailConfirmed },
+        };
             return GetToken(payload);
         }
 
@@ -67,8 +86,8 @@ namespace JWTAuthorization.Controllers
         {
             var payload = new Dictionary<string, object>
       {
-        { "sub", Email },
-        { "email", Email }
+          { "sub", Email },
+          { "email", Email }
       };
             return GetToken(payload);
         }
