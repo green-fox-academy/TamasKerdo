@@ -20,9 +20,9 @@ namespace JWTAuthorization.Controllers
         private readonly JWTSettings Options;
 
         public AccountController(
-          UserManager<IdentityUser> userManager,
-          SignInManager<IdentityUser> signInManager,
-          IOptions<JWTSettings> optionsAccessor)
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            IOptions<JWTSettings> optionsAccessor)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -85,10 +85,10 @@ namespace JWTAuthorization.Controllers
         private string GetAccessToken(string Email)
         {
             var payload = new Dictionary<string, object>
-      {
+        {
           { "sub", Email },
           { "email", Email }
-      };
+        };
             return GetToken(payload);
         }
 

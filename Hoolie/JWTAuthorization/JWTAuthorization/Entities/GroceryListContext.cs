@@ -9,8 +9,7 @@ namespace JWTAuthorization.Entities
 {
     public class GroceryListContext: DbContext
     {
-        public GroceryListContext(DbContextOptions<GroceryListContext> options)
-       : base(options)
+        public GroceryListContext(DbContextOptions<GroceryListContext> options): base(options)
         {
         }
 

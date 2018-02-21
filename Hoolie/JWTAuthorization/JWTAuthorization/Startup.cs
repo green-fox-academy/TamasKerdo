@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 
 namespace JWTAuthorization
@@ -33,15 +31,12 @@ namespace JWTAuthorization
             
             services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
         }
-        
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-               
+                app.UseDeveloperExceptionPage();               
             }
             app.UseMvc();
             app.UseStaticFiles();
