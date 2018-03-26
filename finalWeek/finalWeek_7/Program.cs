@@ -8,12 +8,20 @@ namespace finalWeek_7
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            char letter = 'a';
+            string word = "almafa";
+
+            foreach (var letterpositions in LetterFinder(word, letter))
+            {
+                Console.WriteLine(letterpositions);
+            }
+            Console.ReadLine();
         }
 
-        public List<int> LetterFinder(string inputWord, char letterToFind)
+        public static List<int> LetterFinder(string inputWord, char letterToFind)
         {
-            var FoundLetters = new List<int>();
+            var LetterPositions = new List<int>();
             var inputWordArray = new List<char>();
             inputWordArray = inputWord.ToCharArray().ToList();
 
@@ -21,11 +29,11 @@ namespace finalWeek_7
             {
                 if (inputWordArray[i].Equals(letterToFind))
                 {
-                    FoundLetters.Add(i);
+                    LetterPositions.Add(i);
                 }
             }
 
-            return FoundLetters();
+            return LetterPositions;
         }
     }
 }
