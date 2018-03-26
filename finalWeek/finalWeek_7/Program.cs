@@ -6,7 +6,6 @@ namespace finalWeek_7
     {
         static void Main(string[] args)
         {
-
             char letter = 'a';
             string word = "almafa";
             var letterPositionFinder = new LetterPositionFinder();
@@ -17,6 +16,5 @@ namespace finalWeek_7
             }
             Console.ReadLine();
         }
-        
     }
 }
