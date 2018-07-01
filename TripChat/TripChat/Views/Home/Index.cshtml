@@ -1,0 +1,110 @@
+﻿@model TripChat.ViewModels.HomeViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    
+    <h1>Page of @Model.NameOfTheCurrentUser</h1>
+
+
+    <form action="main/createNewTrip" method="get">
+        <button type="submit">Create New Trip</button>
+    </form>
+
+    <form action="/createNew" method="get">
+        <button type="submit">Go back to the Login Page</button>
+    </form>
+
+    <br />
+    <br />
+
+    <table border="1">
+        <tr>
+            Organized trips:
+        </tr>
+        <tr style="color:deepskyblue">
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.ListOftTheUserTrips != null)
+        {
+            @foreach (var trip in Model.ListOftTheUserTrips)
+            {
+                <tr>
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
+                </tr>
+            }
+        }
+    </table>
+    <br />
+    <br />
+
+
+    <table border="1">
+        <tr>
+            Already Applied:
+        </tr>
+        <tr style="color:deepskyblue">
+            <th>Organised By</th>
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.ListOfUserApplies != null)
+        {
+            @foreach (var trip in Model.ListOfUserApplies)
+            {
+                <tr>
+                    <th>@trip.OrganisedBy</th>
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/revokeApply/@trip.TripId">Revoke Application</a></th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
+                </tr>
+            }
+        }
+    </table>
+
+    <br />
+    <br />
+
+    <table border="1">
+        <tr>
+            Possible trips to apply:
+        </tr>
+        <tr style="color:deepskyblue">
+            <th>Organised By</th>
+            <th>Planned date of the trip</th>
+            <th>Name of the trip</th>
+            <th>Details about the trip</th>
+            <th>Time of the creation</th>
+        </tr>
+        @if (Model.PotencialTripsToApply != null)
+        {
+            @foreach (var trip in Model.PotencialTripsToApply)
+            {
+                <tr>
+                    <th>@trip.OrganisedBy</th>
+                    <th>@trip.DateOfTheTrip</th>
+                    <th>@trip.Name</th>
+                    <th>@trip.Description</th>
+                    <th>@trip.TimeOfTripPostCreated</th>
+                    <th><a href="main/apply/@trip.TripId">Apply for the trip</a></th>
+                    <th><a href="main/tripDetails/@trip.TripId">Details of the Trip</a></th>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model TripChat.ViewModels.TripViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Trip Details Page</h1>
+    <br />
+    <form action="/main" method="get">
+        <button type="submit">Go back to the main page</button>
+    </form>
+    <br />
+    <br />
+     
+    <table border="1">
+        <tr>
+            Locations for the trip:
+        </tr>
+        <tr style="color:deepskyblue">            
+            <th>Description</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        @if (Model.Locations != null)
+        {
+            @foreach (var location in Model.Locations)
+            {
+                <tr>                    
+                    <th>@location.Description</th>
+                    <th>@location.Latitude</th>
+                    <th>@location.Longitude</th>                    
+                </tr>
+            }
+        }
+    </table>
+    <br />
+    <br />
+
+    <form action="trip/newChatMassage" method="post" class="form-group">
+        <label for="formGroupExampleInput">New Chat Massage</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="newMassage">
+        <button type="submit">Send</button>
+    </form>
+
+    <table width="600">
+        <tr>
+            Chat of the Trip
+        </tr>
+        <tr>
+            <th>Massage</th>
+            <th>Created by</th>
+            <th>Time of the Post</th>
+        </tr>
+        @if (Model.Locations != null)
+        {
+            @foreach (var massage in Model.ChatMassages)
+            {
+                <tr style="color:red">
+                    <th>@massage.Content</th>
+                    <th>@massage.CreatedBy</th>
+                    <th>@massage.TimeOfThePost</th>
+                </tr>
+            }
+        }
+    </table>
+    
+</body>
+</html>
